@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+// Fuente de la pagina: Web Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;600;700&display=swap');
+
+html{
+  scroll-behavior: smooth;
+  font-size: 62.5%;
+}
+body{
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Anuphan', sans-serif;
+  font-size: 1rem;
+}
