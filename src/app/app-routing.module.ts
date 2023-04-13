@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
-import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
@@ -11,12 +10,13 @@ const routes: Routes = [
     path: 'auth', loadChildren: () => import('./auth/auth.module').then( m => m.AuthModule )
   },
   {
-    path: 'entrar',
-    component: SidebarComponent
+    path: 'dashboard',
+    component: DashboardComponent
   },
   {
-    path: 'menu',
-    component: NavbarComponent
+    path: '**',
+    redirectTo: 'auth',
+    pathMatch: 'full'
   }
 ];
 

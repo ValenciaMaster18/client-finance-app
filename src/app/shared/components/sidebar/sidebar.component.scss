@@ -1,17 +1,17 @@
 section{
   min-height: calc(100vh - 3.2rem);
-  position: absolute;
   display: flex;
   align-items: center;
   padding: 0.8rem 1.6rem;
 }
 aside{
   width: 250px;
-  height: 834px;
+  height: 90vh;
   background-color: #414148;
   border-radius: 20px;
   color: white;
   font-weight: 400;
+  padding: 1.6rem 0rem;
   hr{
     border: 1px solid #5A5A62;
   }

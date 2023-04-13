@@ -1,35 +1,46 @@
+section.contenedor__navbar{
+  padding: 5.6rem 1.6rem;
+}
 header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 909px;
+  width: 917px;
   height: 48px;
-  padding: 4px 16px;
+  padding: 0px 1.6rem;
 }
 
-section{
-  picture{
-    display: flex;
-    gap: 4px;
-    align-items: center;
+section.contenedor__navbar-izq{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  picture.contenedor__navbar-img{
     height: 3px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
     span{
       font-size: 1.5rem;
     }
+    h2.contenedor__navbar-baja{
+      font-size: 1.6rem;
+      font-weight: 400;
+    }
   }
-  h2{
-    font-size: 1.5rem;
+  h2.contenedor__navbar-alta{
+    font-size: 1.6rem;
+    font-weight: 700;
   }
 }
-nav{
-  ul{
+nav.contenedor__navbar-nav{
+  ul.contenedor__navbar-ul{
     list-style: none;
     display: flex;
     gap: 16px;
-    li{
-      a{
+    // li.contenedor__navbar-li{
+    //   a{
 
-      }
-    }
+    //   }
+    // }
   }
 }
