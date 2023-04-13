@@ -1,0 +1,35 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 909px;
+  height: 48px;
+  padding: 4px 16px;
+}
+
+section{
+  picture{
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    height: 3px;
+    span{
+      font-size: 1.5rem;
+    }
+  }
+  h2{
+    font-size: 1.5rem;
+  }
+}
+nav{
+  ul{
+    list-style: none;
+    display: flex;
+    gap: 16px;
+    li{
+      a{
+
+      }
+    }
+  }
+}

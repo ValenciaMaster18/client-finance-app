@@ -1,0 +1,25 @@
+.footer {
+  margin-top: 20px;
+  background-color: #FCFDFD;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  position: absolute;
+  bottom: 0;
+}
+
+.footer__span-text {
+  text-align: center;
+  color: #666565;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+@media screen and (min-width: 768px) {
+  .footer__span-text {
+      color: #666565;
+      font-size: 1.3rem;
+      font-weight: 400;
+  }
+}

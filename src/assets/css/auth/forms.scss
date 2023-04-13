@@ -101,6 +101,15 @@
       background-color: rgb(108, 220, 86);
       border: 2px solid rgb(108, 220, 86);
     }
+    &:disabled{
+      background-color: #EBEDFB;
+      color: #89879A;
+    }
+  }
+  .contenedor__formulario-inpval{
+    &:focus{
+      border: 2px solid #38383a;
+    }
   }
 }
 

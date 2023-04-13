@@ -5,11 +5,15 @@
 html{
   scroll-behavior: smooth;
   font-size: 62.5%;
+  position: relative;
+  min-height: 100vh;
 }
 body{
+  background-color: #F1F2F4;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
   font-family: 'Anuphan', sans-serif;
   font-size: 1rem;
+  margin-bottom: 60px;
 }
