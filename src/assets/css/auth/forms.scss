@@ -1,11 +1,3 @@
-.contenedor {
-  width: 100%;
-  height: calc(100vh - 60px);
-  background-color: #FAFBFC;
-  position: relative;
-  z-index: 10;
-}
-
 .contenedor__formulario {
   margin: auto;
   width: 100%;
@@ -14,6 +6,7 @@
   box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 0px 0px 15px -3px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.75);
+
   a {
     margin-top: 10px;
     display: inline-block;
@@ -57,8 +50,14 @@
   flex-direction: column;
   align-items: center;
   padding: 20px 32px;
-  gap: 16px;
+  gap: 10px;
 
+  p{
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 10px;
+  }
   input {
     width: 100%;
     height: 21px;
@@ -91,46 +90,21 @@
     transition: all 300ms ease-in-out;
 
     &:hover {
+      border: 2px solid rgb(1, 94, 255);
       background-color: rgb(1, 94, 255);
+    }
+  }
+  .contenedor__formulario-val{
+    background-color: #61BD4F;
+    border: 2px solid #61BD4F;
+    &:hover{
+      background-color: rgb(108, 220, 86);
+      border: 2px solid rgb(108, 220, 86);
     }
   }
 }
 
-.contenedor__formulario-imgizq {
-  width: 50%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  z-index: -10;
-  display: none;
 
-  img {
-    width: 340px;
-    height: 400px;
-    object-fit: contain;
-    position: absolute;
-    bottom: 0;
-  }
-}
-
-.contenedor__formulario-imgder {
-  width: 50%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: -10;
-  display: none;
-
-  img {
-    width: 340px;
-    height: 400px;
-    object-fit: contain;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-  }
-}
 
 @media screen and (min-width: 400px) {
   .contenedor {
@@ -155,6 +129,7 @@
       font-size: 1.6rem;
     }
   }
+
   .contenedor__formulario-header {
     .contenedor__formulario-img {
       img {
@@ -178,6 +153,7 @@
 @media screen and (min-width: 800px) {
   .contenedor__formulario-imgizq {
     display: block;
+
     img {
       width: 200px;
       height: 300px;
@@ -194,6 +170,7 @@
       bottom: -50px;
     }
   }
+
   .contenedor__formulario {
     width: 360px;
     height: auto;
@@ -217,6 +194,7 @@
     }
   }
 }
+
 @media screen and (min-width: 1200px) {
   .contenedor__formulario-imgizq {
     img {

@@ -1,23 +1,23 @@
-<section class="contenedor">
-  <div class="contenedor__formulario">
-    <header class="contenedor__formulario-header">
-      <picture class="contenedor__formulario-img">
-        <img src="../../../../assets/image/login/logo.jpg" alt="">
-        <span>Gestion de Finanzas</span>
-      </picture>
-      <h2>Inicia sesión para continuar</h2>
-    </header>
-    <form class="contenedor__formulario-form">
-      <input type="text" placeholder="Introducir usuario">
-      <input type="password" placeholder="Introducir contraseña">
-      <button type="submit">Iniciar sesion</button>
-    </form>
-    <a routerLink="/register">Crear cuenta</a>
-  </div>
-  <picture class="contenedor__formulario-imgizq">
-    <img src="../../../../assets/image/login/planificacion1.jpg" alt="">
-  </picture>
-  <picture class="contenedor__formulario-imgder">
-    <img src="../../../../assets/image/login/planificacion2.jpg" alt="">
-  </picture>
-</section>
+
+<div class="contenedor__formulario">
+  <header class="contenedor__formulario-header">
+    <picture class="contenedor__formulario-img">
+      <img src="../../../../assets/image/login/logo.jpg" alt="">
+      <span>Gestion de Finanzas</span>
+    </picture>
+    <h2>Inicia sesión para continuar</h2>
+  </header>
+
+  <form class="contenedor__formulario-form">
+    <input type="text" placeholder="Introducir usuario">
+    <button type="submit" class="contenedor__formulario-val">Registrarse</button>
+  </form>
+
+  <form class="contenedor__formulario-form">
+    <p>luisvalenciadev@outlook.com</p>
+
+    <input type="password" placeholder="Introducir contraseña">
+    <button type="submit">Iniciar sesion</button>
+  </form>
+  <a routerLink="/auth/register">Crear cuenta</a>
+</div>
