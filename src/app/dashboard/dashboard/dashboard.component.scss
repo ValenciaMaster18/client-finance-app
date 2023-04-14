@@ -28,7 +28,6 @@ header {
   background-color: transparent;
   transition: all 0.5s ease-in-out;
   border-radius: 20px;
-
   padding: 1.6rem 0rem;
 }
 
@@ -59,12 +58,12 @@ footer {
     display: block;
   }
   header {
-    width: calc(100vw - 305px);
+    width: calc(100vw - 340px);
   }
   main {
-    width: calc(100vw - 305px);
+    width: calc(100vw - 340px);
   }
   footer {
-    width: calc(100vw - 305px);
+    width: calc(100vw - 340px);
   }
 }
