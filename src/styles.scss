@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+// Libreria para las animaciones del dashboads
+@import url('../node_modules/aos/dist/aos.css');
 // Fuente de la pagina: Web Google Fonts
 @import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;600;700&display=swap');
 
@@ -16,4 +18,5 @@ body{
   font-family: 'Anuphan', sans-serif;
   font-size: 1rem;
   margin-bottom: 60px;
+  box-sizing: border-box;
 }

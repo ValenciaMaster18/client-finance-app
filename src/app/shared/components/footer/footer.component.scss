@@ -1,26 +1,33 @@
 .footer {
-  margin-top: 20px;
   // background-color: #FCFDFD;
-  width: calc(100vw - 300px);
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 60px;
-  position: absolute;
-  right: 0;
-  bottom: 0;
 }
 
 .footer__span-text {
   text-align: center;
   color: #666565;
-  font-size: 0.8rem;
+  font-size: 1.4rem;
   font-weight: 400;
 }
+
 @media screen and (min-width: 768px) {
   .footer__span-text {
-      color: #666565;
-      font-size: 1.3rem;
-      font-weight: 400;
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .footer__span-text {
+    font-size: 1.6rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .footer__span-text {
+    font-size: 1.7rem;
   }
 }

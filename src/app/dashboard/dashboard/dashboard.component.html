@@ -1,6 +1,16 @@
-<div class="contenedor__dashboard">
-  <app-sidebar></app-sidebar>
-  <app-navbar></app-navbar>
-  <app-footer></app-footer>
-</div>
+<!-- data-aos="zoom-in" data-aos-delay="300" data-aos-duration="500" -->
+<aside [ngClass]="estadoMenuDesplegable == 'block' ? '' : ''" [ngStyle]="{ 'display': estadoMenuDesplegable }">
+  <app-sidebar [estado]="estadoMenuDesplegable" (estadoDesplegarMenu)="escucharEstadoDesplegarMenu($event)"></app-sidebar>
+</aside>
 
+<div class="contenedor__dashboard">
+  <header [ngClass]="{ 'sticky': isSticky }">
+    <app-navbar [estado]="estadoMenuDesplegable" (estadoDesplegarMenu)="escucharEstadoDesplegarMenu($event)"></app-navbar>
+  </header>
+  <main>
+
+  </main>
+  <footer>
+    <app-footer></app-footer>
+  </footer>
+</div>

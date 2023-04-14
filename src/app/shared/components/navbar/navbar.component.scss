@@ -1,39 +1,55 @@
-section.contenedor__navbar{
-  padding: 5.6rem 1.6rem;
+section.contenedor__navbar {
+  // width: calc(100vw - 300px);
+  height: 75px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 917px;
+  width: 95%;
   height: 48px;
-  padding: 0px 1.6rem;
 }
 
-section.contenedor__navbar-izq{
+section.contenedor__navbar-izq {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  picture.contenedor__navbar-img{
+
+  picture.contenedor__navbar-img {
     height: 3px;
     display: flex;
     align-items: center;
     gap: 4px;
-    span{
-      font-size: 1.5rem;
+
+    span {
+      font-size: 1.4rem;
     }
-    h2.contenedor__navbar-baja{
-      font-size: 1.6rem;
+
+    h2.contenedor__navbar-baja {
+      font-size: 1.4rem;
       font-weight: 400;
     }
+    svg{
+      cursor: pointer;
+      &:hover{
+        fill: #3E98EF;
+      }
+    }
   }
-  h2.contenedor__navbar-alta{
-    font-size: 1.6rem;
+
+  h2.contenedor__navbar-alta {
+    font-size: 1.4rem;
     font-weight: 700;
   }
 }
-nav.contenedor__navbar-nav{
-  ul.contenedor__navbar-ul{
+
+nav.contenedor__navbar-nav {
+  ul.contenedor__navbar-ul {
     list-style: none;
     display: flex;
     gap: 16px;
@@ -42,5 +58,59 @@ nav.contenedor__navbar-nav{
 
     //   }
     // }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  section.contenedor__navbar-izq {
+    picture.contenedor__navbar-img {
+      span {
+        font-size: 1.5rem;
+      }
+
+      h2.contenedor__navbar-baja {
+        font-size: 1.5rem;
+      }
+    }
+
+    h2.contenedor__navbar-alta {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  section.contenedor__navbar-izq {
+    picture.contenedor__navbar-img {
+      span {
+        font-size: 1.6rem;
+      }
+
+      h2.contenedor__navbar-baja {
+        font-size: 1.6rem;
+      }
+    }
+
+    h2.contenedor__navbar-alta {
+      font-size: 1.6rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  section.contenedor__navbar-izq {
+    picture.contenedor__navbar-img {
+      span {
+        font-size: 1.7rem;
+      }
+
+      h2.contenedor__navbar-baja {
+        font-size: 1.7rem;
+      }
+    }
+
+    h2.contenedor__navbar-alta {
+      font-size: 1.7rem;
+    }
   }
 }
