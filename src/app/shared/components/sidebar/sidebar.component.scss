@@ -25,16 +25,9 @@ aside {
     background-color: #F1F2F4;
     border: 0;
     cursor: pointer;
-    &::after{
-      content: "";
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      width: 50%;
-      height: 50%;
-      border-radius: 50%;
-      background-color: red;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 

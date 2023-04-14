@@ -5,6 +5,16 @@ div.contenedor__dashboard {
   min-height: 100vh;
   margin-bottom: -60px;
 }
+.contanedor__loader{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 30;
+}
 aside{
   display: none;
   position: fixed;
@@ -13,10 +23,8 @@ aside{
 }
 
 header {
-  margin-top: 4rem;
   width: 100%;
   position: sticky;
-  top: 4rem; /* ajustar este valor según sea necesario */
   background-color: transparent;
   transition: all 0.5s ease-in-out;
   border-radius: 20px;
@@ -39,7 +47,11 @@ footer {
   right: 0;
   bottom: 0;
 }
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 700px) {
+  header{
+    margin-top: 4rem;
+    top: 4rem; /* ajustar este valor según sea necesario */
+  }
   div.contenedor__dashboard {
     align-items: end;
   }
@@ -47,12 +59,12 @@ footer {
     display: block;
   }
   header {
-    width: calc(100vw - 340px);
+    width: calc(100vw - 305px);
   }
   main {
-    width: calc(100vw - 340px);
+    width: calc(100vw - 305px);
   }
   footer {
-    width: calc(100vw - 340px);
+    width: calc(100vw - 305px);
   }
 }
