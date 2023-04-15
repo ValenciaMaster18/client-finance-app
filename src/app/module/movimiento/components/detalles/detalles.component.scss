@@ -1,0 +1,21 @@
+section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  div.grafico{
+    width: 50%;
+    height: 300px;
+  }
+  div.tabla{
+    width: 100%;
+    padding-right: 20px;
+    position: relative;
+    margin-bottom: 60px;
+    .btn__crear-movimiento{
+      position: absolute;
+      top: -45px;
+      right: 20px;
+    }
+  }
+}

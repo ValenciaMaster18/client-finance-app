@@ -1,0 +1,38 @@
+.button {
+  position: relative;
+  width: 210px;
+  height: 40px;
+  padding: 0;
+  cursor: pointer;
+  border: 1px solid rgb(62,152,239);
+  background-color: rgb(62,152,239);
+  overflow: hidden;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  .text{
+    width: 80%;
+    span{
+      color: white;
+      font-size: 1.5rem;
+    }
+  }
+  .icon{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &:hover{
+    .text{
+      opacity: 0;
+      width: 0%;
+    }
+    .icon{
+      transition: all 300ms ease-in-out;
+      width: 100%;
+      background-color: rgb(62,152,239);
+    }
+  }
+}

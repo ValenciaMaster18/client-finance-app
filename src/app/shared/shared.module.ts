@@ -1,13 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { ChartModule } from 'primeng/chart';
+import { TableModule } from 'primeng/table'
+
+
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { RouterModule } from '@angular/router';
 import { DoughnutComponent } from './components/doughnut/doughnut.component';
-import { ChartModule } from 'primeng/chart';
 import { ConsejoComponent } from './components/mensaje-consejo/consejo.component';
+import { TableComponent } from './components/table/table.component';
+import { CrearMovimientoComponent } from './components/botones/crear-movimiento/crear-movimiento.component';
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -15,12 +20,15 @@ import { ConsejoComponent } from './components/mensaje-consejo/consejo.component
     SidebarComponent,
     LoaderComponent,
     DoughnutComponent,
-    ConsejoComponent
+    ConsejoComponent,
+    TableComponent,
+    CrearMovimientoComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
-    ChartModule
+    ChartModule,
+    TableModule
     ],
   exports: [
     NavbarComponent,
@@ -28,7 +36,9 @@ import { ConsejoComponent } from './components/mensaje-consejo/consejo.component
     SidebarComponent,
     LoaderComponent,
     DoughnutComponent,
-    ConsejoComponent
+    ConsejoComponent,
+    TableComponent,
+    CrearMovimientoComponent
   ]
 })
 export class SharedModule { }
