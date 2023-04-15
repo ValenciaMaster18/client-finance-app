@@ -1,0 +1,16 @@
+header{
+}
+nav{
+  ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    li{
+      a{
+        font-size: 1.8rem;
+        color: black;
+        text-decoration: none;
+      }
+    }
+  }
+}

@@ -12,7 +12,7 @@ import { PortadaComponent } from './pages/portada/portada.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

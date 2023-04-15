@@ -68,16 +68,15 @@ nav {
 
     li {
       a {
+        display: flex;
         padding-left: 35px;
-        padding: 8px 10px 8px 45px;
-        min-width: 200px;
-        height: 32px;
+        min-width: 220px;
+        height: 48px;
         border-radius: 5px;
         transition: all 200ms ease-in-out;
         font-size: 1.4rem;
         color: white;
         text-decoration: none;
-        display: flex;
         align-items: center;
         position: relative;
 
@@ -87,7 +86,7 @@ nav {
 
         svg {
           position: absolute;
-          top: 10px;
+          top: 14px;
           left: 8px;
         }
       }
