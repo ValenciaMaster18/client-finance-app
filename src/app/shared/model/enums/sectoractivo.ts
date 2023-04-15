@@ -1,0 +1,7 @@
+export enum SectorActivo {
+  FINANCIERO,
+  TECNOLOGICO,
+  CONSTRUCTIVO,
+  COMERCIAL,
+  OTROS
+}

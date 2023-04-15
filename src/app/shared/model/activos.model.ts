@@ -1,18 +1,7 @@
-enum TipoActivo{
-  ACCIONES,
-  BONOS,
-  FONDOS_MUTUOS,
-  MATERIAS_PRIMAS,
-  CRIPTOMONEDAS,
-  OTROS
-}
-enum SectorActivo {
-  FINANCIERO,
-  TECNOLOGICO,
-  CONSTRUCTIVO,
-  COMERCIAL,
-  OTROS
-}
+import { SectorActivo } from "./enums/sectoractivo";
+import { TipoActivo } from "./enums/tipoactivo";
+
+
 export interface Ahorro {
   nombre: string;
   descripcion: string;
