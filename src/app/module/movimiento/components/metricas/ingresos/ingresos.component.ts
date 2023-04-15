@@ -3,9 +3,10 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-ingresos',
   templateUrl: './ingresos.component.html',
-  styleUrls: ['./ingresos.component.scss']
+  styleUrls: ['../../../../../../assets/css/movimiento/egre-ingre.scss']
 })
 export class IngresosComponent implements OnInit{
+  mensaje: string = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry';
   data: any;
   options: any;
 

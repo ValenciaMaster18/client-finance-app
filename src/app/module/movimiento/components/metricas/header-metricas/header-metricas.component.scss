@@ -1,16 +1,37 @@
 header{
+  background-color: #3E98EF;
+  height: 150px;
+  border-radius: 0% 0% 50% 50% / 32% 33% 28% 27% ;
 }
 nav{
   ul{
+    padding: 0;
     list-style: none;
     display: flex;
-    justify-content: space-around;
     li{
+      width: 100%;
       a{
+        padding-top: 20px;
+        display: block;
+        width: 100%;
         font-size: 1.8rem;
-        color: black;
+        text-align: center;
+        color: white;
         text-decoration: none;
       }
     }
+  }
+}
+.activa-link{
+  position: relative;
+  &::after{
+    content: "";
+    position: absolute;
+    width: 40%;
+    height: 3px;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    bottom: -4px;
+    background-color: white;
   }
 }

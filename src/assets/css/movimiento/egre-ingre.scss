@@ -1,11 +1,12 @@
-section{
+section {
   width: 100%;
   height: 300px;
   padding: 20px 0;
   border-radius: 20px;
   background-color: white;
   position: relative;
-  button{
+
+  button {
     position: absolute;
     right: 15px;
     bottom: 15px;
@@ -16,7 +17,25 @@ section{
     background-color: #3E98EF;
     cursor: pointer;
   }
-  span{
+
+  button.consejo {
+    width: 30px;
+    height: 30px;
+    top: 10px;
+    left: 10px;
+    background-color: transparent;
+  }
+
+  div.consejo {
+    display: none;
+    position: absolute;
+    top: 10%;
+    left: 12%;
+  }
+  button.consejo:hover + div.consejo {
+    display: block;
+  }
+  span {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -24,8 +43,10 @@ section{
     font-size: 1.8rem;
     font-weight: 700;
   }
+
 }
-div{
+
+div {
   width: 100%;
   height: 100%;
 }

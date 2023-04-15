@@ -7,13 +7,15 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { DoughnutComponent } from './components/doughnut/doughnut.component';
 import { ChartModule } from 'primeng/chart';
+import { ConsejoComponent } from './components/mensaje-consejo/consejo.component';
 @NgModule({
   declarations: [
     NavbarComponent,
     FooterComponent,
     SidebarComponent,
     LoaderComponent,
-    DoughnutComponent
+    DoughnutComponent,
+    ConsejoComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { ChartModule } from 'primeng/chart';
     FooterComponent,
     SidebarComponent,
     LoaderComponent,
-    DoughnutComponent
+    DoughnutComponent,
+    ConsejoComponent
   ]
 })
 export class SharedModule { }
