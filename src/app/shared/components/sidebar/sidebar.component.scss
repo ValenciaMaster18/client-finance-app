@@ -67,6 +67,15 @@ nav {
     padding: 0;
 
     li {
+      .dropdown-item{
+        .menu{
+          margin-top: 3px;
+          display: none;
+        }
+        &:hover .menu{
+          display: block;
+        }
+      }
       a {
         position: relative;
         display: flex;
@@ -80,7 +89,7 @@ nav {
         color: white;
         text-decoration: none;
 
-        &:hover:not(.link-active) {
+        &:hover:not(.link-active, .link-secundario) {
           background-color: rgba(128, 128, 128, 0.527);
         }
 
@@ -108,7 +117,9 @@ nav {
 .link-active {
   background-color: #3E98EF;
 }
-
+.link-secundario{
+  color: #3E98EF !important;
+}
 @media screen and (min-width: 768px) {
   section.sidebar {
     min-height: calc(100vh - 1.6rem);

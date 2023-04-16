@@ -1,1 +1,4 @@
-export const environment = {};
+export const environmentDev = {
+  production: true,
+  url: "http://localhost:14156/"
+};

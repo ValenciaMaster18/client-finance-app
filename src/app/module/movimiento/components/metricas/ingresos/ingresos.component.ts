@@ -1,20 +1,47 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { MetricaBalance } from 'src/app/shared/model/domain/metricabalance.model';
+import { MovimientoService } from 'src/app/shared/services/movimientos/movimiento.service';
 
 @Component({
   selector: 'app-ingresos',
   templateUrl: './ingresos.component.html',
   styleUrls: ['../../../../../../assets/css/movimiento/egre-ingre.scss']
 })
-export class IngresosComponent implements OnInit{
+export class IngresosComponent implements OnInit {
   mensaje: string = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry';
-  data: any;
-  options: any;
+  dataParaGrafico!: MetricaBalance;
+  dataGrafico: any;
+  optionsGrafico: any;
 
+  // Finalizar la suscripcion
+  subscription: Subscription;
+  constructor(
+    private _movimientoService: MovimientoService
+  ) {
+    this.subscription = new Subscription();
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
+  }
   ngOnInit() {
+    this.subscription = this._movimientoService.getOneMetrica(1).subscribe(
+      {
+        next: (value: MetricaBalance) => {
+          this.dataParaGrafico = value;
+        },
+        error: (err: any) => {
+          //
+        },
+        complete: () => {
+          //
+        }
+      }
+    )
     const documentStyle = getComputedStyle(document.documentElement);
     const textColor = documentStyle.getPropertyValue('--text-color');
 
-    this.data = {
+    this.dataGrafico = {
       labels: ['A', 'B', 'C'],
       datasets: [
         {
@@ -26,7 +53,7 @@ export class IngresosComponent implements OnInit{
     };
 
 
-    this.options = {
+    this.optionsGrafico = {
       cutout: '70%',
       plugins: {
         legend: {

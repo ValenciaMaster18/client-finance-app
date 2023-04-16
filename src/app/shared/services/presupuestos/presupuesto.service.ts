@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { BehaviorSubject, Observable, shareReplay, tap } from 'rxjs';
+import { environmentDev } from 'src/environments/environment.development';
 import { MetricaPortafolio } from '../../model/domain/metricaportafolio.model';
 import { Portafolio } from '../../model/portafolio.model';
 import { Presupuesto } from '../../model/presupuesto.model';
@@ -11,8 +11,11 @@ import { Presupuesto } from '../../model/presupuesto.model';
 })
 export class PresupuestoService {
   API_URL: string;
+  presupuestoSubject: BehaviorSubject<Presupuesto[]> = new BehaviorSubject<Presupuesto[]>([]);
+  presupuesto$: Observable<Presupuesto[]> = this.presupuestoSubject.asObservable();
+
   constructor( private httpClient: HttpClient ) {
-    this.API_URL = environment.url + 'api/v1/presupuestos';
+    this.API_URL = environmentDev.url + 'api/v1/presupuestos';
   }
 
   getOneMetricas(idPresupuesto: number): Observable<MetricaPortafolio>{
@@ -25,7 +28,10 @@ export class PresupuestoService {
     return this.httpClient.get<Portafolio[]>(`${this.API_URL}`)
   }
   getPagePresupuesto(page: number, size: number): Observable<Presupuesto[]>{
-    return this.httpClient.get<Presupuesto[]>(`${this.API_URL}`)
+    return this.httpClient.get<Presupuesto[]>(`${this.API_URL}`).pipe(
+      tap((presupuesto: Presupuesto[]) => this.presupuestoSubject.next(presupuesto)),
+      shareReplay()
+    )
   }
   getOnePresupuesto(idPresupuesto: number): Observable<Presupuesto>{
     return this.httpClient.get<Presupuesto>(`${this.API_URL}/${idPresupuesto}`)

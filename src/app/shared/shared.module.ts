@@ -11,7 +11,6 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DoughnutComponent } from './components/doughnut/doughnut.component';
 import { ConsejoComponent } from './components/mensaje-consejo/consejo.component';
-import { TableComponent } from './components/table/table.component';
 import { CrearMovimientoComponent } from './components/botones/crear-movimiento/crear-movimiento.component';
 @NgModule({
   declarations: [
@@ -21,7 +20,6 @@ import { CrearMovimientoComponent } from './components/botones/crear-movimiento/
     LoaderComponent,
     DoughnutComponent,
     ConsejoComponent,
-    TableComponent,
     CrearMovimientoComponent
   ],
   imports: [
@@ -37,8 +35,8 @@ import { CrearMovimientoComponent } from './components/botones/crear-movimiento/
     LoaderComponent,
     DoughnutComponent,
     ConsejoComponent,
-    TableComponent,
-    CrearMovimientoComponent
+    CrearMovimientoComponent,
+    TableModule
   ]
 })
 export class SharedModule { }
