@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MetricasRoutingModule } from './metricas-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 import { MetricasComponent } from './metricas.component';
@@ -21,6 +22,7 @@ import { CrearMovimientoComponent } from './crear-movimiento/crear-movimiento.co
   imports: [
     CommonModule,
     MetricasRoutingModule,
+    ReactiveFormsModule,
     SharedModule
 
   ]

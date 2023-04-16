@@ -1,0 +1,63 @@
+[
+  {
+    "gastos": [
+      {
+        "id": 1,
+        "logoConcepto": "assets/svg/logo-concepto/transporte.svg",
+        "concepto": "Transporte"
+      },
+      {
+        "id": 2,
+        "logoConcepto": "assets/svg/logo-concepto/rutina.svg",
+        "concepto": "Rutina"
+      },
+      {
+        "id": 3,
+        "logoConcepto": "assets/svg/logo-concepto/familia.svg",
+        "concepto": "Familia"
+      },
+      {
+        "id": 4,
+        "logoConcepto": "assets/svg/logo-concepto/alimentacion.svg",
+        "concepto": "Alimentacion"
+      },
+      {
+        "id": 5,
+        "logoConcepto": "assets/svg/logo-concepto/regalo.svg",
+        "concepto": "Regalo"
+      },
+      {
+        "id": 6,
+        "logoConcepto": "assets/svg/logo-concepto/educacion.svg",
+        "concepto": "Educacion"
+      },
+      {
+        "id": 7,
+        "logoConcepto": "assets/svg/logo-concepto/cafe.svg",
+        "concepto": "Cafe"
+      }
+    ],
+    "egreos": [
+      {
+        "id": 1,
+        "logoConcepto": "assets/svg/logo-concepto/intereses.svg",
+        "concepto": "Intereses"
+      },
+      {
+        "id": 2,
+        "logoConcepto": "assets/svg/logo-concepto/regalo.svg",
+        "concepto": "Regalo"
+      },
+      {
+        "id": 3,
+        "logoConcepto": "assets/svg/logo-concepto/salario.svg",
+        "concepto": "Salario"
+      },
+      {
+        "id": 4,
+        "logoConcepto": "assets/svg/logo-concepto/otros.svg",
+        "concepto": "Otros"
+      }
+    ]
+  }
+]
