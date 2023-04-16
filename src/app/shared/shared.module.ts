@@ -12,6 +12,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DoughnutComponent } from './components/doughnut/doughnut.component';
 import { ConsejoComponent } from './components/mensaje-consejo/consejo.component';
 import { CrearMovimientoComponent } from './components/botones/crear-movimiento/crear-movimiento.component';
+import { TablaMetMovientoComponent } from './components/tabla-met-moviento/tabla-met-moviento.component';
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -20,7 +21,8 @@ import { CrearMovimientoComponent } from './components/botones/crear-movimiento/
     LoaderComponent,
     DoughnutComponent,
     ConsejoComponent,
-    CrearMovimientoComponent
+    CrearMovimientoComponent,
+    TablaMetMovientoComponent
   ],
   imports: [
     CommonModule,
@@ -36,6 +38,7 @@ import { CrearMovimientoComponent } from './components/botones/crear-movimiento/
     DoughnutComponent,
     ConsejoComponent,
     CrearMovimientoComponent,
+    TablaMetMovientoComponent,
     TableModule
   ]
 })

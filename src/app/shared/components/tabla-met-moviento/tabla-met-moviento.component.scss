@@ -1,0 +1,29 @@
+.contenedor__card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  padding: 0px 20px;
+  picture{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    img{
+      background-color: #3E98EF;
+      width: 40px;
+      height: 40px;
+      padding: 0px 8px;
+      border-radius: 50%;
+    }
+    span{
+      font-size: 1.4rem;
+    }
+  }
+  p{
+    display: flex;
+    gap: 17px;
+    span{
+      
+    }
+  }
+}
