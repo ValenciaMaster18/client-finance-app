@@ -5,7 +5,8 @@ import { BehaviorSubject, Observable, shareReplay, tap } from 'rxjs';
 import { Movimiento } from '../../model/movimiento.model';
 import { MetricaBalance } from '../../model/domain/metricabalance.model';
 
-import { environmentDev } from 'src/environments/environment.development';
+import { environmentDev, environmentJsonDev } from 'src/environments/environment.development';
+import { JsonConcepto } from '../../model/jsonconcepto.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,9 @@ export class MovimientoService {
   constructor(private httpClient: HttpClient) {
     this.API_URL = environmentDev.url + 'api/v1/movimientos';
   }
-
+  getConceptoLogo(): Observable<JsonConcepto[]>{
+    return this.httpClient.get<JsonConcepto[]>(environmentJsonDev.url)
+  }
   getOneMetrica(idUsuario: number): Observable<MetricaBalance> {
     return this.httpClient.get<MetricaBalance>(`${this.API_URL}/metrica/${idUsuario}`)
   }
@@ -39,7 +42,7 @@ export class MovimientoService {
   postMovimiento(movimiento: Movimiento): Observable<any> {
     return this.httpClient.post<any>(`${this.API_URL}/presupuesto`, movimiento)
   }
-  postMovimiento2(movimiento: Movimiento, aplicaDescuentoEspecifico: boolean, idCuentaAhorroEspecifica: number): Observable<any> {
+  postMovimiento2(movimiento: Movimiento, aplicaDescuentoEspecifico: boolean, idCuentaAhorroEspecifica: any): Observable<any> {
     const params = {
       aplicaDescuentoEspecifico: aplicaDescuentoEspecifico,
       idCuentaAhorroEspecifica: idCuentaAhorroEspecifica

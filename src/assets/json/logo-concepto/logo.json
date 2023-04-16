@@ -1,62 +1,84 @@
 [
   {
-    "gastos": [
+    "ingreso": [
       {
         "id": 1,
         "logoConcepto": "assets/svg/logo-concepto/transporte.svg",
-        "concepto": "Transporte"
+        "concepto": "Transporte",
+        "color": "#9b2226",
+        "selected": false
       },
       {
         "id": 2,
         "logoConcepto": "assets/svg/logo-concepto/rutina.svg",
-        "concepto": "Rutina"
+        "concepto": "Rutina",
+        "color": "#ae2012",
+        "selected": false
       },
       {
         "id": 3,
         "logoConcepto": "assets/svg/logo-concepto/familia.svg",
-        "concepto": "Familia"
+        "concepto": "Familia",
+        "color": "#bb3e03",
+        "selected": false
       },
       {
         "id": 4,
         "logoConcepto": "assets/svg/logo-concepto/alimentacion.svg",
-        "concepto": "Alimentacion"
+        "concepto": "Alimentacion",
+        "color": "#ca6702",
+        "selected": false
       },
       {
         "id": 5,
         "logoConcepto": "assets/svg/logo-concepto/regalo.svg",
-        "concepto": "Regalo"
+        "concepto": "Regalo",
+        "color": "#ee9b00",
+        "selected": false
       },
       {
         "id": 6,
         "logoConcepto": "assets/svg/logo-concepto/educacion.svg",
-        "concepto": "Educacion"
+        "concepto": "Educacion",
+        "color": "#e9d8a6",
+        "selected": false
       },
       {
         "id": 7,
         "logoConcepto": "assets/svg/logo-concepto/cafe.svg",
-        "concepto": "Cafe"
+        "concepto": "Cafe",
+        "color": "#94d2bd",
+        "selected": false
       }
     ],
-    "egreos": [
+    "egreso": [
       {
         "id": 1,
         "logoConcepto": "assets/svg/logo-concepto/intereses.svg",
-        "concepto": "Intereses"
+        "concepto": "Intereses",
+        "color": "#0a9396",
+        "selected": false
       },
       {
         "id": 2,
         "logoConcepto": "assets/svg/logo-concepto/regalo.svg",
-        "concepto": "Regalo"
+        "concepto": "Regalo",
+        "color": "#005f73",
+        "selected": false
       },
       {
         "id": 3,
         "logoConcepto": "assets/svg/logo-concepto/salario.svg",
-        "concepto": "Salario"
+        "concepto": "Salario",
+        "color": "#003566",
+        "selected": false
       },
       {
         "id": 4,
         "logoConcepto": "assets/svg/logo-concepto/otros.svg",
-        "concepto": "Otros"
+        "concepto": "Otros",
+        "color": "#9bf6ff",
+        "selected": false
       }
     ]
   }

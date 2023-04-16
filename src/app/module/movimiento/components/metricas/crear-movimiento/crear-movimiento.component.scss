@@ -1,0 +1,74 @@
+section {
+  width: 100%;
+  padding-bottom: 40px;
+  background-color: #3e99ef2d;
+}
+
+.titulo {
+  h2 {
+    text-align: center;
+    color: white;
+  }
+}
+
+.contenedor__concepto-logo {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 40px;
+  place-items: center;
+}
+
+picture {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  border-radius: 10px;
+
+  img {
+    border-radius: 50%;
+    padding: 15px;
+    width: 50px;
+    height: 50px;
+  }
+
+  span {
+    text-align: center;
+  }
+}
+form{
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  .importe{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: auto;
+    input{
+      min-width: 150px;
+      width: 150px;
+      border: 0;
+      font-size: 1.6rem;
+      outline: none;
+      color: white;
+      background-color: transparent;
+      border-bottom: 3px solid white;
+    }
+  }
+
+  button{
+    margin: auto;
+    margin-top: 20px;
+    width: 180px;
+    padding: 1.3rem 1rem;
+    background-color: #3E98EF;
+    color: white;
+    border: 0;
+    border-radius: 20px;
+    cursor: pointer;
+    &:hover{
+      background-color: #3e99efc6;
+    }
+  }
+}
