@@ -12,8 +12,7 @@
         <!-- -->
         <div class="contenedor__blogs" *ngFor="let item of jsonBlogs; let i = index" >
             <picture class="contenedor__blogs-img">
-                <!-- <img src="" alt=""> -->
-                <div></div>
+                <img [src]="item.icon" alt="">
             </picture>
             <div class="contenedor__blogs-texto">
                 <span>{{ item.categoria }}</span>

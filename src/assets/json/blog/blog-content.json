@@ -3,60 +3,70 @@
   "id": 1,
   "categoria":"credito",
   "pregunta": "¿Cómo puedo mejorar mi puntaje crediticio?",
-  "respuesta": "Para mejorar tu puntaje crediticio, es importante que pagues tus deudas a tiempo, mantengas un bajo nivel de endeudamiento y no solicites demasiadas tarjetas de crédito. También es útil revisar tu informe crediticio regularmente para detectar y corregir cualquier error."
+  "respuesta": "Para mejorar tu puntaje crediticio, es importante que pagues tus deudas a tiempo, mantengas un bajo nivel de endeudamiento y no solicites demasiadas tarjetas de crédito. También es útil revisar tu informe crediticio regularmente para detectar y corregir cualquier error.",
+  "icon": "assets/image/asesoria/blogs/credito.png"
   },
   {
     "id": 2,
     "categoria":"ahorro",
     "pregunta": "¿Cómo puedo ahorrar dinero en mi presupuesto mensual?",
-    "respuesta": "Una forma de ahorrar dinero en tu presupuesto mensual es identificar gastos innecesarios y eliminarlos. También puedes buscar maneras de reducir tus facturas, como apagar los electrodomésticos que no estás usando y cambiar a proveedores de servicios más económicos."
+    "respuesta": "Una forma de ahorrar dinero en tu presupuesto mensual es identificar gastos innecesarios y eliminarlos. También puedes buscar maneras de reducir tus facturas, como apagar los electrodomésticos que no estás usando y cambiar a proveedores de servicios más económicos.",
+    "icon": "assets/image/asesoria/blogs/ahorro.png"
   },
   {
     "id": 3,
     "categoria":"inversion",
     "pregunta": "¿Cómo puedo invertir mi dinero de manera segura?",
-    "respuesta": "Para invertir tu dinero de manera segura, es importante diversificar tus inversiones y no poner todos tus huevos en una sola canasta. También es recomendable investigar cuidadosamente las oportunidades de inversión y buscar asesoramiento profesional si no estás seguro de qué hacer."
+    "respuesta": "Para invertir tu dinero de manera segura, es importante diversificar tus inversiones y no poner todos tus huevos en una sola canasta. También es recomendable investigar cuidadosamente las oportunidades de inversión y buscar asesoramiento profesional si no estás seguro de qué hacer.",
+    "icon": "assets/image/asesoria/blogs/inversion.png"
   },
   {
     "id": 4,
     "categoria":"retiro",
     "pregunta": "¿Cómo puedo planificar mi jubilación?",
-    "respuesta": "Para planificar tu jubilación, es importante comenzar a ahorrar tan pronto como sea posible y establecer metas de ahorro realistas. También debes considerar el tipo de estilo de vida que deseas tener después de la jubilación y calcular cuánto dinero necesitarás para lograrlo."
+    "respuesta": "Para planificar tu jubilación, es importante comenzar a ahorrar tan pronto como sea posible y establecer metas de ahorro realistas. También debes considerar el tipo de estilo de vida que deseas tener después de la jubilación y calcular cuánto dinero necesitarás para lograrlo.",
+    "icon": "assets/image/asesoria/blogs/retiro.png"
   },
   {
     "id": 5,
     "categoria":"credito",
     "pregunta": "¿Cómo puedo evitar caer en deudas?",
-    "respuesta": "Para evitar caer en deudas, es importante vivir dentro de tus posibilidades y no gastar más de lo que puedes permitirte. También es recomendable crear un presupuesto y seguirlo rigurosamente, y establecer un fondo de emergencia para cubrir cualquier gasto inesperado que pueda surgir."
+    "respuesta": "Para evitar caer en deudas, es importante vivir dentro de tus posibilidades y no gastar más de lo que puedes permitirte. También es recomendable crear un presupuesto y seguirlo rigurosamente, y establecer un fondo de emergencia para cubrir cualquier gasto inesperado que pueda surgir.",
+    "icon": "assets/image/asesoria/blogs/credito.png"
   },
   {
     "id": 6,
     "categoria":"seguridad",
     "pregunta": "¿Cómo puedo proteger mi identidad financiera?",
-    "respuesta": "Para proteger tu identidad financiera, es importante revisar regularmente tus estados de cuenta bancarios y de tarjetas de crédito para detectar cualquier actividad fraudulenta. También debes tener cuidado al compartir tu información personal en línea y utilizar contraseñas seguras."
+    "respuesta": "Para proteger tu identidad financiera, es importante revisar regularmente tus estados de cuenta bancarios y de tarjetas de crédito para detectar cualquier actividad fraudulenta. También debes tener cuidado al compartir tu información personal en línea y utilizar contraseñas seguras.",
+    "icon": "assets/image/asesoria/blogs/seguridad.png"
   },
   {
     "id": 7,
     "categoria":"seguridad",
     "pregunta": "¿Cómo puedo prepararme para una emergencia financiera?",
-    "respuesta": "Para prepararte para una emergencia financiera, es recomendable establecer un fondo de emergencia que contenga de tres a seis meses de tus gastos mensuales. También debes tener un plan de contingencia en caso de que pierdas tu trabajo o tengas una lesión o enfermedad que te impida trabajar."
+    "respuesta": "Para prepararte para una emergencia financiera, es recomendable establecer un fondo de emergencia que contenga de tres a seis meses de tus gastos mensuales. También debes tener un plan de contingencia en caso de que pierdas tu trabajo o tengas una lesión o enfermedad que te impida trabajar.",
+    "icon": "assets/image/asesoria/blogs/seguridad.png"
   },
   {
     "id": 8,
     "categoria":"credito",
     "pregunta": "¿Cómo puedo reducir mis deudas?",
-    "respuesta": "Para reducir tus deudas, es recomendable priorizar las deudas con tasas de interés más altas y hacer pagos adicionales cada mes. También puedes considerar consolidar tus deudas en un solo préstamo con una tasa de interés más baja."
+    "respuesta": "Para reducir tus deudas, es recomendable priorizar las deudas con tasas de interés más altas y hacer pagos adicionales cada mes. También puedes considerar consolidar tus deudas en un solo préstamo con una tasa de interés más baja.",
+    "icon": "assets/image/asesoria/blogs/credito.png"
   },
   {
     "id": 9,
     "categoria":"ahorro",
     "pregunta": "¿Cómo puedo mejorar mi capacidad de ahorro?",
-    "respuesta": "Para mejorar tu capacidad de ahorro, es importante establecer metas de ahorro realistas y seguir un presupuesto. También puedes considerar abrir una cuenta de ahorro automático que transfiera automáticamente una cantidad determinada de tu salario a tu cuenta de ahorros cada mes."
+    "respuesta": "Para mejorar tu capacidad de ahorro, es importante establecer metas de ahorro realistas y seguir un presupuesto. También puedes considerar abrir una cuenta de ahorro automático que transfiera automáticamente una cantidad determinada de tu salario a tu cuenta de ahorros cada mes.",
+    "icon": "assets/image/asesoria/blogs/ahorro.png"
   },
   {
     "id": 10,
     "categoria":"inversion",
     "pregunta": "¿Cómo puedo comenzar a invertir en el mercado de valores?",
-    "respuesta": "Antes de comenzar a invertir en el mercado de valores, es importante investigar y comprender los diferentes tipos de inversiones disponibles. También es recomendable establecer un presupuesto de inversión y buscar asesoramiento profesional si no estás seguro de qué hacer."
+    "respuesta": "Antes de comenzar a invertir en el mercado de valores, es importante investigar y comprender los diferentes tipos de inversiones disponibles. También es recomendable establecer un presupuesto de inversión y buscar asesoramiento profesional si no estás seguro de qué hacer.",
+    "icon": "assets/image/asesoria/blogs/inversion.png"
   }
 ]

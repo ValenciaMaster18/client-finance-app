@@ -3,4 +3,5 @@ export interface Blogs {
     categoria: string;
     pregunta: string;
     respuesta: string;
+    icon: string;
 }
