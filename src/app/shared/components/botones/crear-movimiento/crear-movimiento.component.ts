@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-crear-movimiento',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./crear-movimiento.component.scss']
 })
 export class CrearMovimientoComponent {
-
+  @Input() textBtn: string = '';
 }

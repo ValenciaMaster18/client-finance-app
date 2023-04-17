@@ -5,6 +5,7 @@ import { environmentDev } from 'src/environments/environment.development';
 import { MetricaPortafolio } from '../../model/domain/metricaportafolio.model';
 import { Portafolio } from '../../model/portafolio.model';
 import { Presupuesto } from '../../model/presupuesto.model';
+import { MetricaPresupuesto } from '../../model/domain/metricapresupuesto.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,11 +19,11 @@ export class PresupuestoService {
     this.API_URL = environmentDev.url + 'api/v1/presupuestos';
   }
 
-  getOneMetricas(idPresupuesto: number): Observable<MetricaPortafolio>{
-    return this.httpClient.get<MetricaPortafolio>(`${this.API_URL}/metricas/${idPresupuesto}`)
+  getOneMetricas(idPresupuesto: number): Observable<MetricaPresupuesto>{
+    return this.httpClient.get<MetricaPresupuesto>(`${this.API_URL}/metricas/${idPresupuesto}`)
   }
-  getManyMetricas(): Observable<MetricaPortafolio[]>{
-    return this.httpClient.get<MetricaPortafolio[]>(`${this.API_URL}/metricas`)
+  getManyMetricas(): Observable<MetricaPresupuesto>{
+    return this.httpClient.get<MetricaPresupuesto>(`${this.API_URL}/metricas`)
   }
   getPortafolio(): Observable<Portafolio[]>{
     return this.httpClient.get<Portafolio[]>(`${this.API_URL}`)

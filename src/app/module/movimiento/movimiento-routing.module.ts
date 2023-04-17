@@ -17,6 +17,9 @@ const routes: Routes = [
         path: '', redirectTo: 'metricas', pathMatch: 'full'
       }
     ]
+  },
+  {
+    path: '**', redirectTo: '' ,pathMatch: 'full'
   }
 ];
 

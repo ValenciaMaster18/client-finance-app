@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ChartModule } from 'primeng/chart';
 import { TableModule } from 'primeng/table'
-
+import { CarouselModule } from 'primeng/carousel';
+import { ButtonModule } from 'primeng/button';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -13,6 +14,7 @@ import { DoughnutComponent } from './components/doughnut/doughnut.component';
 import { ConsejoComponent } from './components/mensaje-consejo/consejo.component';
 import { CrearMovimientoComponent } from './components/botones/crear-movimiento/crear-movimiento.component';
 import { TablaMetMovientoComponent } from './components/tabla-met-moviento/tabla-met-moviento.component';
+import { TablaComponent } from './components/tabla-details-movimiento/tabla/tabla.component';
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -22,13 +24,16 @@ import { TablaMetMovientoComponent } from './components/tabla-met-moviento/tabla
     DoughnutComponent,
     ConsejoComponent,
     CrearMovimientoComponent,
-    TablaMetMovientoComponent
+    TablaMetMovientoComponent,
+    TablaComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     ChartModule,
-    TableModule
+    TableModule,
+    ButtonModule,
+    CarouselModule
     ],
   exports: [
     NavbarComponent,
@@ -39,7 +44,11 @@ import { TablaMetMovientoComponent } from './components/tabla-met-moviento/tabla
     ConsejoComponent,
     CrearMovimientoComponent,
     TablaMetMovientoComponent,
-    TableModule
+    ChartModule,
+    TableModule,
+    ButtonModule,
+    CarouselModule,
+    TablaComponent
   ]
 })
 export class SharedModule { }

@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="crear__presupuesto">
+    <app-crear-movimiento [textBtn]="'Crear presuspuesto'"></app-crear-movimiento>
+  </div>
+  <!-- DataGrafico.conceptos -->
+  <p-carousel [value]="data" [numVisible]="2" [numScroll]="3" [circular]="true"
+    [responsiveOptions]="responsiveOptionsGrafico" autoPlayInterval="3000">
+    <ng-template let-product pTemplate="item">
+      <div class="card-body" >
+        <p-chart type="bar" [data]="basicDataGrafico"></p-chart>
+        <!-- routerLink="/dashboard/presupuesto/detalles" -->
+        <button [routerLink]="'/dashboard/presupuesto/detalles/' + 1" class="learn-more">
+          <span class="circle" aria-hidden="true">
+          <span class="icon arrow"></span>
+          </span>
+          <span class="button-text">Presuspuesto detalles</span>
+        </button>
+      </div>
+    </ng-template>
+  </p-carousel>
+</div>
