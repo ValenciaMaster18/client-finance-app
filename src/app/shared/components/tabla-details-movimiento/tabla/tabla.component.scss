@@ -5,6 +5,12 @@ th{
   color: white !important;
   border-right: 1px solid white !important;
   text-align: center !important;
+  span{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+
+  }
 }
 
 td{
