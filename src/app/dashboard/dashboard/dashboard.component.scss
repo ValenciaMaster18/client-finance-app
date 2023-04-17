@@ -28,15 +28,16 @@ header {
   background-color: transparent;
   transition: all 0.5s ease-in-out;
   border-radius: 20px;
-  padding: 1.6rem 0rem;
+  margin-right: 20px;
 }
 
 header.sticky {
-  background-color: rgba(0, 0, 0, 0.049);
-  transform: translateY(-0.5rem);
-  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.149);
+  transform: translateY(-1.5rem);
+  z-index: 50;
 }
 main {
+  margin-top: 20px;
   width: 100%;
 }
 
@@ -58,7 +59,7 @@ footer {
     display: block;
   }
   header {
-    width: calc(100vw - 340px);
+    width: calc(100vw - 360px);
   }
   main {
     width: calc(100vw - 340px);

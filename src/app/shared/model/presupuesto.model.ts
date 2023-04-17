@@ -6,5 +6,5 @@ export interface Presupuesto {
   descripcion: string;
   periodo: string;
   idUsuario: number;
-  movimientos: Movimiento;
+  movimientos?: Movimiento[];
 }

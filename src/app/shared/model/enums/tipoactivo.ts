@@ -4,5 +4,5 @@ export enum TipoActivo{
   FONDOS_MUTUOS,
   MATERIAS_PRIMAS,
   CRIPTOMONEDAS,
-  OTROS
+  OTROS,
 }

@@ -8,14 +8,17 @@ section{
     height: 300px;
   }
   div.tabla{
+    margin-top: 40px;
+    margin-bottom: 60px;
     width: 100%;
     padding-right: 20px;
     position: relative;
-    margin-bottom: 60px;
     .btn__crear-movimiento{
       position: absolute;
       top: -45px;
       right: 20px;
+      display: flex;
+      gap: 8px;
     }
   }
 }

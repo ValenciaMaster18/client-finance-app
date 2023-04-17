@@ -11,6 +11,7 @@ import { Movimiento } from 'src/app/shared/model/movimiento.model';
   styleUrls: ['./crear-movimiento.component.scss']
 })
 export class CrearMovimientoComponent implements OnInit {
+  idPresupuesto!: number | null;
   tipo: string | null = '';
   selectedIngreso!: Categoria;
   aplicaDescuentoEspecifico: boolean = false;
@@ -32,7 +33,7 @@ export class CrearMovimientoComponent implements OnInit {
             {
               next: (value: ParamMap) => {
                 this.tipo = value.get("tipo");
-                console.log(this.tipo)
+                this.idPresupuesto = Number(value.get("idPresupuesto"));
               }
             }
           )
@@ -76,22 +77,41 @@ export class CrearMovimientoComponent implements OnInit {
   }
   onSubmit(): void {
     if (this.formulario.valid) {
-      const movimiento: Movimiento = {
-        id: null,
-        importe: this.formulario.value.importe,
-        tipo: this.tipo,
-        concepto: this.selectedIngreso.concepto,
-        idUsuario: null,
-        idPresupuesto: null,
-        contabilizable: true,
-        logoConcepto: String(this.selectedIngreso.id)
+      if (this.idPresupuesto == null) {
+        const movimiento: Movimiento = {
+          id: null,
+          importe: this.formulario.value.importe,
+          tipo: this.tipo,
+          concepto: this.selectedIngreso.concepto,
+          idUsuario: null,
+          idPresupuesto: this.idPresupuesto,
+          contabilizable: true,
+          logoConcepto: String(this.selectedIngreso.id)
+        }
+        // Cambiar el id por el del formulario
+        if (this.aplicaDescuentoEspecifico) {
+          this.idCuentaAhorroEspecifica = 1;
+        }
+        this._movimientoService.postMovimiento2(movimiento, this.aplicaDescuentoEspecifico, this.idCuentaAhorroEspecifica)
+          .subscribe()
+      } else if (this.idPresupuesto) {
+        const movimiento: Movimiento = {
+          id: null,
+          importe: this.formulario.value.importe,
+          tipo: this.tipo,
+          concepto: this.selectedIngreso.concepto,
+          idUsuario: null,
+          idPresupuesto: this.idPresupuesto,
+          contabilizable: false,
+          logoConcepto: String(this.selectedIngreso.id)
+        }
+        // Cambiar el id por el del formulario
+        if (this.aplicaDescuentoEspecifico) {
+          this.idCuentaAhorroEspecifica = 1;
+        }
+        this._movimientoService.postMovimiento2(movimiento, this.aplicaDescuentoEspecifico, this.idCuentaAhorroEspecifica)
+          .subscribe()
       }
-      // Cambiar el id por el del formulario
-      if (this.aplicaDescuentoEspecifico){
-        this.idCuentaAhorroEspecifica = 1;
-      }
-      this._movimientoService.postMovimiento2(movimiento, this.aplicaDescuentoEspecifico, this.idCuentaAhorroEspecifica)
-        .subscribe()
     } else {
       //
     }

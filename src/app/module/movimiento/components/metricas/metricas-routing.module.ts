@@ -18,6 +18,9 @@ const routes: Routes = [
         path: 'crear-movimiento/:tipo', component: CrearMovimientoComponent
       },
       {
+        path: 'crear-movimiento/:tipo/:idPresupuesto', component: CrearMovimientoComponent
+      },
+      {
         path: '', redirectTo: 'ingresos' , pathMatch: 'full'
       }
     ]

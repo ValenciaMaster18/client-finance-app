@@ -33,10 +33,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.mostrarCarga = true;
     // Cargamos los servicios
-    this.subscription = this._movimientoService.getMovimiento(0, 9, 1).subscribe()
-    this.subscription = this._portafolioService.getPortafolio(0, 9).subscribe()
-    this.subscription = this._inversionService.getPageInversiones(0, 9, 1).subscribe()
-    this.subscription = this._presupuestoService.getPagePresupuesto(0, 9).subscribe()
+    // this.subscription = this._movimientoService.getMovimiento(0, 9, 1).subscribe()
+    // this.subscription = this._portafolioService.getPortafolio(0, 9).subscribe()
+    // this.subscription = this._inversionService.getPageInversiones(0, 9, 1).subscribe()
+    // this.subscription = this._presupuestoService.getPagePresupuesto(0, 9).subscribe()
 
     // Calcula el tamaño de la ventana y aplica el estado del menú desplegable
     this.screenWidth = window.innerWidth;
@@ -51,11 +51,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
   @HostListener('window:scroll', ['$event'])
   checkScroll() {
     const scrollPosition = window.pageYOffset;
-    if (scrollPosition >= 160) {
+    if (scrollPosition >= 80) {
       this.isSticky = true;
     } else {
       this.isSticky = false;
     }
+    console.log(scrollPosition)
   }
 
   @HostListener('window:resize', ['$event'])

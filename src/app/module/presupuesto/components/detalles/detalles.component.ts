@@ -13,6 +13,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 export class DetallesComponent implements OnInit {
   dataMetricaPresupuesto!: MetricaPresupuesto;
   dataMovimientoTable!: Movimiento[];
+  mensaje: string = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry';
   dataMovimiento!: any[]
   basicData: any;
   basicOptions: any;

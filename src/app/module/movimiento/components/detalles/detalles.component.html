@@ -4,8 +4,9 @@
   </div>
   <div class="tabla">
     <app-tabla [dataMovimiento]="dataMovimiento"></app-tabla>
-    <div class="btn__crear-movimiento" routerLink="/dashboard/movimiento/metricas/crear-movimiento/ingreso">
-      <app-crear-movimiento [textBtn]="'Crear movimiento'"></app-crear-movimiento>
+    <div class="btn__crear-movimiento">
+      <app-csv-descargar></app-csv-descargar>
+      <app-crear-movimiento routerLink="/dashboard/movimiento/metricas/crear-movimiento/ingreso" [textBtn]="'Crear movimiento'"></app-crear-movimiento>
     </div>
   </div>
 </section>

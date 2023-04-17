@@ -6,13 +6,15 @@ import { PresupuestoComponent } from './pages/presupuesto.component';
 import { MetricasComponent } from './components/metricas/metricas.component';
 import { DetallesComponent } from './components/detalles/detalles.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { FormPresupuestoComponent } from './crear-presupuesto/form-presupuesto/form-presupuesto.component';
 
 
 @NgModule({
   declarations: [
     PresupuestoComponent,
     MetricasComponent,
-    DetallesComponent
+    DetallesComponent,
+    FormPresupuestoComponent
   ],
   imports: [
     CommonModule,

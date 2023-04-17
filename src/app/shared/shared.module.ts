@@ -15,6 +15,7 @@ import { ConsejoComponent } from './components/mensaje-consejo/consejo.component
 import { CrearMovimientoComponent } from './components/botones/crear-movimiento/crear-movimiento.component';
 import { TablaMetMovientoComponent } from './components/tabla-met-moviento/tabla-met-moviento.component';
 import { TablaComponent } from './components/tabla-details-movimiento/tabla/tabla.component';
+import { CsvDescargarComponent } from './components/botones/descargar-csv/csv-descargar/csv-descargar.component';
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -25,7 +26,8 @@ import { TablaComponent } from './components/tabla-details-movimiento/tabla/tabl
     ConsejoComponent,
     CrearMovimientoComponent,
     TablaMetMovientoComponent,
-    TablaComponent
+    TablaComponent,
+    CsvDescargarComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +50,8 @@ import { TablaComponent } from './components/tabla-details-movimiento/tabla/tabl
     TableModule,
     ButtonModule,
     CarouselModule,
-    TablaComponent
+    TablaComponent,
+    CsvDescargarComponent
   ]
 })
 export class SharedModule { }
