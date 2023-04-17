@@ -1,0 +1,25 @@
+<section class="contenedor__formulario">
+  <div class="borde">
+  </div>
+  <div class="titulo">
+    <h2>
+      Crear Presupuesto
+    </h2>
+    <span>Formulario para creacion de presupuestos</span>
+  </div>
+  <form [formGroup]="formulario" (ngSubmit)="submit()">
+
+    <input type="text" placeholder="Nombre Presupuesto">
+    <textarea name="" id="" cols="5" rows="7"></textarea>
+    <select formControlName="periodo">
+      <option [value]="per" *ngFor="let per of periodo">
+        {{ per }}
+      </option>
+    </select>
+    <button>Crear Presupuesto</button>
+    <span>
+      I accept terms & conditions
+    </span>
+  </form>
+
+</section>

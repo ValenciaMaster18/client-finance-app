@@ -5,6 +5,6 @@ export interface Presupuesto {
   nombre: string;
   descripcion: string;
   periodo: string;
-  idUsuario: number;
+  idUsuario: number | null;
   movimientos?: Movimiento[];
 }
