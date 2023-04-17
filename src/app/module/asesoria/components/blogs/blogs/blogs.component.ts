@@ -9,6 +9,7 @@ import { BlogService } from 'src/app/shared/services/asesoria/blog/blog.service'
   styleUrls: ['./blogs.component.scss']
 })
 export class BlogsComponent implements OnInit, OnDestroy {
+  categoria: string = '';
   jsonBlogs!: Blogs[];
   subscription: Subscription;
   constructor( private _blogService: BlogService ){

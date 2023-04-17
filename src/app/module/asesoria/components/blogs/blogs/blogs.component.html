@@ -8,17 +8,23 @@
         </a>
 
     </div>
+    <div class="filtro">
+        <input type="text" [(ngModel)]="categoria" placeholder="Buscar categoria pregunta">
+    </div>
+
     <section class="contenedor">
         <!-- -->
-        <div class="contenedor__blogs" *ngFor="let item of jsonBlogs; let i = index" >
-            <picture class="contenedor__blogs-img">
-                <img [src]="item.icon" alt="">
-            </picture>
-            <div class="contenedor__blogs-texto">
-                <span>{{ item.categoria }}</span>
-                <h2 class="contenedor__blogs-title">{{ item.pregunta }}</h2>
-                <p class="contenedor__blogs-text">{{ item.respuesta }}</p>
-            </div>
+        <div class="contenedor__blogs" *ngFor="let item of jsonBlogs; let i = index">
+            <ng-container *ngIf="categoria == item.categoria || categoria == ''">
+                <picture class="contenedor__blogs-img">
+                    <img [src]="item.icon" alt="">
+                </picture>
+                <div class="contenedor__blogs-texto">
+                    <span>{{ item.categoria }}</span>
+                    <h2 class="contenedor__blogs-title">{{ item.pregunta }}</h2>
+                    <p class="contenedor__blogs-text">{{ item.respuesta }}</p>
+                </div>
+            </ng-container>
         </div>
     </section>
 </section>
