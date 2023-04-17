@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ObjetivoRoutingModule } from './objetivo-routing.module';
 import { ObjetivoComponent } from './components/objetivo/objetivo.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { ObjetivoComponent } from './components/objetivo/objetivo.component';
   ],
   imports: [
     CommonModule,
-    ObjetivoRoutingModule
+    ObjetivoRoutingModule,
+    SharedModule
   ]
 })
 export class ObjetivoModule { }

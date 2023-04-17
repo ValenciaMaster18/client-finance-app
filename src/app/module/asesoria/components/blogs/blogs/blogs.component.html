@@ -1,0 +1,25 @@
+<section class="blog">
+    <div class="btn__asesoria">
+        <a routerLink="/dashboard/asesoria/asesor">
+            <button class="asesoria" >
+                Asistente Virtual
+                <img src="../../../../../../assets/gif/asesoria/logo.png" alt="">
+            </button>
+        </a>
+
+    </div>
+    <section class="contenedor">
+        <!-- -->
+        <div class="contenedor__blogs" *ngFor="let item of jsonBlogs; let i = index" >
+            <picture class="contenedor__blogs-img">
+                <!-- <img src="" alt=""> -->
+                <div></div>
+            </picture>
+            <div class="contenedor__blogs-texto">
+                <span>{{ item.categoria }}</span>
+                <h2 class="contenedor__blogs-title">{{ item.pregunta }}</h2>
+                <p class="contenedor__blogs-text">{{ item.respuesta }}</p>
+            </div>
+        </div>
+    </section>
+</section>

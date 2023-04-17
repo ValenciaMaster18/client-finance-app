@@ -1,1 +1,26 @@
-<p>objetivo works!</p>
+<p-carousel [value]="data" [numVisible]="2" [numScroll]="3" [circular]="true"
+[responsiveOptions]="responsiveOptionsGrafico" autoPlayInterval="3000">
+<ng-template let-product pTemplate="item">
+  <div class="card-body" >
+    <div class="card">
+      <div class="datos">
+        <h2>Lorem ipsum dolor sit amet.</h2>
+        <p>Lorem, ipsum dolor.</p>
+        <!-- <span>1000</span> -->
+      </div>
+      <div class="btn">
+        <button>
+          <picture>
+            <img src="../../../../../assets/image/icons/alto.png" alt="">
+          </picture>
+        </button>
+        <button>
+          <picture>
+            <img src="../../../../../assets/image/icons/bajo.png" alt="">
+          </picture>
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+</p-carousel>

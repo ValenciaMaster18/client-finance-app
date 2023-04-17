@@ -2,6 +2,7 @@ import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { InversionService } from 'src/app/shared/services/inversiones/inversion.service';
 import { MovimientoService } from 'src/app/shared/services/movimientos/movimiento.service';
+import { ObjetivosService } from 'src/app/shared/services/objetivos/objetivos.service';
 import { PortafolioService } from 'src/app/shared/services/portafolios/portafolio.service';
 import { PresupuestoService } from 'src/app/shared/services/presupuestos/presupuesto.service';
 
@@ -23,6 +24,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     private _portafolioService: PortafolioService,
     private _inversionService: InversionService,
     private _presupuestoService: PresupuestoService,
+    private _objetivosService: ObjetivosService
 
   ) {
     this.subscription = new Subscription();
@@ -37,6 +39,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     // this.subscription = this._portafolioService.getPortafolio(0, 9).subscribe()
     // this.subscription = this._inversionService.getPageInversiones(0, 9, 1).subscribe()
     // this.subscription = this._presupuestoService.getPagePresupuesto(0, 9).subscribe()
+    // this.subscription = this._objetivosService.getPageObjetivo(0, 9, 1).subscribe()
 
     // Calcula el tamaño de la ventana y aplica el estado del menú desplegable
     this.screenWidth = window.innerWidth;
