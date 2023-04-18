@@ -41,6 +41,6 @@ export class InversionService {
     return this.httpClient.put<any>(`${this.API_URL}`, inversiones)
   }
   pathInversiones(inversiones: Inversiones): Observable<any> {
-    return this.httpClient.patch<any>(`${this.API_URL}/liquidar-inversion/${inversiones.id}`, inversiones)
+    return this.httpClient.patch<any>(`${this.API_URL}/liquidar-inversion`, inversiones)
   }
 }
