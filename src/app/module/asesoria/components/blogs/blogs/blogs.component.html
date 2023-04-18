@@ -1,15 +1,23 @@
 <section class="blog">
   <div class="btn__asesoria">
+
+    <div class="input-wrapper">
+      <button class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="25px" width="25px">
+          <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="#fff"
+            d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z">
+          </path>
+          <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="#fff" d="M22 22L20 20"></path>
+        </svg>
+      </button>
+      <input placeholder="Buscar categoria" class="input" name="text" type="text" [(ngModel)]="categoria">
+    </div>
+
     <a routerLink="/dashboard/asesoria/asesor">
       <button class="asesoria">
-        Asistente Virtual
         <img src="../../../../../../assets/gif/asesoria/logo.png" alt="">
       </button>
     </a>
-
-  </div>
-  <div class="filtro">
-    <input type="text" [(ngModel)]="categoria" placeholder="Buscar categoria pregunta">
   </div>
 
   <section class="contenedor">
@@ -17,7 +25,8 @@
       No se encontraron resultados para la categoría seleccionada.
     </div> -->
 
-    <div class="contenedor__blogs" *ngFor="let item of jsonBlogs; let i = index" [class.hide]="categoria != item.categoria && categoria != ''">
+    <div class="contenedor__blogs" *ngFor="let item of jsonBlogs; let i = index"
+      [class.hide]="categoria != item.categoria && categoria != ''">
       <picture class="contenedor__blogs-img">
         <img [src]="item.icon" alt="">
       </picture>

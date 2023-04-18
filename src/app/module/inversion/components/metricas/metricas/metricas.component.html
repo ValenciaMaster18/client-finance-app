@@ -1,0 +1,21 @@
+<section>
+  <p-carousel [value]="data" [numVisible]="2" [numScroll]="3" [circular]="true"
+    [responsiveOptions]="responsiveOptionsGrafico" autoPlayInterval="3000">
+    <ng-template let-product pTemplate="item">
+
+      <div class="card">
+        <span class="ganancia__esperada">39,500</span>
+        <span class="rentabilidad__promedio">90%</span>
+        <picture class="contenedor__card-img">
+          <img src="../../../../../../assets/image/inversiones/logo.png" alt="">
+        </picture>
+        <p>32,500</p>
+        <span>Alto</span>
+        <button routerLink="/dashboard/inversion/detalles/4">
+          Ver detalles de la inversion
+        </button>
+      </div>
+    </ng-template>
+  </p-carousel>
+
+</section>

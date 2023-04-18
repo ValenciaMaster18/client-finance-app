@@ -1,0 +1,198 @@
+.contenedor {
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.contenedor {
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.contenedor__card {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+
+  .contenedor__card-tarjeta {
+    width: 217px;
+    height: 137px;
+    border-radius: 15px;
+    padding: 5px;
+    padding-right: 10px;
+    background-color: white;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.1);
+
+    .contenedor__card-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 15px;
+      background-color: #2780EA;
+      position: absolute;
+      top: -25px;
+      left: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .contenedor__card-data {
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+
+      p {
+        font-size: 1.5rem;
+      }
+
+      span {
+        font-size: 3rem;
+        font-weight: 700px;
+        color: #344767;
+      }
+    }
+
+    button.btn__consejo {
+      position: absolute;
+      right: 15px;
+      bottom: 15px;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: 0;
+      background-color: #3E98EF;
+      cursor: pointer;
+    }
+
+    button.btn__consejo {
+      width: 30px;
+      height: 30px;
+      left: 10px;
+      bottom: 5px;
+      background-color: transparent;
+    }
+  }
+}
+
+button.btn__consejo {
+  .consejo {
+    display: none;
+    position: absolute;
+    z-index: 30;
+  }
+}
+
+button.btn__consejo:hover div.consejo {
+  display: block;
+}
+
+// tabla
+.tabla {
+  margin-top: 40px;
+  width: 100%;
+  padding-right: 10px;
+  position: relative;
+  margin-bottom: 60px;
+
+  .btn__crear-presupuesto {
+    position: absolute;
+    top: -45px;
+    right: 10px;
+    display: flex;
+    gap: 8px;
+  }
+
+  button {
+    color: white;
+    background-color: red;
+    width: 200px;
+    border: 0;
+    height: 40px;
+    cursor: pointer;
+  }
+}
+
+th {
+  font-size: 1.7rem;
+  background-color: #3E98EF !important;
+  color: white !important;
+  border-right: 1px solid white !important;
+  text-align: center !important;
+
+  span {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+
+  }
+}
+
+td {
+  font-size: 1.4rem;
+  text-align: center !important;
+}
+
+// dialog
+
+.dialog {
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 50;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  div {
+    width: 50%;
+    background-color: white;
+    padding: 20px 42px;
+    box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.1);
+    position: relative;
+
+    button.close {
+      border: 0;
+      background-color: transparent;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+    }
+
+    form.form__dialog {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+
+      input {
+        width: 100%;
+        height: 40px;
+        padding-left: 20px;
+        font-size: 1.4rem;
+        background-color: white;
+        border: 2px solid #4B66B5;
+        outline: none;
+      }
+
+      button {
+        height: 40px;
+        width: 100%;
+        border: 0;
+        background-color: #4B66B5;
+        color: white;
+      }
+    }
+  }
+
+}

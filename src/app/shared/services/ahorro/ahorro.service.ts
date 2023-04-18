@@ -18,18 +18,21 @@ export class AhorroService {
     this.API_URL = environmentDev.url + 'api/v1/ahorros';
   }
 
-  getOneMetricas(): Observable<MetricaAhorros> {
-    return this.httpClient.get<MetricaAhorros>(`${this.API_URL}`)
+  getOneMetricas(idAhorro: number): Observable<MetricaAhorros> {
+    return this.httpClient.get<MetricaAhorros>(`${this.API_URL}/metricas/${idAhorro}`)
   }
-  getOneAhorro(idAhorro: number): Observable<Ahorro>{
-    return this.httpClient.get<Ahorro>(`${this.API_URL}/${idAhorro}`)
+  getManyMetricas(): Observable<MetricaAhorros> {
+    return this.httpClient.get<MetricaAhorros>(`${this.API_URL}/metricas`)
+  }
+  getOneAhorro(): Observable<Ahorro>{
+    return this.httpClient.get<Ahorro>(`${this.API_URL}/metricas`)
   }
   getAhorrosAutomaticos(idAhorro: number): Observable<Ahorro>{
     const params = { idAhorro: idAhorro }
     return this.httpClient.get<Ahorro>(`${this.API_URL}/ahorros-automaticos`, { params })
   }
-  getAhorro(page: number, size: number): Observable<Ahorro[]> {
-    return this.httpClient.get<Ahorro[]>(`${this.API_URL}?page=${page}&size=${size}`)
+  getAhorro(idUser: number, page: number, size: number): Observable<Ahorro[]> {
+    return this.httpClient.get<Ahorro[]>(`${this.API_URL}?idUser=${idUser}& page=${page}&size=${size}`)
       .pipe(
         tap((value: Ahorro[]) => {
           this.ahorroSubject.next(value);
