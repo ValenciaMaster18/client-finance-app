@@ -1,26 +1,65 @@
-<p-carousel [value]="data" [numVisible]="2" [numScroll]="3" [circular]="true"
-[responsiveOptions]="responsiveOptionsGrafico" autoPlayInterval="3000">
-<ng-template let-product pTemplate="item">
-  <div class="card-body" >
-    <div class="card">
-      <div class="datos">
-        <h2>Lorem ipsum dolor sit amet.</h2>
-        <p>Lorem, ipsum dolor.</p>
-        <!-- <span>1000</span> -->
+<section class="carrusel">
+  <p-carousel [value]="data" [numVisible]="2" [numScroll]="3" [circular]="true"
+    [responsiveOptions]="responsiveOptionsGrafico" autoPlayInterval="3000">
+    <ng-template let-product pTemplate="item">
+      <div class="contenedor__objetivos">
+        <picture class="contenedor__objetivos-img">
+          <img src="../../../../../assets/image/objetivos/objetivos.png" alt="">
+        </picture>
+        <div class="contenedor__objetivos-body">
+          <h2>Betplay</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, quae.</p>
+          <div class="monto">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="green" class="bi bi-caret-up-fill"
+              viewBox="0 0 16 16">
+              <path
+                d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
+            </svg>
+            <p>
+              Candidad dinero:
+            </p>
+            <span>$12000</span>
+          </div>
+          <button class="consejo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="green"
+              class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+              <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
+            </svg>
+          </button>
+          <button class="consejo agregar" (click)="showDialog()">
+            <span>
+              Añadir objetivo
+            </span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#87b7ff" class="bi bi-plus-circle-fill"
+              viewBox="0 0 16 16">
+              <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+            </svg>
+          </button>
+        </div>
       </div>
-      <div class="btn">
-        <button>
-          <picture>
-            <img src="../../../../../assets/image/icons/alto.png" alt="">
-          </picture>
-        </button>
-        <button>
-          <picture>
-            <img src="../../../../../assets/image/icons/bajo.png" alt="">
-          </picture>
-        </button>
-      </div>
-    </div>
+    </ng-template>
+  </p-carousel>
+
+</section>
+<div class="dialogoEnviar" *ngIf="visible">
+  <div>
+    <button class="close" (click)="showDialog()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x"
+        viewBox="0 0 16 16">
+        <path
+          d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+      </svg>
+    </button>
+    <h2>Formulario Para crear un ahorro</h2>
+    <form>
+      <input type="text" placeholder="Nombre del ahorro">
+      <textarea name="" id="" cols="30" rows="5" placeholder="Descripcion de ahorro"></textarea>
+      <input type="datetime-local" placeholder="transferencia a diponible">
+      <input type="number" placeholder="Monto del ahorro. ej: 2000">
+
+      <button>Enviar</button>
+    </form>
   </div>
-</ng-template>
-</p-carousel>
+</div>

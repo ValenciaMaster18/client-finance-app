@@ -44,6 +44,8 @@
     align-items: center;
     gap: 20px;
 
+
+
     .contenedor__blogs-img {
       img {
         width: 50px;
@@ -90,7 +92,9 @@
     font-size: 1.4rem;
   }
 }
-
+.hide {
+  display: none !important;
+}
 @media screen and (min-width: 998px) {
   .contenedor {
     grid-template-columns: repeat(2, 1fr);

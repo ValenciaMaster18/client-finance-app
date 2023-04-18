@@ -5,6 +5,7 @@ import { ChartModule } from 'primeng/chart';
 import { TableModule } from 'primeng/table'
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -35,7 +36,8 @@ import { CsvDescargarComponent } from './components/botones/descargar-csv/csv-de
     ChartModule,
     TableModule,
     ButtonModule,
-    CarouselModule
+    CarouselModule,
+    DialogModule
     ],
   exports: [
     NavbarComponent,
@@ -50,6 +52,7 @@ import { CsvDescargarComponent } from './components/botones/descargar-csv/csv-de
     TableModule,
     ButtonModule,
     CarouselModule,
+    DialogModule,
     TablaComponent,
     CsvDescargarComponent
   ]

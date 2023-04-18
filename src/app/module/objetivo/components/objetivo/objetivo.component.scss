@@ -1,50 +1,171 @@
-.card-body {
-    display: flex;
-    gap: 20px;
+.carrusel {
+  width: 100%;
+  padding: 0 32px;
+}
 
-    .card {
-        margin: auto;
-        display: flex;
-        width: 350px;
-        background-color: white;
-        box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.1);
-        height: 137px;
-        border-radius: 20px;
-        padding: 20px 32px;
+.contenedor__objetivos {
+  margin: auto;
+  width: 320px;
+  position: relative;
+  padding: 20px 20px 40px 48px;
+  box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.1);
 
-        .datos {
-            width: 80%;
-            h2{
-                font-size: 1.6rem;
-            }
-            p{
-                font-size: 1.2rem;
-            }
-            span{
-                font-size: 1rem;
-                font-weight: 700;
+  .contenedor__objetivos-img {
+    position: absolute;
+    background-color: #F1F2F4;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    top: 20px;
+    left: -40px;
 
-            }
-        }
-
-        .btn {
-            width: 20%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-
-            button {
-                border: 0;
-                background-color: transparent;
-                height: 40px;
-
-                picture {
-                    img {
-                        width: 40px;
-                        height: 38px;
-                    }
-                }
-            }
-        }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
+  }
+
+  .contenedor__objetivos-body {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    h2 {
+      text-align: end;
+      font-size: 1.9rem;
+    }
+
+    p {
+      font-size: 1.4rem;
+    }
+
+    .monto {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 5px;
+
+      p {
+        font-size: 1.4rem;
+      }
+
+      span {
+        font-size: 1.6rem;
+        font-weight: 700;
+      }
+    }
+
+    button.consejo {
+      position: absolute;
+      right: 15px;
+      bottom: 15px;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: 0;
+      cursor: pointer;
+    }
+
+    button.consejo {
+      width: 30px;
+      height: 30px;
+      bottom: 10px;
+      left: 10px;
+      background-color: transparent;
+    }
+
+    button.agregar {
+      left: 40px;
+
+      span {
+        position: absolute;
+        display: inline-block;
+        width: 120px;
+        left: 40px;
+        padding: 0.5rem;
+        border-radius: 8px;
+        font-size: 1.4rem;
+        background-color: #73a9fb;
+        color: white;
+        font-weight: 700;
+        opacity: 0;
+        transition: all 300ms ease-in-out;
+      }
+
+      &:hover span {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// Dialogo
+.dialogoEnviar {
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 50;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  div {
+    width: 420px;
+    background-color: white;
+    padding: 20px 42px;
+    box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.1);
+    position: relative;
+
+    button.close {
+      border: 0;
+      background-color: transparent;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2.2rem;
+    }
+
+    form {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+
+      input {
+        width: 100%;
+        height: 40px;
+        padding-left: 20px;
+        font-size: 1.4rem;
+        background-color: white;
+        border: 2px solid rgba(128, 128, 128, 0.425);
+        outline: none;
+      }
+
+      textarea {
+        width: 100%;
+        padding-top: 10px;
+        padding-left: 20px;
+        font-size: 1.4rem;
+        background-color: white;
+        border: 2px solid rgba(128, 128, 128, 0.425);
+        outline: none;
+      }
+
+      button {
+        height: 40px;
+        width: 100%;
+        border: 0;
+        background-color: #3E98EF;
+        color: white;
+      }
+    }
+  }
 }

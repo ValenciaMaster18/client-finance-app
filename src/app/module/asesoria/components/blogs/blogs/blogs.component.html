@@ -1,30 +1,31 @@
 <section class="blog">
-    <div class="btn__asesoria">
-        <a routerLink="/dashboard/asesoria/asesor">
-            <button class="asesoria" >
-                Asistente Virtual
-                <img src="../../../../../../assets/gif/asesoria/logo.png" alt="">
-            </button>
-        </a>
+  <div class="btn__asesoria">
+    <a routerLink="/dashboard/asesoria/asesor">
+      <button class="asesoria">
+        Asistente Virtual
+        <img src="../../../../../../assets/gif/asesoria/logo.png" alt="">
+      </button>
+    </a>
 
-    </div>
-    <div class="filtro">
-        <input type="text" [(ngModel)]="categoria" placeholder="Buscar categoria pregunta">
-    </div>
+  </div>
+  <div class="filtro">
+    <input type="text" [(ngModel)]="categoria" placeholder="Buscar categoria pregunta">
+  </div>
 
-    <section class="contenedor">
-        <!-- -->
-        <div class="contenedor__blogs" *ngFor="let item of jsonBlogs; let i = index">
-            <ng-container *ngIf="categoria == item.categoria || categoria == ''">
-                <picture class="contenedor__blogs-img">
-                    <img [src]="item.icon" alt="">
-                </picture>
-                <div class="contenedor__blogs-texto">
-                    <span>{{ item.categoria }}</span>
-                    <h2 class="contenedor__blogs-title">{{ item.pregunta }}</h2>
-                    <p class="contenedor__blogs-text">{{ item.respuesta }}</p>
-                </div>
-            </ng-container>
-        </div>
-    </section>
+  <section class="contenedor">
+    <!-- <div class="mensaje" *ngIf="jsonBlogs.length == 0 || (jsonBlogs | filter: {categoria: categoria}).length == 0">
+      No se encontraron resultados para la categoría seleccionada.
+    </div> -->
+
+    <div class="contenedor__blogs" *ngFor="let item of jsonBlogs; let i = index" [class.hide]="categoria != item.categoria && categoria != ''">
+      <picture class="contenedor__blogs-img">
+        <img [src]="item.icon" alt="">
+      </picture>
+      <div class="contenedor__blogs-texto">
+        <span>{{ item.categoria }}</span>
+        <h2 class="contenedor__blogs-title">{{ item.pregunta }}</h2>
+        <p class="contenedor__blogs-text">{{ item.respuesta }}</p>
+      </div>
+    </div>
+  </section>
 </section>

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AhorrosRoutingModule } from './ahorros-routing.module';
 import { AhorroComponent } from './components/ahorro/ahorro.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +12,9 @@ import { AhorroComponent } from './components/ahorro/ahorro.component';
   ],
   imports: [
     CommonModule,
-    AhorrosRoutingModule
+    AhorrosRoutingModule,
+    SharedModule
+
   ]
 })
 export class AhorrosModule { }

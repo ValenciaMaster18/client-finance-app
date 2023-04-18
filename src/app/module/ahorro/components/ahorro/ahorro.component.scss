@@ -1,0 +1,150 @@
+.carrusel {
+  padding: 0 32px;
+}
+
+.card-body {
+  display: flex;
+  gap: 10px;
+
+  .card {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 32px 20px;
+    width: 240px;
+    height: 300px;
+    background-color: #4B66B5;
+    box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.1);
+    position: relative;
+
+    .datos {
+      width: 100%;
+
+      h2 {
+        text-align: center;
+        font-size: 1.7rem;
+        color: white;
+      }
+
+      p {
+        text-align: center;
+        font-size: 1.4rem;
+        color: white;
+      }
+
+      span {
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: 4rem;
+        font-weight: 700;
+        color: white;
+      }
+    }
+
+    .btn {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+
+      button {
+        border: 0;
+        background-color: transparent;
+        height: 40px;
+        cursor: pointer;
+        transition: all 0.5s ease-in-out;
+
+        &:hover {
+          transform: translateY(-5px);
+        }
+
+        picture {
+          img {
+            width: 40px;
+            height: 38px;
+          }
+        }
+      }
+    }
+
+    button.consejo {
+      position: absolute;
+      right: 15px;
+      bottom: 15px;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: 0;
+      cursor: pointer;
+    }
+
+    button.consejo {
+      width: 30px;
+      height: 30px;
+      top: 10px;
+      left: 10px;
+      background-color: transparent;
+    }
+  }
+}
+
+// Dialogo
+.dialogoEnviar {
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 50;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  div {
+    width: 50%;
+    background-color: white;
+    padding: 20px 42px;
+    box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.1);
+    position: relative;
+
+    button.close {
+      border: 0;
+      background-color: transparent;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+    }
+
+    form {
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+
+      h2 {
+        font-size: 1.7rem;
+      }
+
+      input {
+        width: 80%;
+        height: 40px;
+        padding-left: 20px;
+        font-size: 1.4rem;
+        background-color: white;
+        border: 2px solid #4B66B5;
+        outline: none;
+      }
+
+      button {
+        height: 40px;
+        width: 20%;
+        border: 0;
+        background-color: #4B66B5;
+        color: white;
+      }
+    }
+  }
+}
