@@ -1,0 +1,121 @@
+section {
+  background-color: #343541;
+  width: 95%;
+  height: 700px;
+  padding: 60px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 60px;
+  border-radius: 10px;
+  .titulo{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    top: 0;
+    left: 30px;
+    picture{
+      img{
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+  svg{
+    position: absolute;
+    top: 10px;
+    right: 30px;
+  }
+  div.caja__dialog {
+    width: 100%;
+    height: 90%;
+    overflow-y: scroll;
+    color: white;
+    font-size: 1.4rem;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    .card{
+      width: 100%;
+      padding: 10px 30px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 18px;
+      p{
+        text-align: justify;
+      }
+      picture{
+        img{
+          width: 32px;
+          height: 32px;
+        }
+      }
+      &:nth-child(odd) {
+        background-color: transparent;
+      }
+
+      &:nth-child(even) {
+        background-color: #444654;
+      }
+    }
+  }
+
+  div.form {
+    position: relative;
+    padding: 0 24px;
+    input {
+      width: 100%;
+      height: 40px;
+      background-color: #40404E;
+      border: 0;
+      border-radius: 8px;
+      padding-left: 20px;
+      outline: none;
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    button {
+      position: absolute;
+      z-index: 50;
+      top: 5px;
+      right: 20px;
+      border: 0;
+      background-color: transparent;
+      cursor: pointer;
+
+      svg {
+        transition: all .5s ease-in-out;
+        &:hover {
+          transform: translate(3px, -3px);
+          transform: translate();
+          fill: white;
+        }
+      }
+
+    }
+  }
+}
+// Barra de scroll
+.caja__dialog::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+.caja__dialog::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+  display: none;
+}
+.caja__dialog::-webkit-scrollbar:horizontal {
+  height: 8px;
+}
+.caja__dialog::-webkit-scrollbar-thumb {
+  background-color: #797979;
+  border-radius: 20px;
+}
+
+.caja__dialog::-webkit-scrollbar-track {
+  border-radius: 10px;
+}

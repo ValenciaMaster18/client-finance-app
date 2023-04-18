@@ -14,9 +14,12 @@ const routes: Routes = [
         path: 'asesor', component: AsesorComponent
       },
       {
-        path: '', redirectTo: 'blogs', pathMatch: 'full'
+        path: '**', redirectTo: 'blogs', pathMatch: 'full'
       }
     ]
+  },
+  {
+    path: '', redirectTo: 'blogs', pathMatch: 'full'
   }
 ];
 
