@@ -20,8 +20,8 @@ export class ObjetivosService {
   ) {
     this.API_URL = environmentDev.url + '/api/v1/objetivos';
   }
-  getObjetivo(idObjetivo: number): Observable<Objetivo> {
-    return this.httpClient.get<Objetivo>(`${this.API_URL}/has-objetivo/${idObjetivo}`)
+  getObjetivo(idObjetivo: number): Observable<boolean> {
+    return this.httpClient.get<boolean>(`${this.API_URL}/has-objetivo/${idObjetivo}`)
   }
   getHasObjetivo(idUsuario: number): Observable<boolean> {
     return this.httpClient.get<boolean>(`${this.API_URL}/${idUsuario}`).pipe(
