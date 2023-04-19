@@ -1,1 +1,185 @@
-<p>crear-inversion works!</p>
+<section class="contenedor">
+  <form [formGroup]="formulario" (ngSubmit)="submit()">
+    <header>
+      <h2>
+        Crear una nueva inversion
+        <button class="consejo">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#4193ff"
+            class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+            <path
+              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
+          </svg>
+        </button>
+      </h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+
+    </header>
+    <div class="contenedor__campos">
+      <label for="">Nombre Portafolio
+        <button class="consejo__label">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4193ff"
+            class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+            <path
+              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
+          </svg>
+        </button>
+      </label>
+      <select formControlName="nombrePortafolio">
+        <option [value]="portafolio" *ngFor="let portafolio of nombrePortafolio">
+          {{ portafolio }}
+        </option>
+      </select>
+    </div>
+    <div class="contenedor__campos">
+      <label for="">
+        Nombre de la inversion
+        <button class="consejo__label">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4193ff"
+            class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+            <path
+              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
+          </svg>
+        </button>
+      </label>
+      <input formControlName="nombre" type="input" placeholder="Nombre">
+    </div>
+    <div class="contenedor__campos">
+      <label for="">
+        Precio de la inversion
+        <button class="consejo__label">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4193ff"
+            class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+            <path
+              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
+          </svg>
+        </button>
+      </label>
+      <input formControlName="Precio" type="number" placeholder="Precio">
+    </div>
+    <div class="contenedor__campos">
+      <label for="">
+        Cantidad de la inversion
+        <button class="consejo__label">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4193ff"
+            class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+            <path
+              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
+          </svg>
+        </button>
+      </label>
+      <input formControlName="cantidad" type="number" placeholder="Cantidad">
+    </div>
+    <div class="contenedor__campos">
+      <label for="">
+        Plazo de la inversion
+        <button class="consejo__label">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4193ff"
+            class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+            <path
+              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
+          </svg>
+        </button>
+      </label>
+      <select formControlName="plazo">
+        <option [value]="plazo" *ngFor="let plazo of plazoInversion">
+          {{ plazo }}
+        </option>
+      </select>
+    </div>
+    <div class="contenedor__campos">
+      <label for="">
+        Perfil de la inversion
+        <button class="consejo__label">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4193ff"
+            class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+            <path
+              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
+          </svg>
+        </button>
+      </label>
+      <select formControlName="perfilRiesgo">
+        <option [value]="perfil" *ngFor="let perfil of perfilDeRiesgo">
+          {{ perfil }}
+        </option>
+      </select>
+    </div>
+    <div class="contenedor__campos">
+      <label for="">
+        Tipo de la inversion
+        <button class="consejo__label">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4193ff"
+            class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+            <path
+              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
+          </svg>
+        </button>
+      </label>
+      <select formControlName="tipo">
+        <option [value]="tipo" *ngFor="let tipo of tipoActivo">
+          {{ tipo }}
+        </option>
+      </select>
+    </div>
+
+    <div class="contenedor__campos">
+      <label for="">
+        Sector de la inversion
+        <button class="consejo__label">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4193ff"
+            class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+            <path
+              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
+          </svg>
+        </button>
+      </label>
+      <select formControlName="sector">
+        <option [value]="sector" *ngFor="let sector of sectorActivo">
+          {{ sector }}
+        </option>
+      </select>
+    </div>
+    <div class="contenedor__campos">
+      <label for="">
+        Simulado de la inversion
+        <button class="consejo__label">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4193ff"
+            class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+            <path
+              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
+          </svg>
+        </button>
+      </label>
+      <select formControlName="simulada">
+        <option [value]="sim" *ngFor="let sim of simulada">
+          {{ sim }}
+        </option>
+      </select>
+    </div>
+
+    <div class="contenedor__campos">
+      <label for="">
+        Rentabilidad esperada de la inversion
+        <button class="consejo__label">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4193ff"
+            class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+            <path
+              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
+          </svg>
+        </button>
+      </label>
+      <input formControlName="rentabilidadEsperada" type="number" placeholder="Rentabilidad Esperada">
+    </div>
+      <label for="">
+        Descripcion de la inversion
+        <button class="consejo__label">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4193ff"
+            class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+            <path
+              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
+          </svg>
+        </button>
+      </label>
+      <textarea formControlName="descripcion" type="input" rows="5" class="form__field" placeholder="Descripcion"></textarea>
+    <button type="submit" class="btn__enviar">Crear Inversion</button>
+  </form>
+</section>

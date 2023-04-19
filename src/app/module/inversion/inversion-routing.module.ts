@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { InversionComponent } from './pages/inversion/inversion.component';
 import { MetricasComponent } from './components/metricas/metricas/metricas.component';
 import { DetallesComponent } from './components/detalles/detalles/detalles.component';
+import { CrearInversionComponent } from './components/crear-inversion/crear-inversion/crear-inversion.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,9 @@ const routes: Routes = [
       },
       {
         path: 'detalles/:idPortafolio', component: DetallesComponent
+      },
+      {
+        path: 'crear-inversion', component: CrearInversionComponent
       },
       {
         path: '**', redirectTo: 'metricas', pathMatch: 'full'

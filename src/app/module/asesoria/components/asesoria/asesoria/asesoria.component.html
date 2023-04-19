@@ -10,16 +10,19 @@
   </svg>
   <div class="caja__dialog">
     <div class="card card__user" *ngFor="let mens of mensajePila; let i = index">
+
       <ng-container *ngIf="i % 2 == 0">
         <picture>
           <img src="../../../../../../assets/gif/asesoria/user.png" alt="">
         </picture>
       </ng-container>
+
       <ng-container *ngIf="i % 2 != 0">
         <picture>
           <img src="../../../../../../assets/gif/asesoria/logo.png" alt="">
         </picture>
       </ng-container>
+      
       <p>
         {{ mens }}
       </p>

@@ -7,6 +7,7 @@ import { MetricasComponent } from './components/metricas/metricas/metricas.compo
 import { DetallesComponent } from './components/detalles/detalles/detalles.component';
 import { CrearInversionComponent } from './components/crear-inversion/crear-inversion/crear-inversion.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,6 +20,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     InversionRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
     SharedModule
   ]
 })

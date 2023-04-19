@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AhorroService } from '../../../../shared/services/ahorro/ahorro.service';
 import { Ahorro } from 'src/app/shared/model/activos.model';
@@ -8,7 +8,7 @@ import { Ahorro } from 'src/app/shared/model/activos.model';
   templateUrl: './ahorro.component.html',
   styleUrls: ['./ahorro.component.scss']
 })
-export class AhorroComponent {
+export class AhorroComponent implements OnInit, OnDestroy {
   data: string[] = ["asd", "das", "dsa"]
   // Dialog
   visibleEnviar: boolean = false;
@@ -54,6 +54,7 @@ export class AhorroComponent {
       }
     )
   }
+  
   ngOnDestroy(): void {
     this.subscription.unsubscribe()
   }

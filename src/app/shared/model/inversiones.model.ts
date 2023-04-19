@@ -1,5 +1,5 @@
 export interface Inversiones {
-  id: number;
+  id?: number;
   idPortafolio: number;
   nombre: string;
   descripcion: string;
@@ -10,4 +10,5 @@ export interface Inversiones {
   tipo: string;
   sector: string;
   rentabilidadEsperada: number;
+  simulada: boolean;
 }

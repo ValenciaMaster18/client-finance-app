@@ -28,6 +28,7 @@ export class AsesorComponent {
     this.mensajePila.push("Respuestas")
     this.mensaje = ''; // Limpia el campo de texto del usuario
   }
+
   async obtenerMensajeChat(message: string): Promise<string> {
     const respuesta = await new Promise<string>((resolve, reject) => {
       this._chatService.getMessageChat(message).subscribe(
