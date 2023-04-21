@@ -1,6 +1,6 @@
 export interface Inversiones {
-  id?: number;
-  idPortafolio: number;
+  id?: number | null | string;
+  idPortafolio: number | null | string;
   nombre: string;
   descripcion: string;
   precio: number;

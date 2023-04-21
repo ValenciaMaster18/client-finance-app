@@ -13,8 +13,7 @@ export class ChatService {
     this.API_URL = environmentDev.url + 'api/v1/chat';
   }
 
-  getMessageChat(message: string): Observable<string> {
-    const params = { message: message };
-    return this.httpClient.get<string>(this.API_URL, { params: params });
+  getMessageChat(message: string): Observable<any> {
+    return this.httpClient.get<any>(`${this.API_URL}?message=${message}`);
   }
 }

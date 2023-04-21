@@ -10,7 +10,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['../../../../assets/css/auth/forms.scss']
 })
-export class LoginComponent implements OnInit , OnDestroy {
+export class LoginComponent implements OnInit, OnDestroy {
 
   formularioValidarCorreo: FormGroup;
   formularioIniciarSesion: FormGroup;
@@ -30,11 +30,11 @@ export class LoginComponent implements OnInit , OnDestroy {
   ) {
     this.subscription = new Subscription()
     this.formularioIniciarSesion = this.formBuilder.group({
-      password: ['', Validators.required]
+      password: ['', [Validators.required]]
     });
     this.formularioValidarCorreo = this.formBuilder.group(
       {
-        username: ['', Validators.required, Validators.email]
+        username: ['', [Validators.required, Validators.email]]
       }
     )
 
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit , OnDestroy {
     this.activateRoute.paramMap.subscribe(
       {
         next: (value: ParamMap) => {
-          if (value.get("username") != ''){
+          if (value.get("username") != '') {
             this.emailUserUrl = value.get("username")
           }
         }
@@ -60,13 +60,21 @@ export class LoginComponent implements OnInit , OnDestroy {
         {
           next: (value: boolean) => {
             if (value) {
+              console.log(value)
+
               this.emailUserSiExiste = username;
               this.existeElCorreo = true;
             } else {
+              console.log("sdasdf" + value)
+
               this.existeElCorreo = false;
-              this.router.navigate([`'/auth/register/${username}'`])
+              this.router.navigate([`/auth/register/${username}`])
             }
+          },
+          error: (value: any) => {
+            console.log(value)
           }
+
         }
       )
     } else {
@@ -78,12 +86,15 @@ export class LoginComponent implements OnInit , OnDestroy {
     const username: string = this.formularioValidarCorreo.value.username;
     if (this.formularioIniciarSesion.valid) {
       const password: string = this.formularioIniciarSesion.value.password;
-
       this.subscription = this._authService.getAutenticacion(username, password)
         .subscribe(
           {
             next: () => {
+              this._usuarioService.username = username;
               this.router.navigate(['/dashboard'])
+            },
+            error: (value: any) => {
+              //
             }
           }
         )

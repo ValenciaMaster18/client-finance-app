@@ -9,14 +9,14 @@
   </div>
   <form [formGroup]="formulario" (ngSubmit)="submit()">
 
-    <input type="text" placeholder="Nombre Presupuesto">
-    <textarea name="" id="" cols="5" rows="7"></textarea>
+    <input type="text" placeholder="Nombre Presupuesto" formControlName="nombre">
+    <textarea name="" id="" cols="5" rows="7" formControlName="descripcion"></textarea>
     <select formControlName="periodo">
       <option [value]="per" *ngFor="let per of periodo">
         {{ per }}
       </option>
     </select>
-    <button>Crear Presupuesto</button>
+    <button type="submit">Crear Presupuesto</button>
     <span>
       I accept terms & conditions
     </span>

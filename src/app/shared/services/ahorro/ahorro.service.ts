@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environmentDev } from 'src/environments/environment.development';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { MetricaAhorros } from '../../model/domain/metricaahorro.model';
-import { Ahorro } from '../../model/activos.model';
+import { Ahorro } from '../../model/ahorro.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,42 +18,50 @@ export class AhorroService {
     this.API_URL = environmentDev.url + 'api/v1/ahorros';
   }
 
-  getOneMetricas(idAhorro: number): Observable<MetricaAhorros> {
-    return this.httpClient.get<MetricaAhorros>(`${this.API_URL}/metricas/${idAhorro}`)
-  }
-  getManyMetricas(): Observable<MetricaAhorros> {
-    return this.httpClient.get<MetricaAhorros>(`${this.API_URL}/metricas`)
-  }
-  getOneAhorro(): Observable<Ahorro>{
-    return this.httpClient.get<Ahorro>(`${this.API_URL}/metricas`)
-  }
-  getAhorrosAutomaticos(idAhorro: number): Observable<Ahorro>{
-    const params = { idAhorro: idAhorro }
-    return this.httpClient.get<Ahorro>(`${this.API_URL}/ahorros-automaticos`, { params })
-  }
-  getAhorro(idUser: number, page: number, size: number): Observable<Ahorro[]> {
-    return this.httpClient.get<Ahorro[]>(`${this.API_URL}?idUser=${idUser}& page=${page}&size=${size}`)
+  getAhorro(page: number, size: number, idUsuario: string): Observable<any> {
+    return this.httpClient.get<any>(`${this.API_URL}?page=${page}&size=${size}&idUsuario=${idUsuario}`)
       .pipe(
         tap((value: Ahorro[]) => {
           this.ahorroSubject.next(value);
         })
       )
   }
-  postAhorro(ahorro: Ahorro): Observable<any>{
+
+  getOneAhorro(idAhorro: string): Observable<Ahorro> {
+    return this.httpClient.get<Ahorro>(`${this.API_URL}/metricas/${idAhorro}`)
+  }
+
+  getCanShowMetricas(idUser: string): Observable<boolean> {
+    return this.httpClient.get<boolean>(`${this.API_URL}/can-show-metricas${idUser}`)
+  }
+  getOneMetricas(idAhorro: string): Observable<MetricaAhorros> {
+    return this.httpClient.get<MetricaAhorros>(`${this.API_URL}/metricas/${idAhorro}`)
+  }
+  getManyMetricas(idUsuario: string): Observable<MetricaAhorros> {
+    return this.httpClient.get<MetricaAhorros>(`${this.API_URL}/metricas?idUsuario=${idUsuario}`)
+  }
+
+  getAhorrosAutomaticos(username: string): Observable<Ahorro[]> {
+    return this.httpClient.get<Ahorro[]>(`${this.API_URL}/ahorros-automaticos?username=${username}`)
+  }
+
+  getHasCondicionAhorro(idAhorro: string): Observable<boolean> {
+    return this.httpClient.get<boolean>(`${this.API_URL}/has-condicion/${idAhorro}`)
+  }
+
+  postAhorro(ahorro: Ahorro): Observable<any> {
     return this.httpClient.post<any>(`${this.API_URL}`, ahorro);
   }
-  putTranferenciaHaciaDisponibleAhorro(ahorro: Ahorro, importeToTransfer: number): Observable<any>{
+  putTranferenciaHaciaDisponibleAhorro(ahorro: Ahorro, importeToTransfer: number): Observable<any> {
     const params = { importeToTransfer: importeToTransfer }
     return this.httpClient.post<any>(`${this.API_URL}/transferencia-hacia-disponible`, ahorro, { params });
   }
-  postTranferenciaDesdeDisponibleAhorro(ahorro: Ahorro, importeToTransfer: number): Observable<any>{
+  putTranferenciaDesdeDisponibleAhorro(ahorro: Ahorro, importeToTransfer: number): Observable<any> {
     const params = { importeToTransfer: importeToTransfer }
     return this.httpClient.post<any>(`${this.API_URL}/transferencia-desde-disponible`, ahorro, { params });
   }
-  pathCondicionAhorro(ahorro: Ahorro): Observable<any>{
-    return this.httpClient.patch<any>(`${this.API_URL}/delete-condicion`, ahorro);
-  }
-  deleteAhorro(idAhorro: number): Observable<any>{
+
+  deleteAhorro(idAhorro: number): Observable<any> {
     const params = { idAhorro: idAhorro }
     return this.httpClient.delete<any>(`${this.API_URL}`)
   }

@@ -1,10 +1,10 @@
 export interface Movimiento {
-  id: number | null;
+  id: number | null | string;
   importe: number;
   tipo: string | null;
   concepto: string;
-  idUsuario: number | null;
-  idPresupuesto: number | null;
+  idUsuario: number | string | null;
+  idPresupuesto: number | string | null;
   contabilizable: boolean;
   logoConcepto: string;
 }

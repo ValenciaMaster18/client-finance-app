@@ -1,10 +1,10 @@
 import { Movimiento } from "./movimiento.model";
 
 export interface Presupuesto {
-  id: number;
+  id: number | string | null;
   nombre: string;
   descripcion: string;
   periodo: string;
-  idUsuario: number | null;
+  idUsuario: number | string | null;
   movimientos?: Movimiento[];
 }

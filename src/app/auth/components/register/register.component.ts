@@ -19,22 +19,22 @@ export class RegisterComponent {
     private _usuarioService: UsuarioService,
     private router: Router,
     private activatedRoute: ActivatedRoute
-  ){
+  ) {
 
     this.formularioValidarCorreo = this.formBuilder.group(
       {
-        username: ['', Validators.required, Validators.email]
+        username: ['', [Validators.required, Validators.email]]
       }
     )
 
     this.formularioRegistrarUsuario = this.formBuilder.group({
-      password: ['', Validators.required]
+      password: ['', [Validators.required]]
     });
 
     this.activatedRoute.paramMap.subscribe(
       {
         next: (value: ParamMap) => {
-          if (value.get("username") != ''){
+          if (value.get("username") != '') {
             this.username = value.get("username");
           }
         }
@@ -42,15 +42,15 @@ export class RegisterComponent {
     )
   }
 
-  submitFormularioValidarCorreo(): void{
-    if(this.formularioRegistrarUsuario.valid){
+  submitFormularioValidarCorreo(): void {
+    if (this.formularioValidarCorreo.valid) {
       const username: string = this.formularioValidarCorreo.value.username;
       this._usuarioService.getUsuarioSiExiste(username).subscribe(
         {
           next: (value: boolean) => {
-            if(value){
+            if (value) {
+              console.log(this.username)
               this.router.navigate([`/auth/login/${username}`])
-              return
             }
             this.username = username;
           }
@@ -58,22 +58,24 @@ export class RegisterComponent {
       )
     }
   }
-  submitFormularioRegistrarUsuario(): void{
-    const username: string = this.formularioValidarCorreo.value.username;
-    if(this.formularioRegistrarUsuario.valid){
+  submitFormularioRegistrarUsuario(): void {
+    console.log(this.formularioRegistrarUsuario.value.password)
+    console.log("Formulario valid" + this.formularioRegistrarUsuario.valid)
+    if (this.formularioRegistrarUsuario.valid) {
       const password: string = this.formularioRegistrarUsuario.value.password;
       const user: User = {
         id: null,
-        username: username,
+        username: this.username!,
         password: password,
         authority: "ROLE_USUARIO"
       }
       this._usuarioService.postRegistrarNuevoUsuario(user).subscribe(
         {
           next: (value: any) => {
-            if(value){
-              this.router.navigate([`/auth/login/${username}`])
-              return
+            if (value) {
+              console.log(value)
+              console.log(this.username)
+              this.router.navigate([`/auth/login/${this.username}`])
             }
           }
         }

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Objetivo } from 'src/app/shared/model/objetivo.model';
-import { ObjetivosService } from '../../../../shared/services/objetivos/objetivos.service';
 import { Subscription } from 'rxjs';
+import { ObjetivosService } from 'src/app/shared/services/objetivos/objetivos.service';
 
 @Component({
   selector: 'app-objetivo',
@@ -10,9 +10,6 @@ import { Subscription } from 'rxjs';
 })
 export class ObjetivoComponent implements OnInit, OnDestroy{
   data: string[] = ["asd", "das", "dsa"]
-
-  // Dialog
-  visible: boolean = false;
 
   responsiveOptionsGrafico: any[];
   objetivos: Objetivo[]
@@ -56,8 +53,5 @@ export class ObjetivoComponent implements OnInit, OnDestroy{
   }
   ngOnDestroy(): void {
     this.subscription.unsubscribe()
-  }
-  showDialog() {
-    this.visible = !this.visible;
   }
 }

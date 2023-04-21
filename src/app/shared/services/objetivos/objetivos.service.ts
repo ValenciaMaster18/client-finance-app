@@ -18,21 +18,21 @@ export class ObjetivosService {
   constructor(
     private httpClient: HttpClient
   ) {
-    this.API_URL = environmentDev.url + '/api/v1/objetivos';
+    this.API_URL = environmentDev.url + 'api/v1/objetivos';
   }
-  getObjetivo(idObjetivo: number): Observable<boolean> {
-    return this.httpClient.get<boolean>(`${this.API_URL}/has-objetivo/${idObjetivo}`)
+  getObjetivo(idObjetivo: number): Observable<Objetivo> {
+    return this.httpClient.get<Objetivo>(`${this.API_URL}/${idObjetivo}`)
   }
-  getHasObjetivo(idUsuario: number): Observable<boolean> {
-    return this.httpClient.get<boolean>(`${this.API_URL}/${idUsuario}`).pipe(
+  getHasObjetivo(idUsuario: string): Observable<boolean> {
+    return this.httpClient.get<boolean>(`${this.API_URL}/has-objetivo/${idUsuario}`).pipe(
       tap((value: boolean) => {
         this.has_objetivo.next(value);
       }),
       shareReplay()
     )
   }
-  getPageObjetivo(page: number, size: number, idUsuario: number): Observable<Objetivo[]> {
-    return this.httpClient.get<Objetivo[]>(`${this.API_URL}?page=${page}&size=${size}&usuarioId=${idUsuario}`)
+  getPageObjetivo(page: number, size: number, idUsuario: string): Observable<Objetivo[]> {
+    return this.httpClient.get<Objetivo[]>(`${this.API_URL}?page=${page}&size=${size}&idUsuario=${idUsuario}`)
       .pipe(
         tap((value: Objetivo[]) => {
           this.objetivoSubject.next(value)

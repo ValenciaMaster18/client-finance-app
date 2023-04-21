@@ -32,17 +32,28 @@ export class FormPresupuestoComponent {
     )
   }
   submit(): void {
+    console.log(this.formulario.valid)
     if(this.formulario.valid){
       const presupuesto: Presupuesto = {
-        id: 1,
+        id: null,
         nombre: this.formulario.value.nombre,
         descripcion: this.formulario.value.descripcion,
         periodo: this.formulario.value.periodo,
         idUsuario: null
       }
-      this._presupuestoService.postPresupuesto(presupuesto).subscribe()
+
+      this._presupuestoService.postPresupuesto(presupuesto).subscribe(
+        {
+          next: (value: any) => {
+            console.log(value)
+          },
+          error: (err: any) => {
+            console.log(err)
+          }
+        }
+      )
     }else{
-      
+
     }
   }
 }

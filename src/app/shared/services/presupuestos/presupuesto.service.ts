@@ -19,17 +19,17 @@ export class PresupuestoService {
     this.API_URL = environmentDev.url + 'api/v1/presupuestos';
   }
 
-  getOneMetricas(idPresupuesto: number): Observable<MetricaPresupuesto>{
+  getOneMetricas(idPresupuesto: string): Observable<MetricaPresupuesto>{
     return this.httpClient.get<MetricaPresupuesto>(`${this.API_URL}/metricas/${idPresupuesto}`)
   }
-  getManyMetricas(): Observable<MetricaPresupuesto>{
-    return this.httpClient.get<MetricaPresupuesto>(`${this.API_URL}/metricas`)
+  getManyMetricas(username: string): Observable<MetricaPresupuesto>{
+    return this.httpClient.get<MetricaPresupuesto>(`${this.API_URL}/metricas?username=${username}`)
   }
   getPortafolio(): Observable<Portafolio[]>{
     return this.httpClient.get<Portafolio[]>(`${this.API_URL}`)
   }
   getPagePresupuesto(page: number, size: number): Observable<Presupuesto[]>{
-    return this.httpClient.get<Presupuesto[]>(`${this.API_URL}`).pipe(
+    return this.httpClient.get<Presupuesto[]>(`${this.API_URL}?page=${page}&size=${size}`).pipe(
       tap((presupuesto: Presupuesto[]) => this.presupuestoSubject.next(presupuesto)),
       shareReplay()
     )

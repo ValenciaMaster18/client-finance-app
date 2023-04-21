@@ -11,6 +11,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./detalles.component.scss']
 })
 export class DetallesComponent implements OnInit {
+  idPresupuesto: string | null | number = '';
   dataMetricaPresupuesto!: MetricaPresupuesto;
   dataMovimientoTable!: Movimiento[];
   mensaje: string = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry';
@@ -26,25 +27,14 @@ export class DetallesComponent implements OnInit {
 
   async ngOnInit() {
     this.cargarGrafico()
-    this._presupuestoService.getOneMetricas(1).subscribe(
-      {
-        next: (value: MetricaPresupuesto) => {
-          this.dataMetricaPresupuesto = value
-        },
-        error: (err: any) => {
-          //
-        },
-        complete: () => {
-          //
-        }
-      }
-    )
+
     try {
-      const idPresupuesto = await new Promise<number>((resolve, reject) => {
+      const idPresupuesto = await new Promise<string>((resolve, reject) => {
         this.activatedRoute.paramMap.subscribe(
           {
             next: (value: ParamMap) => {
-              resolve(Number(value.get("idPresupuesto")))
+              this.idPresupuesto = value.get("idPresupuesto")!
+              resolve(value.get("idPresupuesto")!)
             },
             error: (err: any) => {
               reject(err)
@@ -54,20 +44,35 @@ export class DetallesComponent implements OnInit {
             }
           }
         )
-      })
-      this._movimientoService.getPresupuesto(0, 9, idPresupuesto).subscribe(
-        {
-          next: (value: Movimiento[]) => {
-            this.dataMovimientoTable = value
-          },
-          error: (err: any) => {
-
-          },
-          complete: () => {
-
+      }).then((value: string) => {
+        this._presupuestoService.getOneMetricas(value!).subscribe(
+          {
+            next: (value: MetricaPresupuesto) => {
+              this.dataMetricaPresupuesto = value
+            },
+            error: (err: any) => {
+              //
+            },
+            complete: () => {
+              //
+            }
           }
-        }
-      )
+        )
+        this._movimientoService.getPresupuesto(0, 9, value!).subscribe(
+          {
+            next: (value: Movimiento[]) => {
+              this.dataMovimientoTable = value
+              console.log(value)
+            },
+            error: (err: any) => {
+              console.log(err)
+            },
+            complete: () => {
+
+            }
+          }
+        )
+      })
     } catch (error) {
       // manejar el error aquí
     }

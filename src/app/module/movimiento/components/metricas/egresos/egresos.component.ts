@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { JwtService } from 'src/app/auth/services/token.service';
 import { MetricaBalance } from 'src/app/shared/model/domain/metricabalance.model';
+import { IUsuario } from 'src/app/shared/model/token.model';
 import { MovimientoService } from 'src/app/shared/services/movimientos/movimiento.service';
 
 @Component({
@@ -17,7 +19,8 @@ export class EgresosComponent implements OnInit {
   // Finalizar la suscripcion
   subscription: Subscription;
   constructor(
-    private _movimientoService: MovimientoService
+    private _movimientoService: MovimientoService,
+    private _tokenService: JwtService
   ) {
     this.subscription = new Subscription();
   }
@@ -25,7 +28,8 @@ export class EgresosComponent implements OnInit {
     this.subscription.unsubscribe()
   }
   ngOnInit() {
-    this.subscription = this._movimientoService.getOneMetrica(1).subscribe(
+    const token: IUsuario = this._tokenService.decodeToken()
+    this.subscription = this._movimientoService.getOneMetrica(token.uuid!).subscribe(
       {
         next: (value: MetricaBalance) => {
           this.dataParaGrafico = value;

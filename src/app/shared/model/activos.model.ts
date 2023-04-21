@@ -2,7 +2,7 @@ import { SectorActivo } from "./enums/sectoractivo";
 import { TipoActivo } from "./enums/tipoactivo";
 
 
-export interface Ahorro {
+export interface Activo {
   nombre: string;
   descripcion: string;
   tipo: TipoActivo;

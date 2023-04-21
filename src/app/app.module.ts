@@ -10,7 +10,7 @@ import { PortadaComponent } from './pages/portada/portada.component';
 @NgModule({
   declarations: [
     AppComponent,
-    PortadaComponent
+    PortadaComponent,
   ],
   imports: [
     BrowserModule,

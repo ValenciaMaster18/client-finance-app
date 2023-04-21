@@ -63,7 +63,7 @@ nav {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3px;
+    gap: 8px;
     padding: 0;
 
     li {
@@ -122,13 +122,13 @@ nav {
 }
 @media screen and (min-width: 768px) {
   section.sidebar {
-    min-height: calc(100vh - 1.6rem);
+    height: calc(100vh - 1.6rem);
     padding: 1rem 1.6rem;
   }
 
   aside {
     width: 290px;
-    height: 90vh;
+    height: 100%;
     border-radius: 20px;
   }
 

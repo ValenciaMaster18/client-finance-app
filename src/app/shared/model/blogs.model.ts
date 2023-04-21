@@ -1,5 +1,5 @@
 export interface Blogs {
-    id: number; 
+    id: number;
     categoria: string;
     pregunta: string;
     respuesta: string;

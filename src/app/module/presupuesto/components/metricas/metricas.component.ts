@@ -5,6 +5,9 @@ import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { ObjetivosService } from 'src/app/shared/services/objetivos/objetivos.service';
 import Swal from 'sweetalert2';
+import { IUsuario } from 'src/app/shared/model/token.model';
+import { UsernameService } from 'src/app/auth/services/username.service';
+import { JwtService } from 'src/app/auth/services/token.service';
 
 @Component({
   selector: 'app-metricas',
@@ -13,16 +16,18 @@ import Swal from 'sweetalert2';
 })
 export class MetricasComponent {
   data: string[] = ["asd", "das", "dsa"]
-  hayAhorro: boolean = false;
   DataGrafico!: MetricaPresupuesto;
+  mostrarMetricas: boolean = false;
   responsiveOptionsGrafico!: any[];
   basicDataGrafico: any;
   subscription: Subscription;
   constructor(
     private _presupuestoService: PresupuestoService,
     private _objetivosService: ObjetivosService,
+    private _usernameService: UsernameService,
+    private _tokenService: JwtService,
     private router: Router
-    ) {
+  ) {
     this.subscription = new Subscription()
     // Connfiguracion del slider
     this.responsiveOptionsGrafico = [
@@ -42,29 +47,15 @@ export class MetricasComponent {
         numScroll: 1
       }
     ];
-   }
+  }
 
   ngOnInit() {
-    this.cargarGrafico()
-    // this._presupuestoService.getManyMetricas().subscribe(
-    //   {
-    //     next: (value: MetricaPresupuesto) => {
-    //       this.DataGrafico = value;
-    //       this.cargarGrafico()
-    //     },
-    //     error: (err: any) => {
-    //       //
-    //     },
-    //     complete: () => {
-    //       //
-    //     }
-
-    //   }
-    // )
-    this.subscription = this._objetivosService.getHasObjetivo(1).subscribe(
+    const username = this._usernameService.getUsername();
+    const token: IUsuario = this._tokenService.decodeToken()
+    this.subscription = this._objetivosService.getHasObjetivo(token.uuid!).subscribe(
       {
         next: (value: boolean) => {
-          if (!this.hayAhorro) {
+          if (!value) {
             Swal.fire({
               imageUrl: 'https://img.freepik.com/iconos-gratis/hucha_318-710502.jpg?w=2000',
               imageWidth: 220,
@@ -77,14 +68,32 @@ export class MetricasComponent {
               confirmButtonText: 'Continuar'
             }).then((result) => {
               if (result.isConfirmed) {
-                this.router.navigate(['/dashboard/objetivo'])
+                this.router.navigate(['/dashboard/objetivo/crear-objetivo'])
               } else {
                 this.router.navigate(['/dashboard/panel'])
               }
             }
             )
+          } else {
+            this.mostrarMetricas = true;
           }
         }
+      }
+    )
+    this._presupuestoService.getManyMetricas(username).subscribe(
+      {
+        next: (value: MetricaPresupuesto) => {
+          this.DataGrafico = value;
+          console.log(value)
+          this.cargarGrafico()
+        },
+        error: (err: any) => {
+          //
+        },
+        complete: () => {
+          //
+        }
+
       }
     )
   }

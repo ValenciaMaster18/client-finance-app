@@ -1,5 +1,5 @@
 export interface Condicion {
-  id: number;
+  id: number | null | string;
   expresion: string;
   importe: number;
   tipoImporte: string;

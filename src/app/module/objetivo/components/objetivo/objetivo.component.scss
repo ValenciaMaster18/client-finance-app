@@ -5,6 +5,7 @@
 
 .contenedor__objetivos {
   margin: auto;
+  margin-top: 20px;
   width: 320px;
   position: relative;
   padding: 20px 20px 40px 48px;
@@ -74,98 +75,99 @@
       left: 10px;
       background-color: transparent;
     }
-
-    button.agregar {
-      left: 40px;
-
-      span {
-        position: absolute;
-        display: inline-block;
-        width: 120px;
-        left: 40px;
-        padding: 0.5rem;
-        border-radius: 8px;
-        font-size: 1.4rem;
-        background-color: #73a9fb;
-        color: white;
-        font-weight: 700;
-        opacity: 0;
-        transition: all 300ms ease-in-out;
-      }
-
-      &:hover span {
-        opacity: 1;
-      }
-    }
+  }
+}
+button.agregar {
+  border: none;
+  display: flex;
+  padding: 1.5rem 3rem;
+  background-color: #488aec;
+  color: #ffffff;
+  font-size: 1.2rem;
+  line-height: 1rem;
+  font-weight: 700;
+  text-align: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  gap: 2rem;
+  box-shadow: 0 4px 6px -1px #488aec31, 0 2px 4px -1px #488aec17;
+  transition: all .6s ease;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0 10px 15px -3px #488aec4f, 0 4px 6px -2px #488aec17;
+  }
+  &:focus,button:active {
+    opacity: .85;
+    box-shadow: none;
   }
 }
 
 // Dialogo
-.dialogoEnviar {
-  top: 0;
-  left: 0;
-  position: absolute;
-  z-index: 50;
-  width: 100%;
-  display: flex;
-  justify-content: center;
+// .dialogoEnviar {
+//   top: 0;
+//   left: 0;
+//   position: absolute;
+//   z-index: 50;
+//   width: 100%;
+//   display: flex;
+//   justify-content: center;
 
-  div {
-    width: 420px;
-    background-color: white;
-    padding: 20px 42px;
-    box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.1);
-    position: relative;
+//   div {
+//     width: 420px;
+//     background-color: white;
+//     padding: 20px 42px;
+//     box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.1);
+//     position: relative;
 
-    button.close {
-      border: 0;
-      background-color: transparent;
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      cursor: pointer;
-    }
+//     button.close {
+//       border: 0;
+//       background-color: transparent;
+//       position: absolute;
+//       top: 10px;
+//       right: 10px;
+//       cursor: pointer;
+//     }
 
-    h2 {
-      text-align: center;
-      font-size: 2.2rem;
-    }
+//     h2 {
+//       text-align: center;
+//       font-size: 2.2rem;
+//     }
 
-    form {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      width: 100%;
+//     form {
+//       height: 100%;
+//       display: flex;
+//       flex-direction: column;
+//       align-items: center;
+//       gap: 8px;
+//       width: 100%;
 
-      input {
-        width: 100%;
-        height: 40px;
-        padding-left: 20px;
-        font-size: 1.4rem;
-        background-color: white;
-        border: 2px solid rgba(128, 128, 128, 0.425);
-        outline: none;
-      }
+//       input {
+//         width: 100%;
+//         height: 40px;
+//         padding-left: 20px;
+//         font-size: 1.4rem;
+//         background-color: white;
+//         border: 2px solid rgba(128, 128, 128, 0.425);
+//         outline: none;
+//       }
 
-      textarea {
-        width: 100%;
-        padding-top: 10px;
-        padding-left: 20px;
-        font-size: 1.4rem;
-        background-color: white;
-        border: 2px solid rgba(128, 128, 128, 0.425);
-        outline: none;
-      }
+//       textarea {
+//         width: 100%;
+//         padding-top: 10px;
+//         padding-left: 20px;
+//         font-size: 1.4rem;
+//         background-color: white;
+//         border: 2px solid rgba(128, 128, 128, 0.425);
+//         outline: none;
+//       }
 
-      button {
-        height: 40px;
-        width: 100%;
-        border: 0;
-        background-color: #3E98EF;
-        color: white;
-      }
-    }
-  }
-}
+//       button {
+//         height: 40px;
+//         width: 100%;
+//         border: 0;
+//         background-color: #3E98EF;
+//         color: white;
+//       }
+//     }
+//   }
+// }

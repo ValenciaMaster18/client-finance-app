@@ -56,32 +56,32 @@ export class MetricasComponent implements OnInit, OnDestroy{
         }
       }
     )
-    this.subscription = this._objetivosService.getHasObjetivo(1).subscribe(
-      {
-        next: (value: boolean) => {
-          if (!this.hayAhorro) {
-            Swal.fire({
-              imageUrl: 'https://img.freepik.com/iconos-gratis/hucha_318-710502.jpg?w=2000',
-              imageWidth: 220,
-              imageHeight: 180,
-              title: 'Oops...',
-              text: "No tienes objetivos creemos uno juntos",
-              showCancelButton: true,
-              confirmButtonColor: '#3085d6',
-              cancelButtonColor: '#d33',
-              confirmButtonText: 'Continuar'
-            }).then((result) => {
-              if (result.isConfirmed) {
-                this.router.navigate(['/dashboard/objetivo'])
-              } else {
-                this.router.navigate(['/dashboard/panel'])
-              }
-            }
-            )
-          }
-        }
-      }
-    )
+    // this.subscription = this._objetivosService.getHasObjetivo(1).subscribe(
+    //   {
+    //     next: (value: boolean) => {
+    //       if (!this.hayAhorro) {
+    //         Swal.fire({
+    //           imageUrl: 'https://img.freepik.com/iconos-gratis/hucha_318-710502.jpg?w=2000',
+    //           imageWidth: 220,
+    //           imageHeight: 180,
+    //           title: 'Oops...',
+    //           text: "No tienes objetivos creemos uno juntos",
+    //           showCancelButton: true,
+    //           confirmButtonColor: '#3085d6',
+    //           cancelButtonColor: '#d33',
+    //           confirmButtonText: 'Continuar'
+    //         }).then((result) => {
+    //           if (result.isConfirmed) {
+    //             this.router.navigate(['/dashboard/objetivo/crear-objetivo'])
+    //           } else {
+    //             this.router.navigate(['/dashboard/panel'])
+    //           }
+    //         }
+    //         )
+    //       }
+    //     }
+    //   }
+    // )
   }
   ngOnDestroy(): void {
     this.subscription.unsubscribe()

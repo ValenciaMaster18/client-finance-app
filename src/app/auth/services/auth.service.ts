@@ -22,7 +22,7 @@ export class AuthService {
     return this.httpClient.post<any>(this.API_URL, { username, password })
       .pipe(
         tap((token) => {
-          this._tokenService.setToken(token)
+          this._tokenService.setToken(token.token)
         })
       )
   }
