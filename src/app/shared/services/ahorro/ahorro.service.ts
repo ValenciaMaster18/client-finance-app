@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environmentDev } from 'src/environments/environment.development';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, shareReplay, tap } from 'rxjs';
 import { MetricaAhorros } from '../../model/domain/metricaahorro.model';
 import { Ahorro } from '../../model/ahorro.model';
 
@@ -21,8 +21,8 @@ export class AhorroService {
   getAhorro(page: number, size: number, idUsuario: string): Observable<any> {
     return this.httpClient.get<any>(`${this.API_URL}?page=${page}&size=${size}&idUsuario=${idUsuario}`)
       .pipe(
-        tap((value: Ahorro[]) => {
-          this.ahorroSubject.next(value);
+        tap((value: any) => {
+          this.ahorroSubject.next(value.content);
         })
       )
   }

@@ -65,8 +65,6 @@ export class LoginComponent implements OnInit, OnDestroy {
               this.emailUserSiExiste = username;
               this.existeElCorreo = true;
             } else {
-              console.log("sdasdf" + value)
-
               this.existeElCorreo = false;
               this.router.navigate([`/auth/register/${username}`])
             }
@@ -83,7 +81,12 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   }
   submitEntrarAlSistema(): void {
-    const username: string = this.formularioValidarCorreo.value.username;
+    let username: string = ''
+    if (this.emailUserUrl) {
+      username = this.emailUserUrl;
+    } else {
+      username = this.formularioValidarCorreo.value.username;
+    }
     if (this.formularioIniciarSesion.valid) {
       const password: string = this.formularioIniciarSesion.value.password;
       this.subscription = this._authService.getAutenticacion(username, password)

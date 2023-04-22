@@ -15,8 +15,7 @@ import { JwtService } from 'src/app/auth/services/token.service';
   styleUrls: ['./metricas.component.scss']
 })
 export class MetricasComponent {
-  data: string[] = ["asd", "das", "dsa"]
-  DataGrafico!: MetricaPresupuesto;
+  DataGrafico!: MetricaPresupuesto[];
   mostrarMetricas: boolean = false;
   responsiveOptionsGrafico!: any[];
   basicDataGrafico: any;
@@ -76,26 +75,27 @@ export class MetricasComponent {
             )
           } else {
             this.mostrarMetricas = true;
+            this._presupuestoService.getManyMetricas(username).subscribe(
+              {
+                next: (value: any) => {
+                  this.DataGrafico = value;
+                  console.log(value)
+                  this.cargarGrafico()
+                },
+                error: (err: any) => {
+                  //
+                },
+                complete: () => {
+                  //
+                }
+
+              }
+            )
           }
         }
       }
     )
-    this._presupuestoService.getManyMetricas(username).subscribe(
-      {
-        next: (value: MetricaPresupuesto) => {
-          this.DataGrafico = value;
-          console.log(value)
-          this.cargarGrafico()
-        },
-        error: (err: any) => {
-          //
-        },
-        complete: () => {
-          //
-        }
 
-      }
-    )
   }
   cargarGrafico(): void {
     this.basicDataGrafico = {

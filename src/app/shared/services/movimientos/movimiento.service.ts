@@ -39,8 +39,8 @@ export class MovimientoService {
         shareReplay()
       );
   }
-  getPresupuesto(page: number, size: number, idPresupuesto: string): Observable<Movimiento[]> {
-    return this.httpClient.get<Movimiento[]>(`${this.API_URL}/by-presupuesto?page=${page}&size=${size}&idPresupuesto=${idPresupuesto}`)
+  getPresupuesto(page: number, size: number, idPresupuesto: string): Observable<any> {
+    return this.httpClient.get<any>(`${this.API_URL}/by-presupuesto?page=${page}&size=${size}&idPresupuesto=${idPresupuesto}`)
   }
   getOneMovimiento(idMovimiento: number): Observable<Movimiento> {
     return this.httpClient.get<Movimiento>(`${this.API_URL}/${idMovimiento}`)

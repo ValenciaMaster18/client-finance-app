@@ -6,7 +6,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { ObjetivoComponent } from './components/objetivo/objetivo.component';
 import { CrearObjetivoComponent } from './components/crear-objetivo/crear-objetivo.component';
 import { ObjetivosComponent } from './pages/objetivos/objetivos.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ObjetivoRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     SharedModule
   ]
 })

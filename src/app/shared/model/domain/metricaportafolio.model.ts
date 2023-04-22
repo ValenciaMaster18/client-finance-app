@@ -1,4 +1,5 @@
 export interface MetricaPortafolio {
+  mostraMetricas: boolean;
   idPortafolio: number;
   valorTotal: number;
   rentabilidadPromedio: number;

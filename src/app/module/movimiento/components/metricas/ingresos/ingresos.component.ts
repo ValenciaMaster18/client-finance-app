@@ -6,6 +6,7 @@ import { MetricaBalance } from 'src/app/shared/model/domain/metricabalance.model
 import { IUsuario } from 'src/app/shared/model/token.model';
 import { MovimientoService } from 'src/app/shared/services/movimientos/movimiento.service';
 import Swal from 'sweetalert2';
+import { Balance } from '../../../../../shared/model/domain/metricabalance.model';
 
 @Component({
   selector: 'app-ingresos',
@@ -15,6 +16,7 @@ import Swal from 'sweetalert2';
 export class IngresosComponent implements OnInit {
   mensaje: string = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry';
   dataParaGrafico!: MetricaBalance;
+  balance!: Balance;
   dataGrafico: any;
   optionsGrafico: any;
   mostrarMetricas: boolean = false;
@@ -72,7 +74,10 @@ export class IngresosComponent implements OnInit {
       const subscription = this._movimientoService.getOneMetrica(token.uuid!).subscribe({
         next: (value: MetricaBalance) => {
           this.dataParaGrafico = value;
-          console.log(value)
+          // console.log(value.detalleImporteConceptoPorTipo["ingresos"]["Familia"].monto)
+          this.balance = value.detalleImporteConceptoPorTipo
+          // console.log(value.proporcionPorTipo)
+          // Para recorrer las categorías de los egresos:
           resolve(value)
         },
         error: (err: any) => {
@@ -83,7 +88,6 @@ export class IngresosComponent implements OnInit {
         }
       });
     });
-
   }
 
   cargarGrafico(): void {

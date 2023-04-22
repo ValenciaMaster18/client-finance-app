@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,6 +11,11 @@ export class SidebarComponent {
   @Input() estado: string = "none";
   @Output() estadoDesplegarMenu: EventEmitter<string> = new EventEmitter();
 
+  constructor(
+    private _authService: AuthService,
+    private router: Router
+  ){}
+
   emitirEstadoDesplegarMenu(): void {
     if (this.estado == "none") {
       this.estado = "block";
@@ -17,5 +24,9 @@ export class SidebarComponent {
     }
     this.estado = "none";
     this.estadoDesplegarMenu.emit(this.estado);
+  }
+  cerrarSesion(): void {
+    this._authService.salirDelSistema();
+    this.router.navigate(['/auth/login']);
   }
 }

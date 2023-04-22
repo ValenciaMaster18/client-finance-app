@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Balance } from '../../model/domain/metricabalance.model';
 
 @Component({
   selector: 'app-tabla-met-moviento',
@@ -6,5 +7,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./tabla-met-moviento.component.scss']
 })
 export class TablaMetMovientoComponent {
-
 }

@@ -1,6 +1,5 @@
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { UsuarioService } from 'src/app/auth/services/usuario.service';
 import { Movimiento } from 'src/app/shared/model/movimiento.model';
 import { InversionService } from 'src/app/shared/services/inversiones/inversion.service';
 import { MovimientoService } from 'src/app/shared/services/movimientos/movimiento.service';
@@ -57,7 +56,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         }
       });
     });
-    
+
     const portafolioPromise = new Promise<Portafolio[]>((resolve, reject) => {
       this.subscription = this._portafolioService.getPortafolio(0, 9).subscribe({
         next: (value: Portafolio[]) => {
@@ -112,15 +111,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
         }
       });
     });
-
-    Promise.all([portafolioPromise, presupuestoPromise, inversionesPromise, objetivosPromise, movimientoPromise, ahorroPromise])
-      .then(([portafolio, presupuesto, inversiones, objetivos, movimiento, ahorro]) => {
-        console.log('Portafolio:', portafolio);
-        console.log('Presupuesto:', presupuesto);
-        console.log('Inversiones:', inversiones);
-        console.log('Objetivos:', objetivos);
-        console.log('Movimiento:', movimiento);
-        console.log('Ahorro:', ahorro);
+    // , ahorroPromise , ahorro console.log('Ahorro:', ahorro);
+    Promise.all([ahorroPromise, portafolioPromise, presupuestoPromise, inversionesPromise, objetivosPromise, movimientoPromise])
+      .then(([ahorro, portafolio, presupuesto, inversiones, objetivos, movimiento]) => {
+        // console.log('Portafolio:', portafolio);
+        // console.log('Presupuesto:', presupuesto);
+        // console.log('Inversiones:', inversiones);
+        // console.log('Objetivos:', objetivos);
+        // console.log('Movimiento:', movimiento);
+        // console.log('Ahorro:', ahorro);
       })
       .catch((error) => {
         console.log('Error al obtener los datos:', error);
@@ -143,7 +142,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
     } else {
       this.isSticky = false;
     }
-    console.log(scrollPosition)
   }
 
   @HostListener('window:resize', ['$event'])
@@ -155,6 +153,5 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
   escucharEstadoDesplegarMenu(event: string): void {
     this.estadoMenuDesplegable = event;
-    console.log(this.estadoMenuDesplegable)
   }
 }

@@ -88,7 +88,7 @@ nav {
         font-size: 1.4rem;
         color: white;
         text-decoration: none;
-
+        cursor: pointer;
         &:hover:not(.link-active, .link-secundario) {
           background-color: rgba(128, 128, 128, 0.527);
         }

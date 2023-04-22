@@ -4,13 +4,13 @@
       <app-crear-movimiento routerLink="/dashboard/presupuesto/crear-presupuesto" [textBtn]="'Crear presuspuesto'"></app-crear-movimiento>
     </div>
     <!-- DataGrafico.conceptos -->
-    <p-carousel [value]="data" [numVisible]="2" [numScroll]="3" [circular]="true"
+    <p-carousel [value]="DataGrafico" [numVisible]="2" [numScroll]="3" [circular]="true"
       [responsiveOptions]="responsiveOptionsGrafico" autoPlayInterval="3000">
       <ng-template let-product pTemplate="item">
         <div class="card-body" >
           <p-chart type="bar" [data]="basicDataGrafico"></p-chart>
           <!-- routerLink="/dashboard/presupuesto/detalles" -->
-          <button [routerLink]="'/dashboard/presupuesto/detalles/' + 1" class="learn-more">
+          <button [routerLink]="'/dashboard/presupuesto/detalles/' + product.idPresupuesto" class="learn-more">
             <span class="circle" aria-hidden="true">
             <span class="icon arrow"></span>
             </span>

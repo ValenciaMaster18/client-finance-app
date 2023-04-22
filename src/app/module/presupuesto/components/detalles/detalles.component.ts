@@ -48,6 +48,7 @@ export class DetallesComponent implements OnInit {
         this._presupuestoService.getOneMetricas(value!).subscribe(
           {
             next: (value: MetricaPresupuesto) => {
+              console.log(value)
               this.dataMetricaPresupuesto = value
             },
             error: (err: any) => {
@@ -60,9 +61,8 @@ export class DetallesComponent implements OnInit {
         )
         this._movimientoService.getPresupuesto(0, 9, value!).subscribe(
           {
-            next: (value: Movimiento[]) => {
-              this.dataMovimientoTable = value
-              console.log(value)
+            next: (value: any) => {
+              this.dataMovimientoTable = value.content
             },
             error: (err: any) => {
               console.log(err)

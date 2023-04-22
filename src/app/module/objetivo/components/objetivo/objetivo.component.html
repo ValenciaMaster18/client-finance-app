@@ -7,7 +7,7 @@
         d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
     </svg>
   </button>
-  <p-carousel [value]="data" [numVisible]="2" [numScroll]="3" [circular]="true"
+  <p-carousel [value]="objetivos" [numVisible]="2" [numScroll]="3" [circular]="true"
     [responsiveOptions]="responsiveOptionsGrafico" autoPlayInterval="3000">
     <ng-template let-product pTemplate="item">
       <div class="contenedor__objetivos">
@@ -15,8 +15,8 @@
           <img src="../../../../../assets/image/objetivos/objetivos.png" alt="">
         </picture>
         <div class="contenedor__objetivos-body">
-          <h2>Betplay</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, quae.</p>
+          <h2>{{ product.nombre }}</h2>
+          <p>{{ product.descripcion }}</p>
           <div class="monto">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="green" class="bi bi-caret-up-fill"
               viewBox="0 0 16 16">
@@ -26,7 +26,7 @@
             <p>
               Candidad dinero:
             </p>
-            <span>$12000</span>
+            <span>{{ product.monto | currency: "$" }}</span>
           </div>
           <button class="consejo">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="green"

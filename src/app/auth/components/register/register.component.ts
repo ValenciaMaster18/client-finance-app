@@ -71,12 +71,8 @@ export class RegisterComponent {
       }
       this._usuarioService.postRegistrarNuevoUsuario(user).subscribe(
         {
-          next: (value: any) => {
-            if (value) {
-              console.log(value)
-              console.log(this.username)
+          next: () => {
               this.router.navigate([`/auth/login/${this.username}`])
-            }
           }
         }
       )

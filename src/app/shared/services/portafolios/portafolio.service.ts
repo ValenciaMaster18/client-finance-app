@@ -19,13 +19,13 @@ export class PortafolioService {
   getOneMetrica(idPortafolio: number): Observable<MetricaPortafolio> {
     return this.httpClient.get<MetricaPortafolio>(`${this.API_URL}/metricas/${idPortafolio}`)
   }
-  getManyMetrica(): Observable<MetricaPortafolio[]> {
-    return this.httpClient.get<MetricaPortafolio[]>(`${this.API_URL}/metricas`)
+  getManyMetrica(username: string): Observable<MetricaPortafolio[]> {
+    return this.httpClient.get<MetricaPortafolio[]>(`${this.API_URL}/metricas?username=${username}`)
   }
-  getPortafolio(page: number, size: number): Observable<Portafolio[]> {
-    return this.httpClient.get<Portafolio[]>(`${this.API_URL}?page=${page}&size=${size}`)
+  getPortafolio(page: number, size: number): Observable<any> {
+    return this.httpClient.get<any>(`${this.API_URL}?page=${page}&size=${size}`)
       .pipe(
-        tap((portafolio: Portafolio[]) => this.portafolioSubject.next(portafolio)),
+        tap((portafolio: any) => this.portafolioSubject.next(portafolio.content)),
         shareReplay()
       )
   }

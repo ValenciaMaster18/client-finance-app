@@ -28,9 +28,9 @@ export class PresupuestoService {
   getPortafolio(): Observable<Portafolio[]>{
     return this.httpClient.get<Portafolio[]>(`${this.API_URL}`)
   }
-  getPagePresupuesto(page: number, size: number): Observable<Presupuesto[]>{
-    return this.httpClient.get<Presupuesto[]>(`${this.API_URL}?page=${page}&size=${size}`).pipe(
-      tap((presupuesto: Presupuesto[]) => this.presupuestoSubject.next(presupuesto)),
+  getPagePresupuesto(page: number, size: number): Observable<any>{
+    return this.httpClient.get<any>(`${this.API_URL}?page=${page}&size=${size}`).pipe(
+      tap((presupuesto: any) => this.presupuestoSubject.next(presupuesto.content)),
       shareReplay()
     )
   }

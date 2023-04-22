@@ -31,11 +31,11 @@ export class ObjetivosService {
       shareReplay()
     )
   }
-  getPageObjetivo(page: number, size: number, idUsuario: string): Observable<Objetivo[]> {
-    return this.httpClient.get<Objetivo[]>(`${this.API_URL}?page=${page}&size=${size}&idUsuario=${idUsuario}`)
+  getPageObjetivo(page: number, size: number, idUsuario: string): Observable<any> {
+    return this.httpClient.get<any>(`${this.API_URL}?page=${page}&size=${size}&idUsuario=${idUsuario}`)
       .pipe(
-        tap((value: Objetivo[]) => {
-          this.objetivoSubject.next(value)
+        tap((value: any) => {
+          this.objetivoSubject.next(value.content)
         })
       )
   }

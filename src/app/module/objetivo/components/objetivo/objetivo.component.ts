@@ -9,8 +9,6 @@ import { ObjetivosService } from 'src/app/shared/services/objetivos/objetivos.se
   styleUrls: ['./objetivo.component.scss']
 })
 export class ObjetivoComponent implements OnInit, OnDestroy{
-  data: string[] = ["asd", "das", "dsa"]
-
   responsiveOptionsGrafico: any[];
   objetivos: Objetivo[]
   subscription: Subscription;
@@ -39,7 +37,7 @@ export class ObjetivoComponent implements OnInit, OnDestroy{
   ngOnInit(): void {
     this.subscription = this._objetivosService.objetivoSubject$.subscribe(
       {
-        next: (value: Objetivo[]) => {
+        next: (value: any) => {
           this.objetivos = value;
         },
         error: (err: any) => {

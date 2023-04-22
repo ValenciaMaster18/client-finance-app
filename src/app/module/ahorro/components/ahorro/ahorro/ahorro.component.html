@@ -1,14 +1,14 @@
 <ng-container *ngIf="mostrarMetricas">
   <section class="carrusel">
-    <p-carousel [value]="data" [numVisible]="2" [numScroll]="3" [circular]="true"
+    <p-carousel [value]="ahorro" [numVisible]="2" [numScroll]="3" [circular]="true"
       [responsiveOptions]="responsiveOptionsGrafico" autoPlayInterval="3000">
       <ng-template let-product pTemplate="item">
-        <div class="card-body">
+        <div class="card-body" *ngFor="let item of ahorro">
           <div class="card">
             <div class="datos">
-              <h2>Lorem ipsum dolor sit amet.</h2>
-              <p>Lorem, ipsum dolor.</p>
-              <span>1000</span>
+              <h2>{{ product.nombre }}</h2>
+              <p>{{ product.descripcion }}</p>
+              <span>{{ product.importe }}</span>
             </div>
             <div class="btn">
               <button (click)="showDialogVisibleEnviar()">
