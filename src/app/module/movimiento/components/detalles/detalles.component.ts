@@ -29,7 +29,8 @@ export class DetallesComponent implements OnInit, OnDestroy {
     this.subscription = this._movimientoService.movimientoSubject.subscribe(
       {
         next: (value: Movimiento[]) => {
-          this.dataMovimiento = value
+          this.dataMovimiento = value;
+          console.log(value)
         },
         error: (err: any) => {
 
@@ -39,30 +40,30 @@ export class DetallesComponent implements OnInit, OnDestroy {
         }
       }
     )
-    const documentStyle = getComputedStyle(document.documentElement);
-    const textColor = documentStyle.getPropertyValue('--text-color');
+  //   const documentStyle = getComputedStyle(document.documentElement);
+  //   const textColor = documentStyle.getPropertyValue('--text-color');
 
-    this.dataGrafico = {
-      labels: ['A', 'B', 'C'],
-      datasets: [
-        {
-          data: [300, 50, 100],
-          backgroundColor: [documentStyle.getPropertyValue('--blue-500'), documentStyle.getPropertyValue('--yellow-500'), documentStyle.getPropertyValue('--green-500')],
-          hoverBackgroundColor: [documentStyle.getPropertyValue('--blue-400'), documentStyle.getPropertyValue('--yellow-400'), documentStyle.getPropertyValue('--green-400')]
-        }
-      ]
-    };
+  //   this.dataGrafico = {
+  //     labels: ['A', 'B', 'C'],
+  //     datasets: [
+  //       {
+  //         data: [300, 50, 100],
+  //         backgroundColor: [documentStyle.getPropertyValue('--blue-500'), documentStyle.getPropertyValue('--yellow-500'), documentStyle.getPropertyValue('--green-500')],
+  //         hoverBackgroundColor: [documentStyle.getPropertyValue('--blue-400'), documentStyle.getPropertyValue('--yellow-400'), documentStyle.getPropertyValue('--green-400')]
+  //       }
+  //     ]
+  //   };
 
 
-    this.optionsGrafico = {
-      cutout: '70%',
-      plugins: {
-        legend: {
-          labels: {
-            color: textColor
-          }
-        }
-      }
-    };
+  //   this.optionsGrafico = {
+  //     cutout: '70%',
+  //     plugins: {
+  //       legend: {
+  //         labels: {
+  //           color: textColor
+  //         }
+  //       }
+  //     }
+  //   };
   }
 }

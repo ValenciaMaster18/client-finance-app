@@ -8,9 +8,9 @@ import { JwtService } from 'src/app/auth/services/token.service';
 import { IUsuario } from '../../../../../shared/model/token.model';
 import { AhorroService } from 'src/app/shared/services/ahorro/ahorro.service';
 import { Ahorro } from '../../../../../shared/model/ahorro.model';
-import { UsuarioService } from 'src/app/auth/services/usuario.service';
 import { UsernameService } from 'src/app/auth/services/username.service';
 import { BalanceService } from 'src/app/shared/services/balance/balance.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-crear-movimiento',
   templateUrl: './crear-movimiento.component.html',
@@ -107,7 +107,13 @@ export class CrearMovimientoComponent implements OnInit {
         {
           next: (value: number) => {
             if (this.formulario.value.importe > value && this.tipo == "egreso") {
-              console.log("Saldo insuficente")
+              Swal.fire({
+                position: 'center',
+                icon: 'info',
+                title: 'Saldo insuficiente',
+                showConfirmButton: false,
+                timer: 3000
+              })
             }else{
               if (!this.idPresupuesto) {
                 const movimiento: Movimiento = {
@@ -128,9 +134,23 @@ export class CrearMovimientoComponent implements OnInit {
                   .subscribe(
                     {
                       next: (value: any) => {
+                        Swal.fire({
+                          position: 'center',
+                          icon: 'success',
+                          title: 'Movimiento creado',
+                          showConfirmButton: false,
+                          timer: 1500
+                        })
                         this.formulario.reset();
                       },
                       error: (err: any) => {
+                        Swal.fire({
+                          position: 'center',
+                          icon: 'error',
+                          title: 'Movimiento no creado',
+                          showConfirmButton: false,
+                          timer: 3000
+                        })
                       }
                     }
                   )
@@ -153,9 +173,23 @@ export class CrearMovimientoComponent implements OnInit {
                   .subscribe(
                     {
                       next: () => {
+                        Swal.fire({
+                          position: 'center',
+                          icon: 'success',
+                          title: 'Movimiento creado',
+                          showConfirmButton: false,
+                          timer: 3000
+                        })
                         this.formulario.reset();
                       },
                       error: (err: any) => {
+                        Swal.fire({
+                          position: 'center',
+                          icon: 'success',
+                          title: 'Movimiento no creado',
+                          showConfirmButton: false,
+                          timer: 3000
+                        })
                       }
                     }
                   )
@@ -166,7 +200,13 @@ export class CrearMovimientoComponent implements OnInit {
       )
     }else{
       // Formulario invalido
-      console.log("Formulario invalido")
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Formulario invalido. Todos los campos son obligatorios',
+        showConfirmButton: false,
+        timer: 3000
+      })
     }
   }
 }

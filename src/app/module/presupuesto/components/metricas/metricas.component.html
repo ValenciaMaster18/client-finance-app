@@ -4,6 +4,11 @@
       <app-crear-movimiento routerLink="/dashboard/presupuesto/crear-presupuesto"
         [textBtn]="'Crear presuspuesto'"></app-crear-movimiento>
     </div>
+    <ng-container *ngIf="DataGrafico.length == 0">
+      <div class="alert">
+        No tienes ahorros registrados crea uno en el boton de la esquina superior
+      </div>
+    </ng-container>
     <!-- DataGrafico.conceptos -->
     <p-carousel [value]="DataGrafico" [numVisible]="2" [numScroll]="3" [circular]="true"
       [responsiveOptions]="responsiveOptionsGrafico" autoPlayInterval="3000">

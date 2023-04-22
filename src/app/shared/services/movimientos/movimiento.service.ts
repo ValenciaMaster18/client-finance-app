@@ -31,11 +31,11 @@ export class MovimientoService {
     const params = new HttpParams().set("idUsuario", idUsuario)
     return this.httpClient.get<boolean>(`${this.API_URL}/has-any-movimiento/by-usuario`, { params })
   }
-  getMovimiento(page: number, size: number, idUsuario: string): Observable<Movimiento[]> {
+  getMovimiento(page: number, size: number, idUsuario: string): Observable<any[]> {
     const params = new HttpParams().set('page', page).set('size', size).set('idUsuario', idUsuario );
-    return this.httpClient.get<Movimiento[]>(`${this.API_URL}/by-usuario`, { params })
+    return this.httpClient.get<any[]>(`${this.API_URL}/by-usuario`, { params })
       .pipe(
-        tap((value: Movimiento[]) => this.movimientoSubject.next(value)),
+        tap((value: any) => this.movimientoSubject.next(value.content)),
         shareReplay()
       );
   }
