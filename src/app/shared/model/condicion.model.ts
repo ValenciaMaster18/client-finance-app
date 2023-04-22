@@ -4,4 +4,5 @@ export interface Condicion {
   importe: number;
   tipoImporte: string;
   enabled: boolean;
+  idAhorro?: string;
 }

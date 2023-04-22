@@ -14,6 +14,9 @@ import { Inversiones } from 'src/app/shared/model/inversiones.model';
 import { Objetivo } from 'src/app/shared/model/objetivo.model';
 import { AhorroService } from 'src/app/shared/services/ahorro/ahorro.service';
 import { Ahorro } from 'src/app/shared/model/ahorro.model';
+import Swal from 'sweetalert2';
+import { AuthService } from 'src/app/auth/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -31,6 +34,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   constructor(
     private _movimientoService: MovimientoService,
     private _jwtService: JwtService,
+    private _authService: AuthService,
+    private router: Router,
     private _portafolioService: PortafolioService,
     private _inversionService: InversionService,
     private _presupuestoService: PresupuestoService,
@@ -120,9 +125,32 @@ export class DashboardComponent implements OnInit, OnDestroy {
         // console.log('Objetivos:', objetivos);
         // console.log('Movimiento:', movimiento);
         // console.log('Ahorro:', ahorro);
+        this.mostrarCarga = false;
       })
       .catch((error) => {
-        console.log('Error al obtener los datos:', error);
+        this.mostrarCarga = false;
+        Swal.fire({
+          title: 'Toeken expirado',
+          text: "Vuelve a iniciar sesion",
+          icon: 'warning',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'Volver a iniciar sesion'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this._authService.salirDelSistema()
+            this.router.navigate(['/auth/login']);
+          }else{
+            Swal.fire({
+              position: 'center',
+              icon: 'error',
+              title: 'No tienes token, vuelva a iniciar sesion',
+              showConfirmButton: false,
+              timer: 3000
+            })
+            this._authService.salirDelSistema()
+            this.router.navigate(['/auth/login']);
+          }
+        })
       });
 
 
@@ -131,7 +159,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
     if (this.screenWidth > 998) {
       this.estadoMenuDesplegable = "block";
     }
-    this.mostrarCarga = false;
   }
 
   @HostListener('window:scroll', ['$event'])

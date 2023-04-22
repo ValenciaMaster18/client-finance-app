@@ -88,7 +88,6 @@ section {
       border: 0;
       background-color: transparent;
       cursor: pointer;
-
       svg {
         transition: all .5s ease-in-out;
         &:hover {
@@ -97,7 +96,26 @@ section {
           fill: white;
         }
       }
-
+      &:disabled svg{
+        display: none;
+      }
+      &:disabled {
+        top: 5px;
+        right: 30px;
+        width: 30px;
+        height: 30px;
+        border: 2px solid white;
+        border-radius: 50%;
+        animation: girar .5s alternate-reverse infinite;
+      }
+      @keyframes girar {
+        from {
+          background-color: white;
+        }
+        to{
+          background-color: black;
+        }
+      }
     }
   }
 }

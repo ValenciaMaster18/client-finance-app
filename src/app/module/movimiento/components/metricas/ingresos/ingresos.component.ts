@@ -74,6 +74,7 @@ export class IngresosComponent implements OnInit {
       const subscription = this._movimientoService.getOneMetrica(token.uuid!).subscribe({
         next: (value: MetricaBalance) => {
           this.dataParaGrafico = value;
+          console.log(value)
           // console.log(value.detalleImporteConceptoPorTipo["ingresos"]["Familia"].monto)
           this.balance = value.detalleImporteConceptoPorTipo
           // console.log(value.proporcionPorTipo)

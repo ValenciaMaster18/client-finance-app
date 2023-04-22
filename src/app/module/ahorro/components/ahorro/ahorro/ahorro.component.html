@@ -1,9 +1,18 @@
-<ng-container *ngIf="mostrarMetricas">
-  <section class="carrusel">
+<section class="carrusel">
+  <div class="btn__crear">
+    <app-crear-movimiento routerLink="/dashboard/ahorro/crear-ahorro" [textBtn]="'Crear ahorro'"></app-crear-movimiento>
+  </div>
+  <ng-container *ngIf="ahorro.length == 0">
+    <div class="alert">
+      No tienes ahorros registrados crea uno en el boton de la esquina superior
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="HayObjetivos && ahorro.length != 0">
     <p-carousel [value]="ahorro" [numVisible]="2" [numScroll]="3" [circular]="true"
       [responsiveOptions]="responsiveOptionsGrafico" autoPlayInterval="3000">
       <ng-template let-product pTemplate="item">
-        <div class="card-body" *ngFor="let item of ahorro">
+        <div class="card-body">
           <div class="card">
             <div class="datos">
               <h2>{{ product.nombre }}</h2>
@@ -11,12 +20,12 @@
               <span>{{ product.importe }}</span>
             </div>
             <div class="btn">
-              <button (click)="showDialogVisibleEnviar()">
+              <button (click)="showDialogVisibleEnviar(product)">
                 <picture>
                   <img src="../../../../../assets/image/icons/alto.png" alt="">
                 </picture>
               </button>
-              <button (click)="showDialogVisibleHacia()">
+              <button (click)="showDialogVisibleHacia(product)">
                 <picture>
                   <img src="../../../../../assets/image/icons/bajo.png" alt="">
                 </picture>
@@ -44,9 +53,9 @@
           </svg>
         </button>
         <h2>Transferencia desde disponible</h2>
-        <form>
-          <input type="text" placeholder="transferencia a diponible">
-          <button>Enviar</button>
+        <form [formGroup]="formularioTransferenciaDesdeDisponible" (ngSubmit)="EnviarTransferenciaDesdeDisponible()">
+          <input formControlName="importeToTransfer" type="text" placeholder="transferencia a diponible">
+          <button type="submit">Enviar</button>
         </form>
       </div>
     </div>
@@ -61,11 +70,11 @@
           </svg>
         </button>
         <h2>Transferencia hacia disponible</h2>
-        <form>
-          <input type="text" placeholder="transferencia a diponible">
-          <button>Enviar</button>
+        <form [formGroup]="formularioTransferenciaHaciaDisponible" (ngSubmit)="EnviarTransferenciaHaciaDisponible()">
+          <input formControlName="importeToTransfer" type="text" placeholder="transferencia a diponible">
+          <button type="submit">Enviar</button>
         </form>
       </div>
     </div>
-  </section>
-</ng-container>
+  </ng-container>
+</section>

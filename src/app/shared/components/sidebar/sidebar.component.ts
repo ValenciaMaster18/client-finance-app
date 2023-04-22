@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-sidebar',
@@ -28,5 +29,12 @@ export class SidebarComponent {
   cerrarSesion(): void {
     this._authService.salirDelSistema();
     this.router.navigate(['/auth/login']);
+    Swal.fire({
+      title: 'Salistes del sistema',
+      text: "Gracias por usar tu software de getion financiera",
+      icon: 'warning',
+      showConfirmButton: false,
+      timer: 3500
+    })
   }
 }

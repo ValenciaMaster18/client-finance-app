@@ -4,6 +4,7 @@ import { JwtService } from 'src/app/auth/services/token.service';
 import { Objetivo } from 'src/app/shared/model/objetivo.model';
 import { ObjetivosService } from 'src/app/shared/services/objetivos/objetivos.service';
 import { IUsuario } from '../../../../shared/model/token.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-crear-objetivo',
@@ -41,9 +42,36 @@ export class CrearObjetivoComponent implements OnInit {
         monto: this.formulario.value.monto,
         idUsuario: idUsuario.uuid!,
       }
-      this._objetivoService.postObjetivo(objetivo).subscribe()
+      this._objetivoService.postObjetivo(objetivo).subscribe(
+        {
+          next: (value: any) => {
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Ahorro creado',
+              showConfirmButton: false,
+              timer: 1500
+            })
+          },
+          error: (err: any) => {
+            Swal.fire({
+              position: 'center',
+              icon: 'error',
+              title: 'Ahorro no creado',
+              showConfirmButton: false,
+              timer: 3000
+            })
+          }
+        }
+      )
     } else {
-      //
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Formulario invalido. Todos los campos son obligatorios',
+        showConfirmButton: false,
+        timer: 3000
+      })
     }
   }
 }

@@ -1,10 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { JwtService } from 'src/app/auth/services/token.service';
 import { Ahorro } from 'src/app/shared/model/ahorro.model';
+import { MetricaAhorros } from 'src/app/shared/model/domain/metricaahorro.model';
 import { IUsuario } from 'src/app/shared/model/token.model';
 import { AhorroService } from 'src/app/shared/services/ahorro/ahorro.service';
+import { BalanceService } from 'src/app/shared/services/balance/balance.service';
 import { ObjetivosService } from 'src/app/shared/services/objetivos/objetivos.service';
 import Swal from 'sweetalert2';
 
@@ -14,10 +17,17 @@ import Swal from 'sweetalert2';
   styleUrls: ['./ahorro.component.scss']
 })
 export class AhorrosComponent implements OnInit, OnDestroy {
-  mostrarMetricas: boolean = false;
+  HayObjetivos: boolean = false;
+
   // Dialog
   visibleEnviar: boolean = false;
   visibleHacia: boolean = false;
+  // Transferencia
+  ahorroHaciaDisponible!: Ahorro;
+  ahorroDesdeDisponible!: Ahorro;
+  formularioTransferenciaHaciaDisponible!: FormGroup;
+  formularioTransferenciaDesdeDisponible!: FormGroup;
+
   responsiveOptionsGrafico: any[];
   ahorro: Ahorro[];
   subscription: Subscription;
@@ -25,11 +35,24 @@ export class AhorrosComponent implements OnInit, OnDestroy {
   constructor(
     private _ahorroService: AhorroService,
     private _objetivosService: ObjetivosService,
+    private _balanceServices: BalanceService,
+
     private _tokenService: JwtService,
+    private formBuilder: FormBuilder,
     private router: Router
   ) {
     this.ahorro = []
     this.subscription = new Subscription()
+    this.formularioTransferenciaDesdeDisponible = this.formBuilder.group(
+      {
+        importeToTransfer: ['', [Validators.required]]
+      }
+    )
+    this.formularioTransferenciaHaciaDisponible = this.formBuilder.group(
+      {
+        importeToTransfer: ['', [Validators.required]]
+      }
+    )
     this.responsiveOptionsGrafico = [
       {
         breakpoint: '1199px',
@@ -77,23 +100,45 @@ export class AhorrosComponent implements OnInit, OnDestroy {
           }
           // Si tiene un objetivo, carga los ahorros
           else {
-            this.mostrarMetricas = true;
-            this.subscription = this._ahorroService.ahorro$.subscribe(
+            this.HayObjetivos = true;
+            this._ahorroService.getManyMetricas(token.uuid!).subscribe(
               {
-                next: (value: any) => {
-                  this.ahorro = value
+                next: (value: MetricaAhorros) => {
+                  if (value.mostraMetricas) {
+                    this.subscription = this._ahorroService.ahorro$.subscribe(
+                      {
+                        next: (value: any) => {
+                          this.ahorro = value
+                        },
+                        error: (err: any) => {
+                        },
+                        complete: () => {
+                          //
+                        }
+                      }
+                    )
+                  }
                 },
                 error: (err: any) => {
-                },
-                complete: () => {
-                  //
+                  console.log(err)
                 }
               }
             )
+
           }
         }
       }
     )
+    // this._ahorroService.getCanShowMetricas(token.uuid!).subscribe(
+    //   {
+    //     next: (value: boolean) => {
+    //       alert(value)
+    //     },
+    //     error: (err: any) => {
+    //       alert(err)
+    //     }
+    //   }
+    // )
 
   }
 
@@ -101,12 +146,64 @@ export class AhorrosComponent implements OnInit, OnDestroy {
     // Cancela la suscripción al observable cuando se destruye el componente
     this.subscription.unsubscribe()
   }
-  showDialogVisibleEnviar() {
+  showDialogVisibleEnviar(ahorro?: Ahorro) {
+    this.ahorroDesdeDisponible = ahorro!;
+
     // Muestra o esconde un diálogo para enviar dinero
     this.visibleEnviar = !this.visibleEnviar;
   }
-  showDialogVisibleHacia() {
+  showDialogVisibleHacia(ahorro?: Ahorro) {
+    this.ahorroHaciaDisponible = ahorro!;
     // Muestra o esconde un diálogo para recibir dinero
     this.visibleHacia = !this.visibleHacia;
+  }
+  EnviarTransferenciaDesdeDisponible(): void {
+    const token: IUsuario = this._tokenService.decodeToken()
+
+    this._balanceServices.getBalance(token.uuid!).subscribe(
+      {
+        next: (value: number) => {
+          if (this.formularioTransferenciaDesdeDisponible.valid && this.formularioTransferenciaDesdeDisponible.value.importeToTransfer <= value) {
+            this._ahorroService.putTranferenciaDesdeDisponibleAhorro(
+              this.ahorroDesdeDisponible,
+              this.formularioTransferenciaDesdeDisponible.value.importeToTransfer
+            ).subscribe(
+              {
+                next: (value: any) => {
+                  alert("Enviado")
+                },
+                error: (err: any) => {
+                  alert("Cancelado")
+                }
+              }
+
+            )
+          } else {
+            console.log("Saldo insuficiente")
+          }
+        },
+        error: (err: any) => {
+          console.log(err)
+        }
+      }
+    )
+  }
+  EnviarTransferenciaHaciaDisponible(): void {
+    if (this.formularioTransferenciaHaciaDisponible.valid) {
+      this._ahorroService.putTranferenciaHaciaDisponibleAhorro(
+        this.ahorroHaciaDisponible,
+        this.formularioTransferenciaHaciaDisponible.value.importeToTransfer
+      ).subscribe(
+        {
+          next: (value: any) => {
+            alert("Enviado")
+          },
+          error: (err: any) => {
+            alert("Cancelado")
+          }
+        }
+
+      )
+    }
   }
 }

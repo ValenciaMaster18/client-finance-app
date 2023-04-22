@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PresupuestoService } from 'src/app/shared/services/presupuestos/presupuesto.service';
 import { Presupuesto } from '../../../../../shared/model/presupuesto.model';
+import { JwtService } from 'src/app/auth/services/token.service';
+import { IUsuario } from 'src/app/shared/model/token.model';
 
 @Component({
   selector: 'app-form-presupuesto',
@@ -21,6 +23,7 @@ export class FormPresupuestoComponent {
   ];
   constructor(
     private _presupuestoService: PresupuestoService,
+    private _tokenService: JwtService,
     private formBuilder: FormBuilder
   ) {
     this.formulario = this.formBuilder.group(
@@ -32,14 +35,14 @@ export class FormPresupuestoComponent {
     )
   }
   submit(): void {
-    console.log(this.formulario.valid)
+    const token: IUsuario = this._tokenService.decodeToken()
     if(this.formulario.valid){
       const presupuesto: Presupuesto = {
         id: null,
         nombre: this.formulario.value.nombre,
         descripcion: this.formulario.value.descripcion,
         periodo: this.formulario.value.periodo,
-        idUsuario: null
+        idUsuario: token.uuid!
       }
 
       this._presupuestoService.postPresupuesto(presupuesto).subscribe(

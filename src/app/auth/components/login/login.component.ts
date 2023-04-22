@@ -76,7 +76,13 @@ export class LoginComponent implements OnInit, OnDestroy {
         }
       )
     } else {
-      //
+      Swal.fire({
+        position: 'center',
+        icon: 'info',
+        title: 'Correo invalido',
+        showConfirmButton: false,
+        timer: 3000
+      })
     }
 
   }

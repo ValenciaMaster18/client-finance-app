@@ -15,7 +15,6 @@ import Swal from 'sweetalert2';
   styleUrls: ['./metricas.component.scss']
 })
 export class MetricasComponent implements OnInit, OnDestroy {
-  data: string[] = ["asd", "das", "dsa"]
   mostrarMetricas: boolean = false;
   dataCard: MetricaPortafolio[] = [];
   responsiveOptionsGrafico: any[];

@@ -10,6 +10,7 @@ import { AhorroService } from 'src/app/shared/services/ahorro/ahorro.service';
 import { Ahorro } from '../../../../../shared/model/ahorro.model';
 import { UsuarioService } from 'src/app/auth/services/usuario.service';
 import { UsernameService } from 'src/app/auth/services/username.service';
+import { BalanceService } from 'src/app/shared/services/balance/balance.service';
 @Component({
   selector: 'app-crear-movimiento',
   templateUrl: './crear-movimiento.component.html',
@@ -27,11 +28,11 @@ export class CrearMovimientoComponent implements OnInit {
 
   constructor(
     private _movimientoService: MovimientoService,
-    private _usuarioService: UsuarioService,
     private _usernameService: UsernameService,
     private _ahorroService: AhorroService,
     private _tokenService: JwtService,
     private formBuilder: FormBuilder,
+    private _balanceServices: BalanceService,
     private activatedRoute: ActivatedRoute
   ) {
     this._movimientoService.getConceptoLogo().subscribe(
@@ -43,8 +44,6 @@ export class CrearMovimientoComponent implements OnInit {
               next: (value: ParamMap) => {
                 this.tipo = value.get("tipo");
                 this.idPresupuesto = value.get("idPresupuesto");
-                console.log(this.idPresupuesto)
-                console.log(this.tipo)
               }
             }
           )
@@ -103,51 +102,71 @@ export class CrearMovimientoComponent implements OnInit {
   }
   onSubmit(): void {
     const idUsuario: IUsuario = this._tokenService.decodeToken()
-     if (this.formulario.valid) {
-      if (!this.idPresupuesto) {
-        const movimiento: Movimiento = {
-          id: null,
-          importe: this.formulario.value.importe,
-          tipo: this.tipo!.toUpperCase(),
-          concepto: this.selectedIngreso.concepto,
-          idUsuario: idUsuario.uuid!.toString(),
-          idPresupuesto: null,
-          contabilizable: true,
-          logoConcepto: String(this.selectedIngreso.id)
-        }
-        // Cambiar el id por el del formulario
-        if (this.aplicaDescuentoEspecifico) {
-          this.idCuentaAhorroEspecifica = null;
-        }
-        this._movimientoService.postMovimiento2(movimiento, this.aplicaDescuentoEspecifico, idUsuario.uuid!.toString())
-          .subscribe(
-            {
-              next: (value: any) => {
-              },
-              error: (err: any) => {
+    if (this.formulario.valid) {
+      this._balanceServices.getBalance(idUsuario.uuid!).subscribe(
+        {
+          next: (value: number) => {
+            if (this.formulario.value.importe > value && this.tipo == "egreso") {
+              console.log("Saldo insuficente")
+            }else{
+              if (!this.idPresupuesto) {
+                const movimiento: Movimiento = {
+                  id: null,
+                  importe: this.formulario.value.importe,
+                  tipo: this.tipo!.toUpperCase(),
+                  concepto: this.selectedIngreso.concepto,
+                  idUsuario: idUsuario.uuid!.toString(),
+                  idPresupuesto: null,
+                  contabilizable: true,
+                  logoConcepto: String(this.selectedIngreso.id)
+                }
+                // Cambiar el id por el del formulario
+                if (this.aplicaDescuentoEspecifico) {
+                  this.idCuentaAhorroEspecifica = null;
+                }
+                this._movimientoService.postMovimiento2(movimiento, this.aplicaDescuentoEspecifico, idUsuario.uuid!.toString())
+                  .subscribe(
+                    {
+                      next: (value: any) => {
+                        this.formulario.reset();
+                      },
+                      error: (err: any) => {
+                      }
+                    }
+                  )
+              } else if (this.idPresupuesto) {
+                const movimiento: Movimiento = {
+                  id: null,
+                  importe: this.formulario.value.importe,
+                  tipo: this.tipo!.toUpperCase(),
+                  concepto: this.selectedIngreso.concepto,
+                  idUsuario: idUsuario.uuid!,
+                  idPresupuesto: this.idPresupuesto,
+                  contabilizable: false,
+                  logoConcepto: String(this.selectedIngreso.id)
+                }
+                // Cambiar el id por el del formulario
+                if (this.aplicaDescuentoEspecifico) {
+                  this.idCuentaAhorroEspecifica = null;
+                }
+                this._movimientoService.postMovimiento2(movimiento, this.aplicaDescuentoEspecifico, idUsuario.uuid!.toString())
+                  .subscribe(
+                    {
+                      next: () => {
+                        this.formulario.reset();
+                      },
+                      error: (err: any) => {
+                      }
+                    }
+                  )
               }
             }
-          )
-      } else if (this.idPresupuesto) {
-        const movimiento: Movimiento = {
-          id: null,
-          importe: this.formulario.value.importe,
-          tipo: this.tipo!.toUpperCase(),
-          concepto: this.selectedIngreso.concepto,
-          idUsuario: idUsuario.uuid!,
-          idPresupuesto: this.idPresupuesto,
-          contabilizable: false,
-          logoConcepto: String(this.selectedIngreso.id)
+          }
         }
-        // Cambiar el id por el del formulario
-        if (this.aplicaDescuentoEspecifico) {
-          this.idCuentaAhorroEspecifica = null;
-        }
-        this._movimientoService.postMovimiento2(movimiento, this.aplicaDescuentoEspecifico, idUsuario.uuid!.toString())
-          .subscribe()
-      }
-    } else {
-      //
+      )
+    }else{
+      // Formulario invalido
+      console.log("Formulario invalido")
     }
   }
 }

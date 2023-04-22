@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environmentDev } from 'src/environments/environment.development';
 import { BehaviorSubject, Observable, shareReplay, tap } from 'rxjs';
 import { MetricaAhorros } from '../../model/domain/metricaahorro.model';
@@ -14,16 +14,17 @@ export class AhorroService {
   ahorroSubject: BehaviorSubject<Ahorro[]> = new BehaviorSubject<Ahorro[]>([]);
   ahorro$: Observable<Ahorro[]> = this.ahorroSubject.asObservable();
 
-  constructor(private httpClient: HttpClient) {
+  constructor(
+    private httpClient: HttpClient
+  ) {
     this.API_URL = environmentDev.url + 'api/v1/ahorros';
   }
 
   getAhorro(page: number, size: number, idUsuario: string): Observable<any> {
     return this.httpClient.get<any>(`${this.API_URL}?page=${page}&size=${size}&idUsuario=${idUsuario}`)
       .pipe(
-        tap((value: any) => {
-          this.ahorroSubject.next(value.content);
-        })
+        tap((value: any) => this.ahorroSubject.next(value.content)),
+        shareReplay()
       )
   }
 
@@ -32,7 +33,7 @@ export class AhorroService {
   }
 
   getCanShowMetricas(idUser: string): Observable<boolean> {
-    return this.httpClient.get<boolean>(`${this.API_URL}/can-show-metricas${idUser}`)
+    return this.httpClient.get<boolean>(`${this.API_URL}/can-show-metricas?idUser=${idUser}`)
   }
   getOneMetricas(idAhorro: string): Observable<MetricaAhorros> {
     return this.httpClient.get<MetricaAhorros>(`${this.API_URL}/metricas/${idAhorro}`)
@@ -50,15 +51,15 @@ export class AhorroService {
   }
 
   postAhorro(ahorro: Ahorro): Observable<any> {
-    return this.httpClient.post<any>(`${this.API_URL}`, ahorro);
+    return this.httpClient.post<any>(`${this.API_URL}`, ahorro)
   }
   putTranferenciaHaciaDisponibleAhorro(ahorro: Ahorro, importeToTransfer: number): Observable<any> {
-    const params = { importeToTransfer: importeToTransfer }
-    return this.httpClient.post<any>(`${this.API_URL}/transferencia-hacia-disponible`, ahorro, { params });
+    const params = new HttpParams().set("importeToTransfer", importeToTransfer)
+    return this.httpClient.put<any>(`${this.API_URL}/transferencia-hacia-disponible`, ahorro, { params });
   }
   putTranferenciaDesdeDisponibleAhorro(ahorro: Ahorro, importeToTransfer: number): Observable<any> {
-    const params = { importeToTransfer: importeToTransfer }
-    return this.httpClient.post<any>(`${this.API_URL}/transferencia-desde-disponible`, ahorro, { params });
+    const params = new HttpParams().set("importeToTransfer", importeToTransfer)
+    return this.httpClient.put<any>(`${this.API_URL}/transferencia-desde-disponible`, ahorro, { params });
   }
 
   deleteAhorro(idAhorro: number): Observable<any> {

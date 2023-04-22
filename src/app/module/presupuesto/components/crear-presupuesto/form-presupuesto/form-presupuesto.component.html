@@ -10,7 +10,7 @@
   <form [formGroup]="formulario" (ngSubmit)="submit()">
 
     <input type="text" placeholder="Nombre Presupuesto" formControlName="nombre">
-    <textarea name="" id="" cols="5" rows="7" formControlName="descripcion"></textarea>
+    <textarea name="" id="" cols="5" rows="7" placeholder="Descripcion del presupuesto" formControlName="descripcion"></textarea>
     <select formControlName="periodo">
       <option [value]="per" *ngFor="let per of periodo">
         {{ per }}

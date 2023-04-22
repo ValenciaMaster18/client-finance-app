@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, shareReplay, tap } from 'rxjs';
 import { Objetivo } from '../../model/objetivo.model';
@@ -22,6 +22,11 @@ export class ObjetivosService {
   }
   getObjetivo(idObjetivo: number): Observable<Objetivo> {
     return this.httpClient.get<Objetivo>(`${this.API_URL}/${idObjetivo}`)
+  }
+
+  getAllObjetivo(idUsuario: string): Observable<Objetivo[]>{
+    const params = new HttpParams().set("idUsuario", idUsuario)
+    return this.httpClient.get<Objetivo[]>(`${this.API_URL}/all`, { params })
   }
   getHasObjetivo(idUsuario: string): Observable<boolean> {
     return this.httpClient.get<boolean>(`${this.API_URL}/has-objetivo/${idUsuario}`).pipe(

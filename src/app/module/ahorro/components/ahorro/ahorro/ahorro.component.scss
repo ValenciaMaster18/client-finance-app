@@ -88,7 +88,12 @@
     }
   }
 }
-
+// Btn crear ahorro
+.btn__crear{
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
 // Dialogo
 .dialogoEnviar {
   top: 0;
@@ -147,4 +152,15 @@
       }
     }
   }
+}
+.alert{
+  background-color: #4B66B5;
+  color: white;
+  display: inline-block;
+  width: auto;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 20px 32px;
+  margin-bottom: 25px;
 }

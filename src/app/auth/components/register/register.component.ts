@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { UsuarioService } from '../../services/usuario.service';
 import { User } from 'src/app/shared/model/usuario.model';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -56,6 +57,14 @@ export class RegisterComponent {
           }
         }
       )
+    }else{
+      Swal.fire({
+        position: 'center',
+        icon: 'info',
+        title: 'Correo invalido',
+        showConfirmButton: false,
+        timer: 3000
+      })
     }
   }
   submitFormularioRegistrarUsuario(): void {
@@ -72,7 +81,14 @@ export class RegisterComponent {
       this._usuarioService.postRegistrarNuevoUsuario(user).subscribe(
         {
           next: () => {
-              this.router.navigate([`/auth/login/${this.username}`])
+              Swal.fire(
+                'Usuario creado',
+                'Puedes ingresar al sistema con tus credenciales',
+                'question'
+              )
+              setTimeout(() => {
+                this.router.navigate([`/auth/login/${this.username}`])
+              }, 3000)
           }
         }
       )
