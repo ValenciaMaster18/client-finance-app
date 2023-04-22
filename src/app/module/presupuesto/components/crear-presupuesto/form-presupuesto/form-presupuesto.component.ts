@@ -4,6 +4,7 @@ import { PresupuestoService } from 'src/app/shared/services/presupuestos/presupu
 import { Presupuesto } from '../../../../../shared/model/presupuesto.model';
 import { JwtService } from 'src/app/auth/services/token.service';
 import { IUsuario } from 'src/app/shared/model/token.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form-presupuesto',
@@ -48,15 +49,34 @@ export class FormPresupuestoComponent {
       this._presupuestoService.postPresupuesto(presupuesto).subscribe(
         {
           next: (value: any) => {
-            console.log(value)
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Presupuesto creado',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            this.formulario.reset()
           },
           error: (err: any) => {
-            console.log(err)
+            Swal.fire({
+              position: 'center',
+              icon: 'error',
+              title: 'Presupuesto no creado',
+              showConfirmButton: false,
+              timer: 3000
+            })
           }
         }
       )
     }else{
-
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Formulario invalido. Todos los campos son obligatorios',
+        showConfirmButton: false,
+        timer: 3000
+      })
     }
   }
 }

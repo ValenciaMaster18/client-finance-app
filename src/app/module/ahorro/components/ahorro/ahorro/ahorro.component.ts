@@ -170,16 +170,35 @@ export class AhorrosComponent implements OnInit, OnDestroy {
             ).subscribe(
               {
                 next: (value: any) => {
-                  alert("Enviado")
+                  Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Tranferencia enviada',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+                  this.formularioTransferenciaDesdeDisponible.reset()
                 },
                 error: (err: any) => {
-                  alert("Cancelado")
+                  Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Tranferencia Cancelada',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
                 }
               }
 
             )
           } else {
-            console.log("Saldo insuficiente")
+            Swal.fire({
+              position: 'center',
+              icon: 'info',
+              title: 'Saldo insuficiente',
+              showConfirmButton: false,
+              timer: 1500
+            })
           }
         },
         error: (err: any) => {
@@ -196,10 +215,23 @@ export class AhorrosComponent implements OnInit, OnDestroy {
       ).subscribe(
         {
           next: (value: any) => {
-            alert("Enviado")
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Tranferencia enviada',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            this.formularioTransferenciaHaciaDisponible.reset()
           },
           error: (err: any) => {
-            alert("Cancelado")
+            Swal.fire({
+              position: 'center',
+              icon: 'error',
+              title: 'Tranferencia Cancelada',
+              showConfirmButton: false,
+              timer: 1500
+            })
           }
         }
 

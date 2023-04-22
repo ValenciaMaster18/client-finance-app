@@ -18,8 +18,8 @@ export class MetricasComponent {
   DataGrafico!: MetricaPresupuesto[];
   mostrarMetricas: boolean = false;
   responsiveOptionsGrafico!: any[];
-  basicDataGrafico: any;
   subscription: Subscription;
+
   constructor(
     private _presupuestoService: PresupuestoService,
     private _objetivosService: ObjetivosService,
@@ -79,8 +79,6 @@ export class MetricasComponent {
               {
                 next: (value: any) => {
                   this.DataGrafico = value;
-                  console.log(value)
-                  this.cargarGrafico()
                 },
                 error: (err: any) => {
                   //
@@ -95,22 +93,5 @@ export class MetricasComponent {
         }
       }
     )
-
-  }
-  cargarGrafico(): void {
-    this.basicDataGrafico = {
-      // this.DataGrafico.conceptos
-      labels: ["Q1", "Q2", "Q3"],
-      datasets: [
-        {
-          label: 'Movimientos por conceptos',
-          // this.DataGrafico.conceptos[0]
-          data: [150, 250, 400],
-          backgroundColor: ['#3E98EF'],
-          borderColor: ['#3E98EF'],
-          borderWidth: 1
-        }
-      ]
-    };
   }
 }

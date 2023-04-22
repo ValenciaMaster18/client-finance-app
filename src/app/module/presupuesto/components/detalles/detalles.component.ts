@@ -16,8 +16,6 @@ export class DetallesComponent implements OnInit {
   dataMovimientoTable!: Movimiento[];
   mensaje: string = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry';
   dataMovimiento!: any[]
-  basicData: any;
-  basicOptions: any;
 
   constructor(
     private _presupuestoService: PresupuestoService,
@@ -26,8 +24,6 @@ export class DetallesComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    this.cargarGrafico()
-
     try {
       const idPresupuesto = await new Promise<string>((resolve, reject) => {
         this.activatedRoute.paramMap.subscribe(
@@ -76,20 +72,5 @@ export class DetallesComponent implements OnInit {
     } catch (error) {
       // manejar el error aquí
     }
-  }
-
-  cargarGrafico(): void {
-    this.basicData = {
-      labels: ['Q1', 'Q2', 'Q3', 'Q4'],
-      datasets: [
-        {
-          label: 'Sales',
-          data: [540, 325, 702, 620],
-          backgroundColor: ['rgba(255, 159, 64, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(153, 102, 255, 0.2)'],
-          borderColor: ['rgb(255, 159, 64)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)', 'rgb(153, 102, 255)'],
-          borderWidth: 1
-        }
-      ]
-    };
   }
 }

@@ -48,16 +48,17 @@ export class CrearObjetivoComponent implements OnInit {
             Swal.fire({
               position: 'center',
               icon: 'success',
-              title: 'Ahorro creado',
+              title: 'Objetivo creado',
               showConfirmButton: false,
               timer: 1500
             })
+            this.formulario.reset()
           },
           error: (err: any) => {
             Swal.fire({
               position: 'center',
               icon: 'error',
-              title: 'Ahorro no creado',
+              title: 'Objetivo no creado',
               showConfirmButton: false,
               timer: 3000
             })

@@ -1,24 +1,42 @@
 <ng-container *ngIf="mostrarMetricas">
   <div class="card">
     <div class="crear__presupuesto">
-      <app-crear-movimiento routerLink="/dashboard/presupuesto/crear-presupuesto" [textBtn]="'Crear presuspuesto'"></app-crear-movimiento>
+      <app-crear-movimiento routerLink="/dashboard/presupuesto/crear-presupuesto"
+        [textBtn]="'Crear presuspuesto'"></app-crear-movimiento>
     </div>
     <!-- DataGrafico.conceptos -->
     <p-carousel [value]="DataGrafico" [numVisible]="2" [numScroll]="3" [circular]="true"
       [responsiveOptions]="responsiveOptionsGrafico" autoPlayInterval="3000">
       <ng-template let-product pTemplate="item">
-        <div class="card-body" >
-          <p-chart type="bar" [data]="basicDataGrafico"></p-chart>
-          <!-- routerLink="/dashboard/presupuesto/detalles" -->
-          <button [routerLink]="'/dashboard/presupuesto/detalles/' + product.idPresupuesto" class="learn-more">
-            <span class="circle" aria-hidden="true">
-            <span class="icon arrow"></span>
+        <div class="card-body">
+          <div class="cuadro">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" class="bi bi-currency-dollar"
+              viewBox="0 0 16 16">
+              <path
+                d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z" />
+            </svg>
+          </div>
+          <div class="contnedor__text">
+            <h2>Ingreso disponible</h2>
+            <span>
+              {{ product.ingresoDisponible | currency: "$" }}
             </span>
-            <span class="button-text">Presuspuesto detalles</span>
+            <button [routerLink]="'/dashboard/presupuesto/detalles/' + product.idPresupuesto" class="learn-more">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+              </svg>
+            </button>
+          </div>
+          <button class="consejo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#4B66B5"
+              class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+              <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
+            </svg>
           </button>
+
         </div>
       </ng-template>
     </p-carousel>
   </div>
 </ng-container>
-
