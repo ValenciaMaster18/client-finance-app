@@ -23,8 +23,10 @@ export class IngresosComponent implements OnInit {
   optionsGrafico: any;
   mostrarMetricas: boolean = false;
 
+  monto: number = 0;
   concepto: string[] = [];
   valores: ImporteConcepto[] = [];
+
   // Finalizar la suscripcion
   subscription: Subscription;
   constructor(
@@ -79,7 +81,7 @@ export class IngresosComponent implements OnInit {
         next: (value: MetricaBalance) => {
           this.dataParaGrafico = value;
           this.concepto = Object.keys(this.dataParaGrafico.detalleImporteConceptoPorTipo.ingresos);
-          this.valores = (Object.values(this.dataParaGrafico.detalleImporteConceptoPorTipo.ingresos));
+          this.valores = Object.values(this.dataParaGrafico.detalleImporteConceptoPorTipo.ingresos);
           this.cargarGrafico()
           resolve(value)
         },
@@ -96,6 +98,9 @@ export class IngresosComponent implements OnInit {
   cargarGrafico(): void {
     const valores = Object.values(this.dataParaGrafico.detalleImporteConceptoPorTipo.ingresos)
     const montos = Object.values(valores).map(element => element.monto);
+    for (let index = 0; index < montos.length; index++) {
+      this.monto += montos[index];
+    }
     const documentStyle = getComputedStyle(document.documentElement);
     const textColor = documentStyle.getPropertyValue('--text-color');
 

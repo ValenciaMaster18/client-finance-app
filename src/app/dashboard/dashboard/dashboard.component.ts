@@ -110,7 +110,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         // console.log('Portafolio:', portafolio);
         // console.log('Presupuesto:', presupuesto);
         // console.log('Objetivos:', objetivos);
-        console.log('Movimiento:', movimiento);
+        // console.log('Movimiento:', movimiento);
         // console.log('Ahorro:', ahorro);
         this.mostrarCarga = false;
       })

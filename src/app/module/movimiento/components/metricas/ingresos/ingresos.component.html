@@ -5,7 +5,7 @@
         <app-doughnut [data]="dataGrafico" [options]="optionsGrafico"></app-doughnut>
       </div>
       <span>
-        {{ dataParaGrafico.monto | currency:'PEN ' }}
+        {{ monto | currency:'PEN ' }}
       </span>
       <button routerLink="/dashboard/movimiento/metricas/crear-movimiento/ingreso">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-plus"

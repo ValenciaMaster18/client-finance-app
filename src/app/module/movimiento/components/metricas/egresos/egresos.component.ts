@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { JwtService } from 'src/app/auth/services/token.service';
 import { MetricaBalance } from 'src/app/shared/model/domain/metricabalance.model';
@@ -11,12 +11,13 @@ import { MovimientoService } from 'src/app/shared/services/movimientos/movimient
   templateUrl: './egresos.component.html',
   styleUrls: ['../../../../../../assets/css/movimiento/egre-ingre.scss']
 })
-export class EgresosComponent implements OnInit {
+export class EgresosComponent implements OnInit, OnDestroy {
   mensaje: string = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry';
   dataParaGrafico!: MetricaBalance;
   dataGrafico: any;
   optionsGrafico: any;
 
+  monto: number = 0;
   concepto: string[] = [];
   valores: ImporteConcepto[] = [];
 
@@ -38,7 +39,7 @@ export class EgresosComponent implements OnInit {
         next: (value: MetricaBalance) => {
           this.dataParaGrafico = value;
           this.concepto = Object.keys(this.dataParaGrafico.detalleImporteConceptoPorTipo.egresos);
-          this.valores = (Object.values(this.dataParaGrafico.detalleImporteConceptoPorTipo.egresos));
+          this.valores = Object.values(this.dataParaGrafico.detalleImporteConceptoPorTipo.egresos);
           this.cargarGrafico()
         },
         error: (err: any) => {
@@ -54,15 +55,18 @@ export class EgresosComponent implements OnInit {
   cargarGrafico(): void {
     const valores = Object.values(this.dataParaGrafico.detalleImporteConceptoPorTipo.egresos)
     const montos = Object.values(valores).map(element => element.monto);
-
+    for (let index = 0; index < montos.length; index++) {
+      this.monto += montos[index];
+    }
+    console.log(this.monto)
     const documentStyle = getComputedStyle(document.documentElement);
     const textColor = documentStyle.getPropertyValue('--text-color');
 
     this.dataGrafico = {
-      labels: [Object.keys(this.dataParaGrafico.detalleImporteConceptoPorTipo.egresos)],
+      labels: Object.keys(this.dataParaGrafico.detalleImporteConceptoPorTipo.egresos),
       datasets: [
         {
-          data: [montos],
+          data: montos,
           backgroundColor: [documentStyle.getPropertyValue('--blue-500'), documentStyle.getPropertyValue('--yellow-500'), documentStyle.getPropertyValue('--green-500')],
           hoverBackgroundColor: [documentStyle.getPropertyValue('--blue-400'), documentStyle.getPropertyValue('--yellow-400'), documentStyle.getPropertyValue('--green-400')]
         }
@@ -73,7 +77,7 @@ export class EgresosComponent implements OnInit {
       cutout: '70%',
       plugins: {
         legend: {
-          display: false,
+          display: true,
           labels: {
             color: textColor
           }
