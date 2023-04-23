@@ -1,5 +1,5 @@
 <section class="contenedor">
-  <div class="contenedor__card">
+  <div class="contenedor__card" *ngIf="portafolio.mostraMetricas">
     <div class="contenedor__card-tarjeta">
       <div class="contenedor__card-icon">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" class="bi bi-bar-chart" viewBox="0 0 16 16">
@@ -65,7 +65,7 @@
       <app-crear-movimiento routerLink="/dashboard/inversion/crear-inversion"
       [textBtn]="'Crear Inversion'"></app-crear-movimiento>
 
-      <button (click)="showDialog()">
+      <button class="liquidar" (click)="showDialog()" [disabled]="inversiones.length == 0">
         Liquidar Inversion
       </button>
     </div>
@@ -160,7 +160,7 @@
       </button>
       <h2>Liquidar Inversion</h2>
       <form [formGroup]="formularioLiquidar" (ngSubmit)="liquidarInversion()" class="form__dialog">
-        <input formControlName="nombreInversion" type="text" placeholder="Nombre inversion">
+        <input formControlName="nombreInversion" type="text" placeholder="Nombre de la inversion a liquidar">
         <button type="submit">Enviar</button>
       </form>
     </div>

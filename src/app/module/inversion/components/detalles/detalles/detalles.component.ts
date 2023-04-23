@@ -29,7 +29,7 @@ export class DetallesComponent implements OnInit, OnDestroy {
     private _jwtService: JwtService,
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute
-  ){
+  ) {
     this.formularioLiquidar = this.formBuilder.group(
       {
         nombreInversion: ['', [Validators.required]]
@@ -41,7 +41,7 @@ export class DetallesComponent implements OnInit, OnDestroy {
     this.subscription = this.activatedRoute.paramMap.subscribe(
       {
         next: (value: ParamMap) => {
-          if(value.get("idPortafolio") != ""){
+          if (value.get("idPortafolio") != "") {
             const id = value.get("idPortafolio");
             this.subscription = this._inversionService.getManyMetricas(id!).subscribe({
               next: (value: MetricaInversion[]) => {
@@ -70,17 +70,18 @@ export class DetallesComponent implements OnInit, OnDestroy {
   dataMetricaInversion: MetricaInversion[] = []
   visibilidad: boolean = false;
 
-  showDialog(): void{
+  showDialog(): void {
     this.visibilidad = !this.visibilidad;
   }
 
-  liquidarInversion(): void{
+  liquidarInversion(): void {
     const token: IUsuario | any = this._jwtService.decodeToken();
 
-    if(this.formularioLiquidar.valid){
+    if (this.formularioLiquidar.valid) {
       const inversionId: MetricaInversion[] = this.inversiones.filter(element => element.nombre == this.formularioLiquidar.value.nombreInversion)
       // // Obtengo la votacion por id
-      this._inversionService.getOneInversiones((inversionId[0].idInversion).toString()).subscribe(
+      if (inversionId.length != 0) {
+        this._inversionService.getOneInversiones((inversionId[0].idInversion).toString()).subscribe(
           {
             next: (value: Inversiones) => {
               this._inversionService.pathInversiones(value, token.uuid!).subscribe(
@@ -93,6 +94,9 @@ export class DetallesComponent implements OnInit, OnDestroy {
                       showConfirmButton: false,
                       timer: 1500
                     })
+                    this.formularioLiquidar.reset()
+                    this.visibilidad = false;
+                    this.ngOnInit();
                   },
                   error: (er: any) => {
                     Swal.fire({
@@ -117,7 +121,17 @@ export class DetallesComponent implements OnInit, OnDestroy {
             }
           }
         )
-    }else{
+      } else {
+        Swal.fire({
+          position: 'center',
+          icon: 'info',
+          title: 'Esta inversion buscada no existe',
+          showConfirmButton: false,
+          timer: 3000
+        })
+      }
+
+    } else {
       Swal.fire({
         position: 'center',
         icon: 'error',

@@ -76,6 +76,12 @@ export class ObjetivosService {
   deleteOnjetivo(idUsuario: string, idObjetivo: string): Observable<any> {
     const params = new HttpParams().set("idUsuario", idUsuario).set("idObjetivo", idObjetivo);
     return this.httpClient.delete<any>(`${this.API_URL}`, { params })
+      .pipe(
+        tap(() => {
+          const token: IUsuario | any = this._jwtService.decodeToken();
+          this.getPageObjetivo(0, 9, token.uuid!).subscribe();
+        })
+      )
   }
 
 }

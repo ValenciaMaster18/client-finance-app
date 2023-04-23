@@ -88,8 +88,16 @@
       left: 10px;
       background-color: transparent;
     }
-
-
+    div.consejo {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    button.consejo:hover + div.consejo {
+      display: block;
+    }
   }
 }
 // Btn crear ahorro

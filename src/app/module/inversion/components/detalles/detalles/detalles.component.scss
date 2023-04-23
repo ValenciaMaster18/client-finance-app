@@ -52,7 +52,7 @@
       }
 
       span {
-        font-size: 3rem;
+        font-size: 2.2rem;
         font-weight: 700px;
         color: #344767;
       }
@@ -191,8 +191,12 @@ td {
         border: 0;
         background-color: #4B66B5;
         color: white;
+        cursor: pointer;
       }
     }
   }
 
+}
+button.liquidar:disabled{
+  background-color: gray;
 }
