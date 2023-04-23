@@ -46,7 +46,7 @@
           <span> {{ product.concepto }} </span>
         </picture>
       </td>
-      <td>{{ product.importe }}</td>
+      <td>{{ product.importe | currency: 'PEN' }}</td>
       <td>{{ product.tipo }}</td>
     </tr>
   </ng-template>

@@ -18,10 +18,10 @@
   gap: 16px;
 
   .contenedor__card-tarjeta {
-    width: 217px;
+    min-width: 217px;
     height: 137px;
     border-radius: 15px;
-    padding: 5px;
+    padding: 15px 32px;
     padding-right: 10px;
     background-color: white;
     position: relative;

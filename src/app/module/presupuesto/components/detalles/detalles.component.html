@@ -8,7 +8,7 @@
       </div>
       <div class="contenedor__card-data">
         <p>Ingreso Disponible</p>
-        <span>{{ dataMetricaPresupuesto.ingresoDisponible }}</span>
+        <span>{{ numeral(dataMetricaPresupuesto.ingresoDisponible).format('0,0.0a') }} PEN</span>
       </div>
       <button class="btn__consejo">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#4193ff" class="bi bi-question-circle-fill"

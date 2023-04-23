@@ -4,7 +4,7 @@ import { Movimiento } from 'src/app/shared/model/movimiento.model';
 import { MovimientoService } from 'src/app/shared/services/movimientos/movimiento.service';
 import { PresupuestoService } from 'src/app/shared/services/presupuestos/presupuesto.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-
+import * as numeral from 'numeral';
 @Component({
   selector: 'app-detalles',
   templateUrl: './detalles.component.html',
@@ -12,6 +12,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class DetallesComponent implements OnInit {
   idPresupuesto: string | null | number = '';
+  numeral = numeral;
   dataMetricaPresupuesto!: MetricaPresupuesto;
   dataMovimientoTable!: Movimiento[];
   mensaje: string = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry';

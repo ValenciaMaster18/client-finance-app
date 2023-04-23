@@ -24,7 +24,7 @@
           <div class="contnedor__text">
             <h2>Ingreso disponible</h2>
             <span>
-              {{ product.ingresoDisponible | currency: "$" }}
+              {{ numeral(product.ingresoDisponible).format('0,0.0a') }} PEN
             </span>
             <button [routerLink]="'/dashboard/presupuesto/detalles/' + product.idPresupuesto" class="learn-more">
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-plus-lg" viewBox="0 0 16 16">

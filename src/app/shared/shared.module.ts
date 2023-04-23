@@ -17,6 +17,7 @@ import { CrearMovimientoComponent } from './components/botones/crear-movimiento/
 import { TablaMetMovientoComponent } from './components/tabla-met-moviento/tabla-met-moviento.component';
 import { TablaComponent } from './components/tabla-details-movimiento/tabla/tabla.component';
 import { CsvDescargarComponent } from './components/botones/descargar-csv/csv-descargar/csv-descargar.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -37,7 +38,8 @@ import { CsvDescargarComponent } from './components/botones/descargar-csv/csv-de
     TableModule,
     ButtonModule,
     CarouselModule,
-    DialogModule
+    DialogModule,
+    FormsModule
     ],
   exports: [
     NavbarComponent,

@@ -10,6 +10,7 @@ import { JwtService } from 'src/app/auth/services/token.service';
 import { IUsuario } from 'src/app/shared/model/token.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+import * as numeral from 'numeral';
 
 @Component({
   selector: 'app-detalles',
@@ -20,6 +21,7 @@ export class DetallesComponent implements OnInit, OnDestroy {
   inversiones: MetricaInversion[] = [];
   portafolio!: MetricaPortafolio;
   subscription: Subscription;
+  numeral = numeral;
   formularioLiquidar: FormGroup;
   constructor(
     private _inversionService: InversionService,

@@ -17,7 +17,7 @@
             <div class="datos">
               <h2>{{ product.nombre }}</h2>
               <p>{{ product.descripcion }}</p>
-              <span>{{ product.importe }}</span>
+              <span>{{ numeral(product.importe).format('0,0.0a') }} PEN</span>
             </div>
             <div class="btn">
               <button (click)="showDialogVisibleEnviar(product)">

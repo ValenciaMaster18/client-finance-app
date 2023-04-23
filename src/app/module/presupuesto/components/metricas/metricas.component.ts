@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { ObjetivosService } from 'src/app/shared/services/objetivos/objetivos.service';
 import Swal from 'sweetalert2';
+import * as numeral from 'numeral';
 import { IUsuario } from 'src/app/shared/model/token.model';
 import { UsernameService } from 'src/app/auth/services/username.service';
 import { JwtService } from 'src/app/auth/services/token.service';
@@ -15,6 +16,7 @@ import { JwtService } from 'src/app/auth/services/token.service';
   styleUrls: ['./metricas.component.scss']
 })
 export class MetricasComponent {
+  numeral = numeral;
   DataGrafico!: MetricaPresupuesto[];
   mostrarMetricas: boolean = false;
   responsiveOptionsGrafico!: any[];

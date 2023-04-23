@@ -10,7 +10,7 @@ import { AhorroService } from 'src/app/shared/services/ahorro/ahorro.service';
 import { BalanceService } from 'src/app/shared/services/balance/balance.service';
 import { ObjetivosService } from 'src/app/shared/services/objetivos/objetivos.service';
 import Swal from 'sweetalert2';
-
+import * as numeral from 'numeral';
 @Component({
   selector: 'app-ahorro',
   templateUrl: './ahorro.component.html',
@@ -18,7 +18,7 @@ import Swal from 'sweetalert2';
 })
 export class AhorrosComponent implements OnInit, OnDestroy {
   HayObjetivos: boolean = false;
-
+  numeral = numeral;
   // Dialog
   visibleEnviar: boolean = false;
   visibleHacia: boolean = false;
