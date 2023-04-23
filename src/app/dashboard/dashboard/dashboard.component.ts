@@ -10,13 +10,13 @@ import { JwtService } from '../../auth/services/token.service';
 import { IUsuario } from 'src/app/shared/model/token.model';
 import { Portafolio } from 'src/app/shared/model/portafolio.model';
 import { Presupuesto } from 'src/app/shared/model/presupuesto.model';
-import { Inversiones } from 'src/app/shared/model/inversiones.model';
 import { Objetivo } from 'src/app/shared/model/objetivo.model';
 import { AhorroService } from 'src/app/shared/services/ahorro/ahorro.service';
 import { Ahorro } from 'src/app/shared/model/ahorro.model';
 import Swal from 'sweetalert2';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { Router } from '@angular/router';
+import { UsernameService } from 'src/app/auth/services/username.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -39,6 +39,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     private _portafolioService: PortafolioService,
     private _presupuestoService: PresupuestoService,
     private _objetivosService: ObjetivosService,
+    private _usernameService: UsernameService,
     private _ahorroService: AhorroService
 
   ) {
@@ -49,6 +50,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
   async ngOnInit(): Promise<any> {
     const token: IUsuario | any = this._jwtService.decodeToken();
+    const username = this._usernameService.getUsername();
 
     const ahorroPromise = new Promise<Ahorro[]>((resolve, reject) => {
       this.subscription = this._ahorroService.getAhorro(0, 1000, token.uuid!).subscribe({
@@ -62,7 +64,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     });
 
     const portafolioPromise = new Promise<Portafolio[]>((resolve, reject) => {
-      this.subscription = this._portafolioService.getPortafolio(0, 1000).subscribe({
+      this.subscription = this._portafolioService.getAllPortafolio(username).subscribe({
         next: (value: Portafolio[]) => {
           resolve(value);
         },
