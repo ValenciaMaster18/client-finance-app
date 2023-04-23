@@ -65,7 +65,7 @@ export class ObjetivosService {
     return this.httpClient.post<any>(`${this.API_URL}`, objetivo).pipe(
       tap(() => {
         const token: IUsuario | any = this._jwtService.decodeToken();
-        this.getPageObjetivo(0, 9, token.uuid!).subscribe();
+        this.getPageObjetivo(0, 1000, token.uuid!).subscribe();
       }))
   }
 
@@ -79,7 +79,7 @@ export class ObjetivosService {
       .pipe(
         tap(() => {
           const token: IUsuario | any = this._jwtService.decodeToken();
-          this.getPageObjetivo(0, 9, token.uuid!).subscribe();
+          this.getPageObjetivo(0, 1000, token.uuid!).subscribe();
         })
       )
   }

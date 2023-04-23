@@ -51,7 +51,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     const token: IUsuario | any = this._jwtService.decodeToken();
 
     const ahorroPromise = new Promise<Ahorro[]>((resolve, reject) => {
-      this.subscription = this._ahorroService.getAhorro(0, 9, token.uuid!).subscribe({
+      this.subscription = this._ahorroService.getAhorro(0, 1000, token.uuid!).subscribe({
         next: (value: Ahorro[]) => {
           resolve(value);
         },
@@ -62,7 +62,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     });
 
     const portafolioPromise = new Promise<Portafolio[]>((resolve, reject) => {
-      this.subscription = this._portafolioService.getPortafolio(0, 9).subscribe({
+      this.subscription = this._portafolioService.getPortafolio(0, 1000).subscribe({
         next: (value: Portafolio[]) => {
           resolve(value);
         },
@@ -73,7 +73,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     });
 
     const presupuestoPromise = new Promise<Presupuesto[]>((resolve, reject) => {
-      this.subscription = this._presupuestoService.getPagePresupuesto(0, 9).subscribe({
+      this.subscription = this._presupuestoService.getPagePresupuesto(0, 1000).subscribe({
         next: (value: Presupuesto[]) => {
           resolve(value);
         },
@@ -84,7 +84,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     });
 
     const objetivosPromise = new Promise<Objetivo[]>((resolve, reject) => {
-      this.subscription = this._objetivosService.getPageObjetivo(0, 7, token.uuid).subscribe({
+      this.subscription = this._objetivosService.getPageObjetivo(0, 1000, token.uuid).subscribe({
         next: (value: Objetivo[]) => {
           resolve(value);
         },
@@ -95,7 +95,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     });
 
     const movimientoPromise = new Promise<Movimiento[]>((resolve, reject) => {
-      this.subscription = this._movimientoService.getMovimiento(0, 9, token.uuid).subscribe({
+      this.subscription = this._movimientoService.getMovimiento(0, 1000, token.uuid).subscribe({
         next: (value: Movimiento[]) => {
           resolve(value);
         },

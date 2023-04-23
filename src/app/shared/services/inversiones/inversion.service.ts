@@ -42,7 +42,7 @@ export class InversionService {
     return this.httpClient.post<any>(`${this.API_URL}`, inversiones)
       .pipe(
         tap(() => {
-          this.getPageInversiones(0, 9, idPortafolio).subscribe();
+          this.getPageInversiones(0, 1000, idPortafolio).subscribe();
         })
       )
   }
@@ -55,7 +55,7 @@ export class InversionService {
     return this.httpClient.patch<any>(`${this.API_URL}/liquidar-inversion`, inversiones, { params })
       .pipe(
         tap(() => {
-          this.getPageInversiones(0, 9, idPortafolio).subscribe()
+          this.getPageInversiones(0, 1000, idPortafolio).subscribe()
         })
       )
   }

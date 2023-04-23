@@ -41,7 +41,7 @@ export class PortafolioService {
     return this.httpClient.post<any>(`${this.API_URL}`, portafolio)
       .pipe(
         tap(() => {
-          this.getPortafolio(0, 9).subscribe()
+          this.getPortafolio(0, 1000).subscribe()
         })
       )
   }

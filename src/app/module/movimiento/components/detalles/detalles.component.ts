@@ -28,7 +28,7 @@ export class DetallesComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe()
   }
   ngOnInit(): void{
-    this.subscription = this._movimientoService.movimientoSubject.subscribe(
+    this.subscription = this._movimientoService.movimiento$.subscribe(
       {
         next: (value: Movimiento[]) => {
           this.dataMovimiento = value;
