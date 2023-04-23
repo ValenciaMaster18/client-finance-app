@@ -39,6 +39,11 @@ export class PortafolioService {
   }
   postPortafolio(portafolio: Portafolio): Observable<any> {
     return this.httpClient.post<any>(`${this.API_URL}`, portafolio)
+      .pipe(
+        tap(() => {
+          this.getPortafolio(0, 9).subscribe()
+        })
+      )
   }
   putPortafolio(portafolio: Portafolio): Observable<any> {
     return this.httpClient.put(`${this.API_URL}`, portafolio)

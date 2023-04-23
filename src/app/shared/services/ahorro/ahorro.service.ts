@@ -4,6 +4,8 @@ import { environmentDev } from 'src/environments/environment.development';
 import { BehaviorSubject, Observable, shareReplay, tap } from 'rxjs';
 import { MetricaAhorros } from '../../model/domain/metricaahorro.model';
 import { Ahorro } from '../../model/ahorro.model';
+import { JwtService } from 'src/app/auth/services/token.service';
+import { IUsuario } from '../../model/token.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,8 @@ export class AhorroService {
   ahorro$: Observable<Ahorro[]> = this.ahorroSubject.asObservable();
 
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private _jwtService: JwtService
   ) {
     this.API_URL = environmentDev.url + 'api/v1/ahorros';
   }
@@ -40,6 +43,12 @@ export class AhorroService {
   }
   getManyMetricas(idUsuario: string): Observable<MetricaAhorros> {
     return this.httpClient.get<MetricaAhorros>(`${this.API_URL}/metricas?idUsuario=${idUsuario}`)
+      .pipe(
+        tap(() => {
+          const token: IUsuario | any = this._jwtService.decodeToken();
+          this.getAhorro(0, 9, token.uuid!).subscribe();
+        })
+      )
   }
 
   getAhorrosAutomaticos(username: string): Observable<Ahorro[]> {

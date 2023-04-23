@@ -17,6 +17,7 @@ import { JwtService } from 'src/app/auth/services/token.service';
 })
 export class MetricasComponent {
   numeral = numeral;
+  mensaje: string = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry';
   DataGrafico!: MetricaPresupuesto[];
   mostrarMetricas: boolean = false;
   responsiveOptionsGrafico!: any[];

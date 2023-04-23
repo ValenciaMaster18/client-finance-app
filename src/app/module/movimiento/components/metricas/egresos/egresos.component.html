@@ -5,8 +5,7 @@
 
     </div>
     <span>
-      <!-- {{ dataParaGrafico.monto| currency:'$ ' }} -->
-      $ 300
+      {{ dataParaGrafico.monto | currency:'PEN ' }}
     </span>
     <button routerLink="/dashboard/movimiento/metricas/crear-movimiento/egreso">
       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-plus"
@@ -27,6 +26,6 @@
     </div>
   </section>
   <section class="tabla">
-    <app-tabla-met-moviento></app-tabla-met-moviento>
+    <app-tabla-met-moviento [concepto]="concepto" [valores]="valores"></app-tabla-met-moviento>
   </section>
 </section>

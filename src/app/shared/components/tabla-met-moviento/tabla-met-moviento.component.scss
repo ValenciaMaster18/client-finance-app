@@ -1,9 +1,17 @@
+.contenedor{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px;
+}
 .contenedor__card {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 50px;
   padding: 0px 20px;
+  background-color: white;
+  border-radius: 8px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.443);
   picture{
     display: flex;
     align-items: center;
@@ -22,8 +30,5 @@
   p{
     display: flex;
     gap: 17px;
-    span{
-      
-    }
   }
 }

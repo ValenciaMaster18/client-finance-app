@@ -57,26 +57,30 @@
         font-weight: 700;
       }
     }
-
-    button.consejo {
-      position: absolute;
-      right: 15px;
-      bottom: 15px;
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      border: 0;
-      cursor: pointer;
-    }
-
-    button.consejo {
-      width: 30px;
-      height: 30px;
-      bottom: 10px;
-      left: 10px;
-      background-color: transparent;
-    }
   }
+}
+div.funcionalidad{
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+  button.consejo {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 0;
+    cursor: pointer;
+  }
+}
+div.consejo {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+button.consejo:hover + div.consejo {
+  display: block;
 }
 button.agregar {
   border: none;

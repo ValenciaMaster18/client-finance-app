@@ -19,6 +19,7 @@ import * as numeral from 'numeral';
 export class AhorrosComponent implements OnInit, OnDestroy {
   HayObjetivos: boolean = false;
   numeral = numeral;
+  mensaje: string = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry';
   // Dialog
   visibleEnviar: boolean = false;
   visibleHacia: boolean = false;

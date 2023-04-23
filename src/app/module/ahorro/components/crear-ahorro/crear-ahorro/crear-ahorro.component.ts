@@ -21,7 +21,6 @@ export class CrearAhorroComponent implements OnInit {
   tipoAhorro: string[] = ["CORTO_PLAZO", "MEDIANO_PLAZO", "LARGO_PLAZO"]
   tipoImport: string[] = ["PORCENTAJE", "EFECTIVO"]
   expresion: string[] = ["DESCONTAR_MAYOR_IGUAL_A", "DESCONTAR_MAYOR_A", "DESCONTAR_IGUAL_A", "DESCONTAR_MENOR_IGUAL_A", "DESCONTAR_MENOR_A", "DESCONTAR;"]
-
   formulario: FormGroup;
   formularioCondicion: FormGroup;
   constructor(

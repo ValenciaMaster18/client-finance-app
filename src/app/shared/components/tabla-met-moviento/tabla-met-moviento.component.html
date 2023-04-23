@@ -1,12 +1,16 @@
-<div class="contenedor__card">
-  <picture>
-    <img src="../../../../assets/svg/logo-concepto/salario.svg" alt="">
-    <span></span>
-  </picture>
-  <div>
-  <p>
-    <span>86%</span>
-    <span>30000$</span>
-  </p>
+<section class="contenedor">
+  <div class="contenedor__card" *ngFor="let con of concepto; let i = index">
+    <picture>
+      <img src="../../../../assets/image/concepto/logo.png" alt="">
+      <span>
+        {{ con }}
+      </span>
+    </picture>
+    <div>
+      <p>
+        <span>{{ valores[i].monto }}</span>
+        <span>{{ numeral(valores[i].porcentaje).format('0,0.00') }} %</span>
+      </p>
+    </div>
   </div>
-</div>
+</section>

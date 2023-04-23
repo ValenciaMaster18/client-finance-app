@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, shareReplay, tap } from 'rxjs';
 import { Objetivo } from '../../model/objetivo.model';
 import { environmentDev } from 'src/environments/environment.development';
+import { JwtService } from 'src/app/auth/services/token.service';
+import { IUsuario } from '../../model/token.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,9 @@ export class ObjetivosService {
   has_objetivo$: Observable<boolean> = this.has_objetivo.asObservable()
 
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private _jwtService: JwtService
+
   ) {
     this.API_URL = environmentDev.url + 'api/v1/objetivos';
   }
@@ -24,7 +28,7 @@ export class ObjetivosService {
     return this.httpClient.get<Objetivo>(`${this.API_URL}/${idObjetivo}`)
   }
 
-  getAllObjetivo(idUsuario: string): Observable<Objetivo[]>{
+  getAllObjetivo(idUsuario: string): Observable<Objetivo[]> {
     const params = new HttpParams().set("idUsuario", idUsuario)
     return this.httpClient.get<Objetivo[]>(`${this.API_URL}/all`, { params })
   }
@@ -58,11 +62,20 @@ export class ObjetivosService {
     return this.httpClient.get<boolean>(`${this.API_URL}/verificar-borrado`, { params })
   }
   postObjetivo(objetivo: Objetivo): Observable<any> {
-    return this.httpClient.post<any>(`${this.API_URL}`, objetivo);
+    return this.httpClient.post<any>(`${this.API_URL}`, objetivo).pipe(
+      tap(() => {
+        const token: IUsuario | any = this._jwtService.decodeToken();
+        this.getPageObjetivo(0, 9, token.uuid!).subscribe();
+      }))
   }
 
   putObjetivo(objetivo: Objetivo): Observable<any> {
     return this.httpClient.put(`${this.httpClient}`, objetivo)
+  }
+
+  deleteOnjetivo(idUsuario: string, idObjetivo: string): Observable<any> {
+    const params = new HttpParams().set("idUsuario", idUsuario).set("idObjetivo", idObjetivo);
+    return this.httpClient.delete<any>(`${this.API_URL}`, { params })
   }
 
 }
