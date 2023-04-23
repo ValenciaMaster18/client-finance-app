@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ngxCsv } from 'ngx-csv';
 import { Subscription } from 'rxjs';
 import { Movimiento } from 'src/app/shared/model/movimiento.model';
 import { MovimientoService } from 'src/app/shared/services/movimientos/movimiento.service';
@@ -13,6 +14,7 @@ export class DetallesComponent implements OnInit, OnDestroy {
   dataMovimiento: Movimiento[];
   optionsGrafico: any;
 
+  jsonCsv: any[] = [];
   // Finalizar la suscripcion
   subscription: Subscription;
 
@@ -65,5 +67,33 @@ export class DetallesComponent implements OnInit, OnDestroy {
   //       }
   //     }
   //   };
+  }
+  exportCsv(): void{
+    this.dataMovimiento.forEach((data) => {
+      this.jsonCsv.push(
+        {
+          concepto: data.concepto,
+          import: data.importe,
+          tipo: data.tipo
+        }
+      )
+    })
+    let opciones = {
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalseparator: '.',
+      showLabels: false,
+      showTitle: false,
+      title: 'Presupuesto',
+      useBom: false,
+      noDownload: false,
+      headers: [
+        "CONCEPTO",
+        "IMPORTE",
+        "TIPO",
+      ]
+    };
+    new ngxCsv(this.jsonCsv, "Movimiento", opciones)
+    this.jsonCsv.splice(0, this.jsonCsv.length)
   }
 }

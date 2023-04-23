@@ -60,7 +60,7 @@
   </div>
   <div class="tabla">
     <div class="btn__crear-presupuesto">
-      <app-csv-descargar></app-csv-descargar>
+      <app-csv-descargar (click)="exportCsv()"></app-csv-descargar>
 
       <app-crear-movimiento routerLink="/dashboard/inversion/crear-inversion"
       [textBtn]="'Crear Inversion'"></app-crear-movimiento>

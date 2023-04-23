@@ -43,7 +43,7 @@
 
   <div class="tabla">
     <div class="btn__crear-presupuesto">
-      <app-csv-descargar></app-csv-descargar>
+      <app-csv-descargar (click)="exportCsv()"></app-csv-descargar>
       <app-crear-movimiento [routerLink]="'/dashboard/movimiento/metricas/crear-movimiento/ingreso/' + dataMetricaPresupuesto.idPresupuesto" [textBtn]="'Crear presuspuesto'"></app-crear-movimiento>
     </div>
     <app-tabla [dataMovimiento]="dataMovimientoTable"></app-tabla>

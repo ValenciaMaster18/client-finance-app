@@ -4,6 +4,7 @@ import { Movimiento } from 'src/app/shared/model/movimiento.model';
 import { MovimientoService } from 'src/app/shared/services/movimientos/movimiento.service';
 import { PresupuestoService } from 'src/app/shared/services/presupuestos/presupuesto.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ngxCsv } from 'ngx-csv/ngx-csv';
 import * as numeral from 'numeral';
 @Component({
   selector: 'app-detalles',
@@ -12,6 +13,7 @@ import * as numeral from 'numeral';
 })
 export class DetallesComponent implements OnInit {
   idPresupuesto: string | null | number = '';
+  jsonCsv: any[] = [];
   numeral = numeral;
   dataMetricaPresupuesto!: MetricaPresupuesto;
   dataMovimientoTable!: Movimiento[];
@@ -73,5 +75,33 @@ export class DetallesComponent implements OnInit {
     } catch (error) {
       // manejar el error aquí
     }
+  }
+  exportCsv(): void{
+    this.dataMovimientoTable.forEach((data) => {
+      this.jsonCsv.push(
+        {
+          concepto: data.concepto,
+          import: data.importe,
+          tipo: data.tipo
+        }
+      )
+    })
+    let opciones = {
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalseparator: '.',
+      showLabels: false,
+      showTitle: false,
+      title: 'Presupuesto',
+      useBom: false,
+      noDownload: false,
+      headers: [
+        "CONCEPTO",
+        "IMPORTE",
+        "TIPO",
+      ]
+    };
+    new ngxCsv(this.jsonCsv, "Presupuesto", opciones)
+    this.jsonCsv.splice(0, this.jsonCsv.length)
   }
 }

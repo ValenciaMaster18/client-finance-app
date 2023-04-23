@@ -11,6 +11,7 @@ import { IUsuario } from 'src/app/shared/model/token.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import * as numeral from 'numeral';
+import { ngxCsv } from 'ngx-csv';
 
 @Component({
   selector: 'app-detalles',
@@ -20,6 +21,7 @@ import * as numeral from 'numeral';
 export class DetallesComponent implements OnInit, OnDestroy {
   inversiones: MetricaInversion[] = [];
   portafolio!: MetricaPortafolio;
+  jsonCsv: any[] = [];
   subscription: Subscription;
   numeral = numeral;
   formularioLiquidar: FormGroup;
@@ -140,5 +142,38 @@ export class DetallesComponent implements OnInit, OnDestroy {
         timer: 3000
       })
     }
+  }
+  exportCsv(): void{
+    this.inversiones.forEach((data) => {
+      this.jsonCsv.push(
+        {
+          nombre: data.nombre,
+          sector: data.sector,
+          gananciaEsperada: data.gananciaEsperada,
+          plazo: data.plazo,
+          nivelRiesgo: data.nivelRiesgo
+        }
+      )
+    })
+    let opciones = {
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalseparator: '.',
+      showLabels: false,
+      showTitle: false,
+      title: 'Presupuesto',
+      useBom: false,
+      noDownload: false,
+      headers: [
+        "NOMBRE",
+        "SERCTOR",
+        "GANANCIA ESPERADA",
+        "PLAZO",
+        "NIVEL DE RIESGO",
+
+      ]
+    };
+    new ngxCsv(this.jsonCsv, "Inversiones", opciones)
+    this.jsonCsv.splice(0, this.jsonCsv.length)
   }
 }

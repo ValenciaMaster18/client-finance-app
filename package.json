@@ -21,6 +21,7 @@
     "aos": "^2.3.4",
     "chart.js": "^4.2.1",
     "jwt-decode": "^3.1.2",
+    "ngx-csv": "^0.3.2",
     "numeral": "^2.0.6",
     "primeicons": "^6.0.1",
     "primeng": "^15.3.0",

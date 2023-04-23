@@ -5,7 +5,7 @@
   <div class="tabla">
     <app-tabla [dataMovimiento]="dataMovimiento"></app-tabla>
     <div class="btn__crear-movimiento">
-      <app-csv-descargar></app-csv-descargar>
+      <app-csv-descargar (click)="exportCsv()"></app-csv-descargar>
       <app-crear-movimiento routerLink="/dashboard/movimiento/metricas/crear-movimiento/ingreso" [textBtn]="'Crear movimiento'"></app-crear-movimiento>
     </div>
   </div>
