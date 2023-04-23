@@ -14,8 +14,8 @@
 
 .contenedor__card {
   display: flex;
-  justify-content: space-between;
-  gap: 8px;
+  justify-content: flex-end;
+  gap: 16px;
 
   .contenedor__card-tarjeta {
     width: 217px;

@@ -37,7 +37,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
     private _authService: AuthService,
     private router: Router,
     private _portafolioService: PortafolioService,
-    private _inversionService: InversionService,
     private _presupuestoService: PresupuestoService,
     private _objetivosService: ObjetivosService,
     private _ahorroService: AhorroService
@@ -84,17 +83,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
       });
     });
 
-    const inversionesPromise = new Promise<Inversiones[]>((resolve, reject) => {
-      this.subscription = this._inversionService.getPageInversiones(0, 9, token.uuid).subscribe({
-        next: (value: Inversiones[]) => {
-          resolve(value);
-        },
-        error: (error) => {
-          reject(error);
-        }
-      });
-    });
-
     const objetivosPromise = new Promise<Objetivo[]>((resolve, reject) => {
       this.subscription = this._objetivosService.getPageObjetivo(0, 7, token.uuid).subscribe({
         next: (value: Objetivo[]) => {
@@ -117,11 +105,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
       });
     });
     // , ahorroPromise , ahorro console.log('Ahorro:', ahorro);
-    Promise.all([ahorroPromise, portafolioPromise, presupuestoPromise, inversionesPromise, objetivosPromise, movimientoPromise])
-      .then(([ahorro, portafolio, presupuesto, inversiones, objetivos, movimiento]) => {
+    Promise.all([ahorroPromise, portafolioPromise, presupuestoPromise, objetivosPromise, movimientoPromise])
+      .then(([ahorro, portafolio, presupuesto, objetivos, movimiento]) => {
         // console.log('Portafolio:', portafolio);
         // console.log('Presupuesto:', presupuesto);
-        // console.log('Inversiones:', inversiones);
         // console.log('Objetivos:', objetivos);
         // console.log('Movimiento:', movimiento);
         // console.log('Ahorro:', ahorro);

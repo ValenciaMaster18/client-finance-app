@@ -1,24 +1,31 @@
-<ng-container *ngIf="mostrarMetricas">
-  <section>
+<section class="carrusel">
+  <div class="btn__crear">
+    <app-crear-movimiento routerLink="/dashboard/inversion/crear-portafolio" [textBtn]="'Crear portafolio'"></app-crear-movimiento>
+  </div>
+
+  <ng-container *ngIf="dataCard.length == 0">
+    <div class="alert">
+      No tienes Portafolios registrados crea uno en el boton de la esquina superior
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="mostrarMetricas && dataCard.length != 0">
     <p-carousel [value]="dataCard" [numVisible]="2" [numScroll]="3" [circular]="true"
       [responsiveOptions]="responsiveOptionsGrafico" autoPlayInterval="3000">
       <ng-template let-product pTemplate="item">
 
         <div class="card">
-          <span class="ganancia__esperada">39,500</span>
-          <span class="rentabilidad__promedio">90%</span>
           <picture class="contenedor__card-img">
             <img src="../../../../../../assets/image/inversiones/logo.png" alt="">
           </picture>
-          <p>32,500</p>
-          <span>Alto</span>
-          <button routerLink="/dashboard/inversion/detalles/4">
+          <p>{{ product.nombre }}</p>
+          <span>{{ product.descripcion }}</span>
+          <button [routerLink]="'/dashboard/inversion/detalles/' + product.id">
             Ver detalles de la inversion
           </button>
         </div>
       </ng-template>
     </p-carousel>
 
-  </section>
-</ng-container>
-
+  </ng-container>
+</section>

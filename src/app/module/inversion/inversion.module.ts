@@ -8,6 +8,7 @@ import { DetallesComponent } from './components/detalles/detalles/detalles.compo
 import { CrearInversionComponent } from './components/crear-inversion/crear-inversion/crear-inversion.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CrearPortadolioComponent } from './components/crear-portafolio/crear-portadolio/crear-portadolio.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     InversionComponent,
     MetricasComponent,
     DetallesComponent,
-    CrearInversionComponent
+    CrearInversionComponent,
+    CrearPortadolioComponent
   ],
   imports: [
     CommonModule,

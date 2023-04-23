@@ -4,6 +4,7 @@ import { InversionComponent } from './pages/inversion/inversion.component';
 import { MetricasComponent } from './components/metricas/metricas/metricas.component';
 import { DetallesComponent } from './components/detalles/detalles/detalles.component';
 import { CrearInversionComponent } from './components/crear-inversion/crear-inversion/crear-inversion.component';
+import { CrearPortadolioComponent } from './components/crear-portafolio/crear-portadolio/crear-portadolio.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,9 @@ const routes: Routes = [
       },
       {
         path: 'crear-inversion', component: CrearInversionComponent
+      },
+      {
+        path: 'crear-portafolio', component: CrearPortadolioComponent
       },
       {
         path: '**', redirectTo: 'metricas', pathMatch: 'full'

@@ -81,14 +81,13 @@ export class MetricasComponent implements OnInit, OnDestroy {
     });
 
     const getManyMetricaPromise = new Promise((resolve, reject) => {
-      this.subscription = this._portafolioService.getManyMetrica(username).subscribe({
-        next: (value: MetricaPortafolio[]) => {
+      this.subscription = this._portafolioService.portafolio$.subscribe({
+        next: (value: any) => {
           this.dataCard = value;
-          console.log(value);
           resolve(value);
         },
         error: (err: any) => {
-          console.log("sddsdfs" + err);
+          console.log(err);
           reject(err);
         }
       });
@@ -96,8 +95,7 @@ export class MetricasComponent implements OnInit, OnDestroy {
 
     Promise.all([hasObjetivoPromise, getManyMetricaPromise])
       .then(() => {
-        // Resto del código aquí
-        console.log(username);
+        //
       })
       .catch((err) => {
         console.log(err);

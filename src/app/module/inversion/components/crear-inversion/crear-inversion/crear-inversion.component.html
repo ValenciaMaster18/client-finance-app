@@ -25,8 +25,8 @@
         </button>
       </label>
       <select formControlName="nombrePortafolio">
-        <option [value]="portafolio" *ngFor="let portafolio of nombrePortafolio">
-          {{ portafolio }}
+        <option [value]="portafolio.nombre" *ngFor="let portafolio of nombrePortafolio">
+          {{ portafolio.nombre }}
         </option>
       </select>
     </div>
@@ -54,7 +54,7 @@
           </svg>
         </button>
       </label>
-      <input formControlName="Precio" type="number" placeholder="Precio">
+      <input formControlName="precio" type="number" placeholder="Precio">
     </div>
     <div class="contenedor__campos">
       <label for="">
